@@ -1,31 +1,25 @@
-# OvenDemo Server
+# OvenDemo Client
 
-OvenDemo Server is a FactoryTalk Optix application that provides centralized management and monitoring for a distributed oven system.
+OvenDemo Client is a FactoryTalk Optix application that represents a distributed oven station connected to the central OvenDemo Server.
 
 ## Overview
 
 The solution consists of two FactoryTalk Optix projects:
 
-- **Server**: Central application used to monitor all connected clients, manage recipes, and communicate with operators.
-- **Clients**: Distributed applications that connect to the server via MQTT.
+- **Server**: Provides centralized monitoring, recipe management, and client supervision.
+- **Client**: Local oven application used by operators to control and monitor the process.
+
+Clients communicate with the server through MQTT.
 
 ## Features
 
-### Server
+### Client
 
-- Real-time overview of all connected clients
-- Centralized recipe management
-- Recipe distribution to client devices
-- MQTT-based communication
-- Integrated chat with connected clients
-- Centralized supervision and diagnostics
-
-### Clients
-
-- MQTT connection to the central server
-- Local oven control and monitoring
-- Automatic synchronization of recipes from the server
-- Bidirectional chat communication with operators
+- Local oven operation and monitoring
+- Recipe download and synchronization from the server
+- MQTT communication with the central server
+- Status reporting and diagnostics
+- Integrated chat with the server application
 
 ## Architecture
 
@@ -35,17 +29,22 @@ The solution consists of two FactoryTalk Optix projects:
 |-------------------|
 | Client Overview   |
 | Recipe Management |
-| Chat Interface    |
+| Operator Chat     |
 +---------+---------+
-          |
+          ^
           | MQTT
-          |
-+---------+---------+---------+
-|                   |         |
-v                   v         v
-Client 1        Client 2   Client N
+          v
++-------------------+
+|  OvenDemo_Client  |
+|-------------------|
+| Oven Operation    |
+| Local Monitoring  |
+| Recipe Execution  |
+| Operator Chat     |
++-------------------+
 ```
 
 ## Purpose
 
-This project demonstrates how FactoryTalk Optix can be used to build a centralized recipe management and monitoring system, allowing multiple distributed oven stations to communicate with a central server through MQTT. The solution also includes an integrated chat system that enables direct communication between operators and connected clients.
+This project demonstrates how FactoryTalk Optix can be used to implement a distributed oven control system, where multiple client applications receive centralized recipe management while maintaining local control capabilities and direct communication with the server through an integrated chat system.
+``
