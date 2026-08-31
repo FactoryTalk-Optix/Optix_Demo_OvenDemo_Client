@@ -1,0 +1,21 @@
+Name: Subscriber
+Id: g=0b064a047dcc5fddd42d1f5c683b7497
+Type: FolderType
+Children:
+- Name: RecipesList
+  Id: g=b4dccc79fba7f54cb275aaae6c6683c2
+  Type: BaseDataVariableType
+  DataType: String
+- Name: AlarmsList
+  Id: g=69eeee94aeb3b4c96e938480144260dd
+  Type: BaseDataVariableType
+  DataType: String
+- Name: IncomingMessage
+  Id: g=a219f64a8d87104e1dbc77fb8a8d8839
+  Type: BaseDataVariableType
+  DataType: String
+  Children:
+  - Name: Source
+    Id: g=f98f8ab42d4deea5b0503c8dfa99816d
+    Type: BaseDataVariableType
+    DataType: String

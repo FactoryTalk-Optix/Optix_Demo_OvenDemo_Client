@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PoC 480x272</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./device-pocs.css" />
+  </head>
+  <body>
+    <div class="poc-page">
+      <div class="poc-frame frame-043">
+        <div class="poc-frame-header">
+          <h1 class="poc-frame-title">4.3" panel - 480x272</h1>
+          <div class="poc-frame-meta">One primary task per page</div>
+        </div>
+
+        <div class="device-root">
+          <div class="device-screen screen-043">
+            <div class="device-actions">
+              <div class="device-action">R</div>
+              <div class="device-action">T</div>
+            </div>
+
+            <div class="device-header">
+              <h2 class="device-name">C0CV6M3-64fb</h2>
+              <div class="device-id">64fb3025-7534-4007-9ec9-8ed30ba3141b</div>
+            </div>
+
+            <div class="nav-pills">
+              <div class="nav-pill active">State</div>
+              <div class="nav-pill">Recipes</div>
+              <div class="nav-pill">Alarms</div>
+            </div>
+
+            <div class="apple-card">
+              <h3 class="card-title-sm">Current state</h3>
+              <div class="grid-043-main">
+                <div class="status-chip-col">
+                  <div class="status-chip active">Heating</div>
+                  <div class="status-chip">Door closed</div>
+                </div>
+                <div class="oven-symbol-box">
+                  <svg class="oven-symbol" viewBox="0 0 160 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="18" y="18" width="124" height="126" rx="12" fill="#7d8da1" />
+                    <rect x="28" y="40" width="104" height="84" rx="8" fill="#4f6f8a" />
+                    <rect x="32" y="44" width="96" height="76" rx="6" fill="none" stroke="#d8e6f2" stroke-opacity="0.35" stroke-width="2" />
+                    <circle cx="80" cy="136" r="10" fill="#414141" />
+                    <rect x="48" y="144" width="64" height="10" rx="4" fill="#a2b4c8" />
+                  </svg>
+                </div>
+                <div class="temp-cluster">
+                  <div class="temp-bar-wrap">
+                    <div class="temp-bar-label">Temp</div>
+                    <div class="temp-bar">
+                      <div class="temp-zone-low"></div>
+                      <div class="temp-zone-mid"></div>
+                      <div class="temp-zone-high"></div>
+                      <div class="temp-marker at-pv"></div>
+                    </div>
+                  </div>
+                  <ul class="kv-list">
+                    <li class="kv-item"><span>SP</span><span class="kv-value">392 <span class="kv-unit">degF</span></span></li>
+                    <li class="kv-item"><span>PV</span><span class="kv-value">390.2 <span class="kv-unit">degF</span></span></li>
+                    <li class="kv-item"><span>Phase</span><span class="kv-value">1</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="apple-card">
+              <div class="view-switch">
+                <div class="view-btn active">Overview</div>
+                <div class="view-btn">Trend</div>
+                <div class="view-btn">Phase</div>
+                <div class="view-btn">History</div>
+              </div>
+              <div class="poc-note">4.3": recipes, alarms, trend and history must be separate pages or popups. Global data is intentionally omitted here.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

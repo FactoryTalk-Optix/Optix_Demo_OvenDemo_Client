@@ -1,0 +1,79 @@
+Name: Translations
+Type: TranslationsCategoryFolder
+Children:
+- Name: LocalizationDictionary1
+  Id: g=5b5c609c6bb6a51d5e3490a74c904593
+  Type: LocalizationDictionary
+  DataType: String
+  ValueRank: OneOrMoreDimensions
+  ArrayDimensions: [0,0]
+  Value: 
+   {
+    "Type": 12,
+    "Dimensions": [63,7],
+    "Body": [
+     "","en-US","es-ES","it-IT","fr-FR","de-DE","zh-CN",
+     "Apply","Apply","Aplicar","Applica","Appliquer","Anwenden","应用",
+     "Approved","Approved","Aprobado","Approvato","Approuvé","Genehmigt","已批准",
+     "BindClient","Bind client to plant slot","Vincular cliente al puesto de la planta","Associa il client alla postazione dell'impianto","Associer le client à un emplacement de l'installation","Client mit Anlagenplatz verbinden","将客户端绑定到工位",
+     "CLose","Close","Cerrar","Chiudi","Fermer","Schließen","关闭",
+     "Close","Close","Cerrar","Chiudi","Fermer","Schließen","关闭",
+     "Confirm","Confirm","Confirmar","Conferma","Confirmer","Bestätigen","确认",
+     "Consumptions","Consumptions","Consumos","Consumi","Consommations","Verbräuche","消耗",
+     "CurrentPhase","Current phase","Fase actual","Fase corrente","Phase actuelle","Aktuelle Phase","当前阶段",
+     "CurrentRecipe","Current recipe","Receta actual","Ricetta corrente","Recette actuelle","Aktuelles Rezept","当前配方",
+     "CurrentState","Current state","Estado actual","Stato corrente","État actuel","Aktueller Status","当前状态",
+     "CurrentTemperature","Current temperature","Temperatura actual","Temperatura corrente","Température actuelle","Aktuelle Temperatur","当前温度",
+     "Cycles","Cycles","Ciclos","Cicli","Cycles","Zyklen","循环次数",
+     "Dark","Dark","Oscuro","Scuro","Sombre","Dunkel","深色",
+     "Delta","Delta","Delta","Delta","Delta","Delta","Delta",
+     "Demo","Demo","Demo","Demo","Démo","Demo","演示",
+     "Deprecated","Deprecated","Obsoleto","Deprecato","Obsolète","Veraltet","已弃用",
+     "Details","Details","Detalles","Dettagli","Détails","Details","详情",
+     "Duration","Duration","Duración","Durata","Durée","Dauer","持续时间",
+     "Heating","Heating","Calentamiento","Riscaldamento","Chauffage","Heizen","加热",
+     "High","High","Alto","Alto","Élevé","Hoch","高",
+     "History","History","Historial","Cronologia","Historique","Verlauf","历史",
+     "ID","ID","ID","ID","ID","ID","ID",
+     "Light","Light","Claro","Chiaro","Clair","Hell","浅色",
+     "Low","Low","Bajo","Basso","Faible","Niedrig","低",
+     "Message","Message","Mensaje","Messaggio","Message","Nachricht","消息",
+     "MessageText","MessageText","Texto del mensaje","Testo del messaggio","Texte du message","Nachrichtentext","消息文本",
+     "Name","Name","Nombre","Nome","Nom","Name","名称",
+     "Output Fan","Output Fan","Ventilador de salida","Ventola di uscita","Ventilateur de sortie","Auslassventilator","输出风扇",
+     "Percentage","Percentage","Porcentaje","Percentuale","Pourcentage","Prozentsatz","百分比",
+     "Phase","Phase","Fase","Fase","Phase","Phase","阶段",
+     "Priority","Priority","Prioridad","Priorità","Priorité","Priorität","优先级",
+     "Reply","Reply","Responder","Rispondi","Répondre","Antworten","回复",
+     "Send","Send","Enviar","Invia","Envoyer","Senden","发送",
+     "Temperature","Temperature","Temperatura","Temperatura","Température","Temperatur","温度",
+     "text","text","texto","testo","texte","Text","文本",
+     "Time","Time","Hora","Ora","Heure","Zeit","时间",
+     "Title","Title","Título","Titolo","Titre","Titel","标题",
+     "Trend","Trend","Tendencia","Tendenza","Tendance","Trend","趋势",
+     "Used","Used","Usado","Usato","Utilisé","Verwendet","已使用",
+     "Version","Version","Versión","Versione","Version","Version","版本",
+     "FirstBindingDescription","After binding, the client becomes operational and the choice is remembered.","Después del vínculo, el cliente pasa a estar operativo y la elección se recuerda.","Dopo l'associazione, il client diventa operativo e la scelta viene ricordata.","Après l'association, le client devient opérationnel et le choix est mémorisé.","Nach der Bindung wird der Client betriebsbereit und die Auswahl wird gespeichert.","绑定后，客户端即可运行，并且所选项会被记住。",
+     "FirstBindingSetup","First binding setup","Configuración del primer vínculo","Configurazione del primo collegamento","Configuration du premier rattachement","Ersteinrichtung der Bindung","首次绑定设置",
+     "GasConsumption","Gas consumption","Consumo de gas","Consumo di gas","Consommation de gaz","Gasverbrauch","气体消耗",
+     "GlobalData","Global data","Datos globales","Dati globali","Données globales","Globale Daten","全局数据",
+     "InputFan","Input Fan","Ventilador de entrada","Ventola di ingresso","Ventilateur d'entrée","Zuluftventilator","输入风扇",
+     "LastJobStarted","Last job started time","Hora de inicio del último trabajo","Ora di inizio dell'ultimo lavoro","Heure de début du dernier travail","Startzeit des letzten Auftrags","上一个作业开始时间",
+     "LastUpdate","Last update","Última actualización","Ultimo aggiornamento","Dernière mise à jour","Letzte Aktualisierung","最后更新",
+     "OutputFan","Output Fan","Ventilador de salida","Ventola di uscita","Ventilateur de sortie","Auslassventilator","输出风扇",
+     "OvenName","Oven name","Nombre del horno","Nome del forno","Nom du four","Ofenname","烤箱名称",
+     "PizzaIsBeingOvercooked","Pizza is being overcooked","La pizza se está pasando de cocción","La pizza si sta cuocendo troppo","La pizza est en train de trop cuire","Die Pizza wird zu stark gebacken","披萨烤过头了",
+     "PowerConsumption","Power consumption","Consumo de energía","Consumo di energia","Consommation d'énergie","Stromverbrauch","功耗",
+     "RecipeDetail","Recipe detail","Detalle de la receta","Dettaglio della ricetta","Détail de la recette","Rezeptdetails","配方详情",
+     "ShopLocation","Shop location","Ubicación de la tienda","Posizione del negozio","Emplacement du magasin","Shop-Standort","商店位置",
+     "PineapplesOnPizza","Somebody put pineapples on a pizza!!!","¡Alguien ha puesto piña en la pizza!","Qualcuno ha messo l'ananas sulla pizza!!!","Quelqu'un a mis de l'ananas sur une pizza!!!","Jemand hat Ananas auf eine Pizza getan!!!","有人在披萨上放了菠萝！！！",
+     "TemperatureSetpoint","Temperature setpoint","Consigna de temperatura","Setpoint di temperatura","Consigne de température","Temperatursollwert","温度设定值",
+     "MozzarellaBeingFinished","We are about to finish our mozzarella","Estamos a punto de terminar nuestra mozzarella","Stiamo per finire la nostra mozzarella","Nous sommes sur le point de terminer notre mozzarella","Wir sind dabei, unseren Mozzarella fertigzustellen","我们的马苏里拉快要做好了",
+     "PizzaIsReady","Your pizza is ready to be served","Tu pizza está lista para servir","La tua pizza è pronta per essere servita","Votre pizza est prête à être servie","Ihre Pizza ist fertig zum Servieren","您的披萨已准备好上桌",
+     "FirstBindingText","First Power On: Choose a free location to record the client.","Primer encendido: elija una ubicación libre para registrar el cliente.","Primo avvio: scegli una posizione libera per registrare il client.","Premier démarrage: choisissez un emplacement libre pour enregistrer le client.","Erstes Einschalten: Wählen Sie einen freien Speicherplatz, um den Client zu registrieren.","首次上电：选择一个空闲位置来记录客户端。",
+     "Failed!","Failed!","¡Error!","Fallito!","Échec !","Fehlgeschlagen!","失败！",
+     "Recipe could not be applied","Recipe could not be applied","No se pudo aplicar la receta","Impossibile applicare la ricetta","La recette n'a pas pu être appliquée","Rezept konnte nicht angewendet werden","无法应用配方",
+     "Recipe was applied","Recipe was applied","La receta se aplicó","La ricetta è stata applicata","La recette a été appliquée","Rezept wurde angewendet","配方已应用",
+     "Success!","Success!","¡Éxito!","Successo!","Succès !","Erfolg!","成功！"
+    ]
+   }

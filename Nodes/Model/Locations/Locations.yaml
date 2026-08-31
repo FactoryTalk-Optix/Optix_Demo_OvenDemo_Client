@@ -1,0 +1,460 @@
+Name: Locations
+Id: g=2ba6bc21c84b7555ec49fc1917430983
+Type: FolderType
+Children:
+- Name: Milwaukee_United_States
+  Id: g=95cd82a880c8459e821cfbcd9d7a89ba
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=0b5b16f477a3ca33c67202e2951be3b7
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -87.9065
+  - Name: Latitude
+    Id: g=12a2671fdaf463eba86188c7ed6b6464
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 43.0389
+  - Name: Name
+    Id: g=45ea28bcc8a07f119591e458e44f6658
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Milwaukee, United States"
+- Name: Cambridge_Canada
+  Id: g=f0b6f97c44e645c0a209c545cdecaee3
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=a1b37453f684bf06266e6f3e51010192
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -80.3144
+  - Name: Latitude
+    Id: g=77c9538ca70c35dc2f22df87e2d3b26e
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 43.3616
+  - Name: Name
+    Id: g=4689325d2ac531f7dda93534dfabd1c6
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Cambridge, Canada"
+- Name: Monterrey_Mexico
+  Id: g=e43e3668a04440c8b2da48bea3f46fea
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=d3a26e6637d8e77065e8ce7834ea02c0
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -100.3161
+  - Name: Latitude
+    Id: g=128274c3b55b8555a19e0a1a30471415
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 25.6866
+  - Name: Name
+    Id: g=8692b8b97275d599ef0a1f0e0d2656f3
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Monterrey, Mexico"
+- Name: Düsseldorf_Germany
+  Id: g=e931e3e9fac948859770e7ed43d10d6b
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=9612f4b67cd5cf1b7131abeee59062b0
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 6.7924
+  - Name: Latitude
+    Id: g=b6239c798915479464956e73054e586c
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 51.261
+  - Name: Name
+    Id: g=f55163213f1523e27b7ab49e259c4286
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Düsseldorf, Germany"
+- Name: Paris_France
+  Id: g=3cc2ef5b70714ec480625f1b95065e72
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=91578d8a7785b24d29c827fce04640fa
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 2.3522
+  - Name: Latitude
+    Id: g=4fe1976515ef48828aae83446d49bf64
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 48.8566
+  - Name: Name
+    Id: g=a23976da56a32b7cd2df77fbbe2cf346
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Paris, France"
+- Name: Milan_Italy
+  Id: g=39e298572d1146afb07259da5c591c53
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=842a4effd8f7a6356420067e5b4b92ed
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 9.19
+  - Name: Latitude
+    Id: g=34131b6f63575b4d596bbde89c6722c8
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 45.4642
+  - Name: Name
+    Id: g=a4bfb0ce64c0be25905696266466a655
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Milan, Italy"
+- Name: Barcelona_Spain
+  Id: g=ae6b664f47844b429f454d10f194e3d5
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=133d3ba3961e8d755d2b925891ce0a66
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 2.1686
+  - Name: Latitude
+    Id: g=10ce7ad0b081fe553f26091678e9f744
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 41.3874
+  - Name: Name
+    Id: g=dc87cde270cde0674bfde72db11f3912
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Barcelona, Spain"
+- Name: Milton_Keynes_United_Kingdom
+  Id: g=9fdb4fee970941848592ac0be0c2b62b
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=6eb145b554c3c5413389897a1e64ae83
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -0.7594
+  - Name: Latitude
+    Id: g=aa3e2b64b84fc88925240fc2669242ce
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 52.0406
+  - Name: Name
+    Id: g=c0683ea11477d1b7bbaecb307941fbae
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Milton Keynes, United Kingdom"
+- Name: Utrecht_Netherlands
+  Id: g=102a7e8ec3c64670a284fa753f4f1a38
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=3625a208930fbba5ab9a99a25d8cf4af
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 5.1214
+  - Name: Latitude
+    Id: g=26f2fa94f2c637ec6e45bc9921e1cfcb
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 52.0907
+  - Name: Name
+    Id: g=b78382ce578048b467badf6e2c7d1b0b
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Utrecht, Netherlands"
+- Name: Stockholm_Sweden
+  Id: g=6a90729073e64c3384f82ec5db17b3e2
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=463757367f21bc9b776c189042061819
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 18.0686
+  - Name: Latitude
+    Id: g=32f11c743f190d32efdb028e65c53cf5
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 59.3293
+  - Name: Name
+    Id: g=9f7606e372af210eebae934c5d5ea804
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Stockholm, Sweden"
+- Name: Katowice_Poland
+  Id: g=3438238d2aff4c708b7096f0728fa608
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=75a0ce4b73b3d0fd92965bf31fde49a6
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 19.0238
+  - Name: Latitude
+    Id: g=a59aff83dff77c322e31850e4f53d59d
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 50.2649
+  - Name: Name
+    Id: g=520006d4d3e286030e3dbef05e88bb58
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Katowice, Poland"
+- Name: Shanghai_China
+  Id: g=6bb2aa57bd6e424eb0012fed00b17b2a
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=111f3407b0b2ef6a09668a87f78f3059
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 121.4737
+  - Name: Latitude
+    Id: g=11ec92e769fc7b88b67264c9005e777e
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 31.2304
+  - Name: Name
+    Id: g=eb2085a7bc96961900b6f119ec2980e3
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Shanghai, China"
+- Name: Tokyo_Japan
+  Id: g=e2482addff86474f87981abcc2f32121
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=2ec8b97c764b1b8ee736f2bf9d56f0ae
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 139.6503
+  - Name: Latitude
+    Id: g=418cff8ac31cb5f59f34b9d39210e628
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 35.6762
+  - Name: Name
+    Id: g=1ee55413bdcae832b265292482e19d82
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Tokyo, Japan"
+- Name: Bengaluru_India
+  Id: g=2d2948371266407d8962d656c7ff9d36
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=e9b6ec4dd7204e9e5dc24d75d6df1119
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 77.5946
+  - Name: Latitude
+    Id: g=2c55b12c050e3c9403062f03862ca404
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 12.9716
+  - Name: Name
+    Id: g=1782858697616f7b57fdeee54a8cff0f
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Bengaluru, India"
+- Name: Singapore_Singapore
+  Id: g=b6264674e82d491e90255dd409b7d395
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=288f697b4015ad7a7a8544e119a57d87
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 103.8198
+  - Name: Latitude
+    Id: g=1fb2e2fb5fc908212e5d73c0d513a966
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 1.3521
+  - Name: Name
+    Id: g=00941b2b0fde0b5a116631591f140cdb
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Singapore, Singapore"
+- Name: Seoul_South_Korea
+  Id: g=ac85a8dbec244fff92057c3ccf7e37fd
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=91cbb4c8c19a72fcf88ba2ca86352c16
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 126.978
+  - Name: Latitude
+    Id: g=1d8798b8fdf3ab6ef39cae2d4d444558
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 37.5665
+  - Name: Name
+    Id: g=6863e4a3db3de4e8dfbd517db21c5cd1
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Seoul, South Korea"
+- Name: Sydney_Australia
+  Id: g=a61b9deed5854f9a8893991d54dbbcbf
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=1db5c3349ceb305f126a215218678742
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 151.2093
+  - Name: Latitude
+    Id: g=6170430967a09a40b43617e5c609745e
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -33.8688
+  - Name: Name
+    Id: g=4586c0d741b3acd0c3d21a0ee910eac2
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Sydney, Australia"
+- Name: São_Paulo_Brazil
+  Id: g=f7f02e4b9b6a494089b4710c4c8decb6
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=2cb88f1ba46fc94161dfb05938f693b7
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -46.6333
+  - Name: Latitude
+    Id: g=b424df02a70446ea89b0fcb253bed485
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -23.5505
+  - Name: Name
+    Id: g=21b781eeb2c1c7936e12a7667091102c
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "São Paulo, Brazil"
+- Name: Buenos_Aires_Argentina
+  Id: g=84a314b96af0407095d9f16f16ca4c19
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=1eab494dce10aeab673f7d24d188da8c
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -58.3816
+  - Name: Latitude
+    Id: g=cf06551897067f552e270eaf3392969b
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -34.6037
+  - Name: Name
+    Id: g=831c851533187c63c1936c6fd3f1d9c8
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Buenos Aires, Argentina"
+- Name: Santiago_Chile
+  Id: g=f8dbe32f549548e4b0273f611ebc308d
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=dfce9eba4a094be42102171aec9c51e5
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -70.6693
+  - Name: Latitude
+    Id: g=7889b27fec1021ca528395d2bf7a16ec
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -33.4489
+  - Name: Name
+    Id: g=f900ad35a0b26953641a192f18fe56df
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Santiago, Chile"
+- Name: Bogotá_Colombia
+  Id: g=99d74e49332b40d88d6277d5f70fabeb
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=278dd7aaeaf6c8eb63b4600ca827cc93
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -74.0721
+  - Name: Latitude
+    Id: g=4536c1ca3156d6b8294ab1ecab6f6cfa
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 4.711
+  - Name: Name
+    Id: g=4e789d839ee61275fc92ca88a637a82b
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Bogotá, Colombia"
+- Name: Dubai_United_Arab_Emirates
+  Id: g=c087ee7d217341a89250368cd08ea50f
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=b9512fb072f9d3aac32250ea2849051f
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 55.2708
+  - Name: Latitude
+    Id: g=8b7d1e58028a0b962e6ac9da8567b727
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 25.2048
+  - Name: Name
+    Id: g=0fe99efef7b2d08c7cf343cff1b22ef8
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Dubai, United Arab Emirates"
+- Name: Dammam_Saudi_Arabia
+  Id: g=8bba79a5dbbe44c5a917f6cb6d5aaacb
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=0df2cc4892cefb456fe2a426252bd81d
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 50.0888
+  - Name: Latitude
+    Id: g=401a7354440e4e5d2170517dfc3679a3
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 26.4207
+  - Name: Name
+    Id: g=acf5219ae011fbd5f6bf5be0d2ff4a7a
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Dammam, Saudi Arabia"
+- Name: Johannesburg_South_Africa
+  Id: g=e1862f4c4015456bb99a1d84e6045a6e
+  Type: OfficeLocation
+  Children:
+  - Name: Longitude
+    Id: g=8906ffa7171a57c6164fa8d534efccf2
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 28.0473
+  - Name: Latitude
+    Id: g=2abec966299fb946145e3a49412cfe73
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -26.2041
+  - Name: Name
+    Id: g=be003c8a266f0db5039d28bf7bfa3be6
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Johannesburg, South Africa"
