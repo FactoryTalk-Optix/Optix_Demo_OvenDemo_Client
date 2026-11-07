@@ -10,6 +10,8 @@ using FTOptix.SQLiteStore;
 using FTOptix.Alarm;
 using FTOptix.WebUI;
 using FTOptix.EventLogger;
+using FTOptix.Retentivity;
+using FTOptix.System;
 #endregion
 
 public class ClockLogic : BaseNetLogic

@@ -1,0 +1,18 @@
+Name: Result
+Id: g=050bd7b91576ef1e17d9be0b1e966037
+Type: FolderType
+Children:
+- Name: OnboardingStatus
+  Id: g=6d1328229d7142e929d09b38e5e96462
+  Type: BaseDataVariableType
+  DataType: Byte
+  Description: {"LocaleId":"en-US","Text":"0 = No onboarding\n1 = Pending\n2 = Onboarded\n3 = Declined\n4 = Timeout"}
+- Name: IsOnboardedChanged
+  Id: g=3f2e99ad4d4c8c478a843a3c026b23a9
+  Type: VariableChangedEventDispatcher
+  Children:
+  - Name: VariableNodePath
+    Id: g=f14c0ca0027226be6b778858d685d448
+    Type: BaseVariableType
+    DataType: NodePath
+    Value: "../OnboardingStatus"

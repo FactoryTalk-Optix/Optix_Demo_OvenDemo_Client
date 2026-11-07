@@ -8,6 +8,16 @@ Children:
     Type: PropertyType
     DataType: ResourceUri
     Value: "opc.tcp://localhost:59101"
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "../../../Model/HMISettings/OPCUAServer/EndpointURL"
+      Children:
+      - Name: Mode
+        Type: BaseVariableType
+        DataType: DynamicLinkMode
+        Value: 2
   - Name: NodesToPublish
     Type: BaseObjectType
     Children:
@@ -57,3 +67,7 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     AccessLevel: Read
+  - Name: EnableAnonymousAccess
+    Type: PropertyType
+    DataType: Boolean
+    Value: true

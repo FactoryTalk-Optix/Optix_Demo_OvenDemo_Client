@@ -1,0 +1,281 @@
+Name: UITypes
+Type: FolderType
+Children:
+- File: BaseControls/BaseControls.yaml
+- File: MenuObjects/MenuObjects.yaml
+- File: Views/Views.yaml
+- File: ListViewRows/ListViewRows.yaml
+- File: DialogBoxes/DialogBoxes.yaml
+- Name: RecipeGroup
+  Id: g=4d561f17a7a8aa5934a83fee01143ebe
+  Supertype: Panel
+  ReferenceType: HasComponent
+  Children:
+  - Name: div
+    Type: ColumnLayout
+    Children:
+    - Name: HorizontalAlignment
+      Type: BaseVariableType
+      DataType: HorizontalAlignment
+      ModellingRule: Optional
+      Value: 3
+    - Name: BaseCard1
+      Type: BaseCard
+      Children:
+      - Name: Background
+        Type: Rectangle
+        Children:
+        - Name: Style
+          Type: BaseDataVariableType
+          DataType: String
+          ModellingRule: Optional
+          Value: "Transparent"
+      - Name: div
+        Type: ColumnLayout
+        Children:
+        - Name: Title
+          Type: Label
+          Children:
+          - Name: Text
+            Type: BaseDataVariableType
+            DataType: LocalizedText
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../../../../RecipeName"
+          - Name: Style
+            Type: BaseDataVariableType
+            DataType: String
+            ModellingRule: Optional
+            Value: "H3"
+    - Name: ListView1
+      Type: ListView
+      Children:
+      - Name: Model
+        Type: NodePointer
+        DataType: NodeId
+        Value: "/Objects/Optix_Demo_OvenDemo_Client/DataStores/EmbeddedDatabase"
+        Children:
+        - Name: ItemKind
+          Type: PropertyType
+          DataType: NodeId
+        - Name: Kind
+          Type: PropertyType
+          DataType: NodeId
+      - Name: Query
+        Type: BaseDataVariableType
+        DataType: String
+        Children:
+        - Name: StringFormatter1
+          Type: StringFormatter
+          Children:
+          - Name: Format
+            Type: BaseDataVariableType
+            DataType: LocalizedText
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: {"LocaleId":"en-US","Text":"SELECT RecipesList.*, MetadataList.* FROM Recipes AS RecipesList JOIN RecipeMetadata_{#RecipeName} AS MetadataList   ON RecipesList.Id = MetadataList.RecipeId WHERE RecipesList.RecipeSchemaName = '{#RecipeName}'   AND RecipesList.Name = {#RecipeGroupName:sql_literal} ORDER BY RecipesList.Name"}
+          - Name: ns=5;SourceRecipeName
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "/Objects/Optix_Demo_OvenDemo_Client/Recipes/RecipeSchema@BrowseName"
+          - Name: ns=5;SourceRecipeGroupName
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../../../../RecipeName"
+      - Name: SelectorKind
+        Type: BaseDataVariableType
+        DataType: ListViewSelectorTypeEnum
+        AccessLevel: Read
+      - Name: TypeSelectors
+        Type: BaseObjectType
+        Children:
+        - Name: TypeSelector1
+          Type: TypeSelector
+          Children:
+          - Name: Template
+            Type: NodePointer
+            DataType: NodeId
+            Value: "/Objects/Optix_Demo_OvenDemo_Client/UI/UITypes/ListViewRows/RecipeListTemplate"
+            Children:
+            - Name: Kind
+              Type: PropertyType
+              DataType: NodeId
+              Value: "/Types/ObjectTypes/BaseObjectType/BaseUIObject/Item/Container/Panel/ListViewRow"
+          - Name: Type
+            Type: NodePointer
+            DataType: NodeId
+            Value: "/Types/VariableTypes/BaseVariableType/BaseDataVariableType"
+            Children:
+            - Name: Kind
+              Type: PropertyType
+              DataType: NodeId
+      - Class: Reference
+        Target: ns=7;i=1457
+        Direction: Forward
+      - Name: Width
+        Type: BaseVariableType
+        DataType: Size
+        ModellingRule: Optional
+        Value: 320.0
+      - Name: RowHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        Value: 96.0
+      - Name: Height
+        Type: BaseVariableType
+        DataType: Size
+        Value: 96.0
+        Children:
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Expression
+            Type: BaseDataVariableType
+            DataType: String
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: "{#RowHeight}*{#Count}"
+          - Name: ns=5;SourceRowHeight
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../../RowHeight"
+          - Name: ns=5;SourceCount
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../../../../Count"
+      - Name: HorizontalAlignment
+        Type: BaseVariableType
+        DataType: HorizontalAlignment
+        ModellingRule: Optional
+        Value: 3
+  - Name: RecipeName
+    Type: BaseDataVariableType
+    DataType: String
+  - Name: Count
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 1
+  - Name: HorizontalAlignment
+    Type: BaseVariableType
+    DataType: HorizontalAlignment
+    ModellingRule: Optional
+    Value: 3
+  - Name: Width
+    Type: BaseVariableType
+    DataType: Size
+    ModellingRule: Optional
+    Value: 320.0
+- Name: BaseCard
+  Id: g=8fc4e9b212cb0ddc63a357b01ae8d3fa
+  Supertype: Panel
+  ReferenceType: HasComponent
+  Children:
+  - Name: Background
+    Type: Rectangle
+    Children:
+    - Name: Width
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 50.0
+    - Name: Height
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 50.0
+    - Name: Style
+      Type: BaseDataVariableType
+      DataType: String
+      ModellingRule: Optional
+      Value: "Background"
+    - Name: HorizontalAlignment
+      Type: BaseVariableType
+      DataType: HorizontalAlignment
+      ModellingRule: Optional
+      Value: 3
+    - Name: VerticalAlignment
+      Type: BaseVariableType
+      DataType: VerticalAlignment
+      ModellingRule: Optional
+      Value: 3
+  - Name: div
+    Type: ColumnLayout
+    Children:
+    - Name: LeftMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 16.0
+    - Name: TopMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 16.0
+    - Name: RightMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 16.0
+    - Name: BottomMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 16.0
+    - Name: Title
+      Type: Label
+      Children:
+      - Name: Text
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../..@DisplayName"
+      - Name: TextVerticalAlignment
+        Type: BaseVariableType
+        DataType: TextVerticalAlignment
+        ModellingRule: Optional
+        Value: 1
+    - Name: HorizontalAlignment
+      Type: BaseVariableType
+      DataType: HorizontalAlignment
+      ModellingRule: Optional
+      Value: 3
+    - Name: VerticalAlignment
+      Type: BaseVariableType
+      DataType: VerticalAlignment
+      ModellingRule: Optional
+      Value: 2
+  - Name: HorizontalAlignment
+    Type: BaseVariableType
+    DataType: HorizontalAlignment
+    ModellingRule: Optional
+    Value: 3
+  - Name: Width
+    Type: BaseVariableType
+    DataType: Size
+    ModellingRule: Optional
+    Value: 240.0

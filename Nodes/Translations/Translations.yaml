@@ -10,7 +10,7 @@ Children:
   Value: 
    {
     "Type": 12,
-    "Dimensions": [63,7],
+    "Dimensions": [76,7],
     "Body": [
      "","en-US","es-ES","it-IT","fr-FR","de-DE","zh-CN",
      "Apply","Apply","Aplicar","Applica","Appliquer","Anwenden","应用",
@@ -74,6 +74,19 @@ Children:
      "Failed!","Failed!","¡Error!","Fallito!","Échec !","Fehlgeschlagen!","失败！",
      "Recipe could not be applied","Recipe could not be applied","No se pudo aplicar la receta","Impossibile applicare la ricetta","La recette n'a pas pu être appliquée","Rezept konnte nicht angewendet werden","无法应用配方",
      "Recipe was applied","Recipe was applied","La receta se aplicó","La ricetta è stata applicata","La recette a été appliquée","Rezept wurde angewendet","配方已应用",
-     "Success!","Success!","¡Éxito!","Successo!","Succès !","Erfolg!","成功！"
+     "Success!","Success!","¡Éxito!","Successo!","Succès !","Erfolg!","成功！",
+     "Operations","Operations","Operaciones","Operazioni","Operations","Betrieb","操作",
+     "FleetOverview","Fleet Overview","Resumen de flota","Panoramica flotta","Vue d'ensemble de la flotte","Flottenubersicht","设备总览",
+     "Chat","Chat","Chat","Chat","Chat","Chat","聊天",
+     "Save","Save","Guardar","Salva","Enregistrer","Speichern","保存",
+     "Approve","Approve","Aprobar","Approva","Approuver","Genehmigen","批准",
+     "Deprecate","Deprecate","Marcar obsoleto","Depreca","Deprecier","Als veraltet markieren","弃用",
+     "Active alarms","Active alarms","Alarmas activas","Allarmi attivi","Alarmes actives","Aktive Alarme","活动报警",
+     "Med","Med","Media","Media","Moyenne","Mittel","中",
+     "Info","Info","Info","Info","Info","Info","信息",
+     "All","All","Todos","Tutti","Tous","Alle","全部",
+     "The identifier for the event to comment.","The identifier for the event to comment.","","","","","",
+     "Acknowledge","Acknowledge","Reconocer","Riconosci","Acquitter","Quittieren","确认",
+     "The comment to add to the condition.","The comment to add to the condition.","","","","",""
     ]
    }

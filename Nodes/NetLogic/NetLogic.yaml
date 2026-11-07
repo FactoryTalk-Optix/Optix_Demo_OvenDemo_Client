@@ -1,6 +1,7 @@
 Name: NetLogic
 Type: NetLogicCategoryFolder
 Children:
+- File: DesignTime/DesignTime.yaml
 - Name: ClockLogic
   Type: NetLogic
   WriteMask: BrowseName|DataType|Description|DisplayName|MinimumSamplingInterval|UserAccessLevel
@@ -65,8 +66,6 @@ Children:
        "highestIgnoredVersion": 0
       }
      }
-- Name: RecipesSynchronization
-  Type: NetLogic
 - Name: alarmSimulationLogic
   Type: NetLogic
   WriteMask: BrowseName|DataType|Description|DisplayName|MinimumSamplingInterval|UserAccessLevel
@@ -79,7 +78,6 @@ Children:
   - Name: enableSimulation
     Type: BaseDataVariableType
     DataType: Boolean
-    Value: true
   - Name: ns=17;LibraryReference
     Type: ObjectLibraryReference
     DataType: ObjectLibraryReferenceDataType
@@ -96,15 +94,10 @@ Children:
        "highestIgnoredVersion": 0
       }
      }
-- Name: AlarmsBroadcastLogic
-  Type: NetLogic
-- File: DesignTime/DesignTime.yaml
-- Name: ApplyRecipeLogic
-  Id: g=722f4e8d11cb8eb492e9a1001e5609ca
-  Type: NetLogic
-  Children:
   - Class: Method
-    Name: ApplyRecipeFromDatabase
+    Name: ClearAlarms
+  - Class: Method
+    Name: SetAlarm
     Children:
     - Name: ns=0;InputArguments
       Type: BaseVariableType
@@ -112,4 +105,67 @@ Children:
       ReferenceType: HasProperty
       ValueRank: OneDimension
       ArrayDimensions: [0]
-      Value: [{"TypeId":{"Id":296},"Body":{"Name":"recipeName","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"recipeVersion","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"callerScreenNodeId","DataType":{"Id":17},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+      Value: [{"TypeId":{"Id":296},"Body":{"Name":"index","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"active","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+  - Class: Method
+    Name: ToggleAlarm
+    Children:
+    - Name: ns=0;InputArguments
+      Type: BaseVariableType
+      DataType: Argument
+      ReferenceType: HasProperty
+      ValueRank: OneDimension
+      ArrayDimensions: [0]
+      Value: [{"TypeId":{"Id":296},"Body":{"Name":"index","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+- Name: ProjectLogic
+  Type: NetLogic
+  Children:
+  - Class: Method
+    Name: EnsureDeviceIdToVariable
+    Children:
+    - Name: ns=0;InputArguments
+      Type: BaseVariableType
+      DataType: Argument
+      ReferenceType: HasProperty
+      ValueRank: OneDimension
+      ArrayDimensions: [0]
+      Value: [{"TypeId":{"Id":296},"Body":{"Name":"targetVariable","DataType":{"Id":17},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+- Name: EdgeChatLogic
+  Id: g=d62448e97ec1cc8c626a39f353cfd5da
+  Type: NetLogic
+  Children:
+  - Class: Method
+    Name: MarkAsRead
+  - Class: Method
+    Name: SendMessage
+    Children:
+    - Name: ns=0;InputArguments
+      Type: BaseVariableType
+      DataType: Argument
+      ReferenceType: HasProperty
+      ValueRank: OneDimension
+      ArrayDimensions: [0]
+      Value: [{"TypeId":{"Id":296},"Body":{"Name":"text","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+- Name: OvenSimulationLogic
+  Id: g=1719fc7bcbc26177a662b33cf7357854
+  Type: NetLogic
+  Children:
+  - Class: Method
+    Name: StartCycle
+  - Class: Method
+    Name: StopCycle
+  - Class: Method
+    Name: ToggleCycle
+- Name: EdgeRecipesLogic
+  Id: g=95ff9f60bd00b31973f03c2934ff1eac
+  Type: NetLogic
+  Children:
+  - Class: Method
+    Name: ApplyRecipe
+    Children:
+    - Name: ns=0;InputArguments
+      Type: BaseVariableType
+      DataType: Argument
+      ReferenceType: HasProperty
+      ValueRank: OneDimension
+      ArrayDimensions: [0]
+      Value: [{"TypeId":{"Id":296},"Body":{"Name":"name","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"version","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]

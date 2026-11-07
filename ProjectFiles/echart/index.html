@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oven cycle</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #ffffff; font-family: "Segoe UI", Arial, sans-serif; overflow: hidden; }
+  #chart { position: absolute; inset: 0; }
+  #status { position: absolute; top: 6px; right: 10px; font-size: 12px; color: #5b6b73; z-index: 1; }
+</style>
+</head>
+<body>
+<div id="status"></div>
+<div id="chart"></div>
+<script src="echarts.min.js"></script>
+<script>
+(function () {
+  const oven = new URLSearchParams(location.search).get('oven') || '';
+  const chart = echarts.init(document.getElementById('chart'), null, { renderer: 'canvas' });
+  const status = document.getElementById('status');
+  const BAND = ['rgba(29,117,167,0.07)', 'rgba(29,117,167,0.15)'];
+  const fmt = s => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+
+  function render(d) {
+    const pts = [];
+    d.phases.forEach(p => { pts.push([p.start, p.setpoint], [p.end, p.setpoint]); });
+    const yMax = Math.ceil(Math.max(50, ...d.phases.map(p => p.setpoint), d.temperature) * 1.15 / 50) * 50;
+    const running = d.state === 1;
+
+    chart.setOption({
+      animation: false,
+      grid: { left: 52, right: 20, top: 34, bottom: 34 },
+      tooltip: { trigger: 'axis', axisPointer: { type: 'line' }, valueFormatter: v => v == null ? '-' : v + ' °C',
+        formatter: ps => fmt(ps[0].axisValue) + '<br>' + ps.map(p => p.marker + p.seriesName + ': ' + p.value[1] + ' °C').join('<br>') },
+      legend: { top: 4, left: 8, itemWidth: 18, itemHeight: 3, textStyle: { color: '#5b6b73' }, data: ['Recipe setpoint', 'Actual'] },
+      xAxis: { type: 'value', min: 0, max: Math.max(d.total, 1), axisLabel: { formatter: fmt, color: '#5b6b73' },
+        splitLine: { show: true, lineStyle: { color: '#e4eaed' } } },
+      yAxis: { type: 'value', min: 0, max: yMax, axisLabel: { formatter: '{value}°', color: '#5b6b73' },
+        splitLine: { lineStyle: { color: '#e4eaed' } } },
+      series: [
+        { name: 'Recipe setpoint', type: 'line', data: pts, showSymbol: false, step: false,
+          lineStyle: { width: 2, type: 'dashed', color: '#7d8e97' }, itemStyle: { color: '#7d8e97' },
+          markArea: { silent: true, label: { color: '#5b6b73', fontSize: 11, position: 'insideTop' },
+            data: d.phases.map((p, i) => [{ name: p.name, xAxis: p.start, itemStyle: { color: BAND[i % 2] } }, { xAxis: p.end }]) },
+          markLine: running ? { silent: true, symbol: 'none', animation: false,
+            lineStyle: { color: '#d9480f', width: 2 }, label: { formatter: 'now ' + fmt(d.cycleElapsed), color: '#d9480f' },
+            data: [{ xAxis: d.cycleElapsed }] } : { data: [] } },
+        { name: 'Actual', type: 'line', data: d.actual, showSymbol: false, smooth: false,
+          lineStyle: { width: 3, color: '#1d75a7' }, itemStyle: { color: '#1d75a7' },
+          areaStyle: { color: 'rgba(29,117,167,0.12)' } }
+      ]
+    }, { replaceMerge: ['series'] });
+
+    status.textContent = running
+      ? `${d.phases[Math.max(0, d.phase - 1)]?.name ?? ''} · ${d.temperature.toFixed(1)} °C → ${d.setpoint} °C`
+      : 'Idle · ' + d.temperature.toFixed(1) + ' °C';
+  }
+
+  async function poll() {
+    try {
+      const r = await fetch('data?oven=' + encodeURIComponent(oven), { cache: 'no-store' });
+      if (r.ok) render(await r.json());
+    } catch (e) { status.textContent = 'No data'; }
+    setTimeout(poll, 1000);
+  }
+
+  window.addEventListener('resize', () => chart.resize());
+  poll();
+})();
+</script>
+</body>
+</html>

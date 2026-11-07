@@ -1,0 +1,184 @@
+Name: HMISettings
+Id: g=0a4c0df8922b8f0f640f580d5cdc22ea
+Type: FolderType
+Children:
+- Name: OPCUAServer
+  Id: g=85a7ae00e0ba652f17df3c8dd8e451b4
+  Type: BaseObjectType
+  Children:
+  - Name: EndpointURL
+    Id: g=8e68338237b8b0538ecb2ffbe16a2901
+    Type: BaseDataVariableType
+    DataType: String
+    Children:
+    - Name: StringFormatter1
+      Id: g=b880307f912dc67d170a29c6895790da
+      Type: StringFormatter
+      Children:
+      - Name: Format
+        Id: g=0ba3ac8e68c837f7cfc20681cef601f4
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        ReferenceType: HasParameter
+        Value: {"LocaleId":"en-US","Text":"opc.tcp://{#Address}:{#Port}"}
+      - Name: ns=5;SourceAddress
+        Id: g=8c93389c0eb26dd36bf67d18013e0b15
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Id: g=ad47878548451b3ecd0651598cd11322
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../../Address"
+      - Name: ns=5;SourcePort
+        Id: g=455aeff933d3febacf3e0b772f3bc6d0
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Id: g=febe2f77a3f7d41aa7be2cccc4d66253
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../../Port"
+  - Name: Address
+    Id: g=44e0468e31860b0fe1ad640961cb6448
+    Type: BaseDataVariableType
+    DataType: String
+    Children:
+    - Name: DynamicLink
+      Id: g=51d10180b45d62ba65fb3fde8fa71561
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "../../IPAddress"
+      Children:
+      - Name: Mode
+        Id: g=7a7411c41204072efdd2c76ab09673d2
+        Type: BaseVariableType
+        DataType: DynamicLinkMode
+        Value: 2
+  - Name: Port
+    Id: g=cb3a3014af0e228856884c7ed224f422
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "59101"
+- Name: IPAddress
+  Id: g=ee26f733dc7d00127dfbca27a714457d
+  Type: BaseDataVariableType
+  DataType: String
+  Value: "localhost"
+- Name: DeviceId
+  Id: g=24304d8ea5f1123c15c558a6a2dc8604
+  Type: BaseDataVariableType
+  DataType: String
+- Name: OvenId
+  Id: g=7354f8a4f73f2dd2ff166b89b9462eaa
+  Type: BaseDataVariableType
+  DataType: String
+- Name: MQTTBrokerIPAddress
+  Id: g=66e34ee18345e70acfc4afebfb2f4fb0
+  Type: BaseDataVariableType
+  DataType: String
+  Value: "127.0.0.1"
+- Name: DeviceIdChanged
+  Id: g=e2d7233025d432fcc65f02989cbcd1ce
+  Type: VariableChangedEventDispatcher
+  Children:
+  - Name: VariableNodePath
+    Id: g=0815bcb582de6fc85e4120d2a8c93143
+    Type: BaseVariableType
+    DataType: NodePath
+    Value: "../DeviceId"
+  - Name: VariableValueChangedEventHandler1
+    Id: g=79c7167506d1528e9a1f9a4175b3a92e
+    Type: EventHandler
+    Children:
+    - Name: ListenEventType
+      Id: g=1adc19419aa4b8e13eab76b2bc68929c
+      Type: PropertyType
+      DataType: NodeId
+      Value: "/Types/EventTypes/BaseEventType/VariableConditionEvent/VariableValueChangedEvent"
+    - Name: MethodsToCall
+      Id: g=b8b5b3ae363f24387aa12e10ff03e1a4
+      Type: BaseObjectType
+      Children:
+      - Name: MethodContainer1
+        Id: g=ca544782318c8b997b712e388d4e9e87
+        Type: BaseObjectType
+        Children:
+        - Name: ns=5;ObjectPointer
+          Id: g=484dc32fa4f061eec807ec567b72cdfe
+          Type: NodePointer
+          DataType: NodeId
+          Children:
+          - Name: Kind
+            Id: g=4be82b22b82979a9b142e308da6b3830
+            Type: PropertyType
+            DataType: NodeId
+            Value: "/Types/ObjectTypes/BaseObjectType"
+          - Name: DynamicLink
+            Id: g=0125e21decd1fe147f3d44eb4762504b
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "../../../../../../Onboarding/EdgeOnbordingLogic@NodeId"
+            Children:
+            - Name: Mode
+              Id: g=a59071abc4569d0d4bcbd0792763e369
+              Type: BaseVariableType
+              DataType: DynamicLinkMode
+              Value: 2
+        - Name: ns=5;Method
+          Id: g=16c5bce9e7b3f1f64c94f4e00bf9200d
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "SyncOvenDataWithRuntimeNodeId"
+    - Name: EventArguments
+      Id: g=9698d21caa764ff499f7b1692d69f6e6
+      Type: VariableValueChangedEvent
+      Children:
+      - Name: VariableNodeId
+        Id: g=dc7f1017e4f39c63af4b6993d2936d04
+        Type: BaseVariableType
+        DataType: NodeId
+      - Name: NewValue
+        Id: g=60f4865a3189e9e30ea232406ee83c4a
+        Type: BaseVariableType
+        DataType: BaseDataType
+      - Name: OldValue
+        Id: g=d1eef0bd76d66211be528f423a27fe24
+        Type: BaseVariableType
+        DataType: BaseDataType
+      - Name: EventId
+        Id: g=a37eed9c8814a6f2a40cb0e5dcd3bd1f
+        Type: PropertyType
+        DataType: ByteString
+      - Name: EventType
+        Id: g=1c216f65b7a5b2401a4e3c1b4776e0d0
+        Type: PropertyType
+        DataType: NodeId
+      - Name: SourceNode
+        Id: g=b6e7a09c666d8af1af0328727a3094b0
+        Type: PropertyType
+        DataType: NodeId
+      - Name: SourceName
+        Id: g=f5279bc3879f24df94b43621b50c2fb3
+        Type: PropertyType
+        DataType: String
+      - Name: Time
+        Id: g=3ef8f9812d1cc1994f179956fce8e7cd
+        Type: PropertyType
+        DataType: UtcTime
+      - Name: ReceiveTime
+        Id: g=f81b2f835c4233ecfcfe6da751acb01a
+        Type: PropertyType
+        DataType: UtcTime
+      - Name: Message
+        Id: g=0e39f991a0283284d1d30ab9328a3818
+        Type: PropertyType
+        DataType: LocalizedText
+      - Name: Severity
+        Id: g=55718cf9eb6717be5010f5437a17cf84
+        Type: PropertyType
+        DataType: UInt16

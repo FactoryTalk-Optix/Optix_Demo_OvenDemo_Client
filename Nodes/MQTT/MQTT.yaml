@@ -1,13 +1,24 @@
 Name: MQTT
 Type: MQTTCategoryFolder
 Children:
-- Name: MQTTClient
+- Name: MQTTEdgeDeviceClient
+  Id: g=def7c22c152320028d929a0d8ffdb70e
   Type: MQTTClient
   Children:
   - Name: BrokerAddress
     Type: PropertyType
     DataType: String
     Value: "localhost"
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "../../../Model/HMISettings/MQTTBrokerIPAddress"
+      Children:
+      - Name: Mode
+        Type: BaseVariableType
+        DataType: DynamicLinkMode
+        Value: 2
   - Name: BrokerPort
     Type: PropertyType
     DataType: UInt16
@@ -15,8 +26,22 @@ Children:
   - Name: ClientId
     Type: PropertyType
     DataType: String
-    Value: "FTOptix-1454645"
+    Value: "FTOptix-1"
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "../../../Model/HMISettings/DeviceId"
+      Children:
+      - Name: Mode
+        Type: BaseVariableType
+        DataType: DynamicLinkMode
+        Value: 2
+  - Name: ProtocolVersion
+    Type: BaseDataVariableType
+    DataType: ProtocolVersionEnum
   - Name: Status
+    Id: g=94cde2b4f067d2d519a6af028d9b56b4
     Type: BaseDataVariableType
     DataType: StatusEnum
     ReferenceType: HasProperty
@@ -54,19 +79,49 @@ Children:
   - Class: Reference
     Target: ns=15;i=44
     Direction: Forward
-  - Name: MQTTPublisher1
+  - Name: OnboardingResultSubscriber
+    Type: MQTTSubscriber
+    Children:
+    - Name: Subscriptions
+      Type: BaseObjectType
+      Children:
+      - Name: DefaultJSONSubscription1
+        Type: Subscription
+        ReferenceType: HasOrderedComponent
+        Children:
+        - Name: Folder
+          Type: NodePointer
+          DataType: NodeId
+          Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/Onboarding/Result"
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+            Value: "/Types/ObjectTypes/BaseObjectType/FolderType"
+        - Name: Topic
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "OnboardingResult"
+        - Name: QoS
+          Type: BaseDataVariableType
+          DataType: QoSLevelEnum
+    - Class: Reference
+      Target: ns=15;i=47
+      Direction: Forward
+  - Name: OvenData
     Type: MQTTPublisher
     Children:
     - Name: SamplingMode
       Type: PropertyType
       DataType: ns=15;SamplingModeEnum
+      Value: 1
     - Name: DataSource
       Type: BaseDataVariableType
       DataType: DataSourceEnum
     - Name: Folder
       Type: NodePointer
       DataType: NodeId
-      Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/OvenStatus"
+      Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/OvenData"
       Children:
       - Name: Kind
         Type: PropertyType
@@ -75,7 +130,7 @@ Children:
       - Name: ItemKind
         Type: PropertyType
         DataType: NodeId
-        Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/OvenStatus/PowerConsumption"
+        Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/Types/OvenType"
     - Name: DataLogger
       Type: NodePointer
       DataType: NodeId
@@ -88,10 +143,31 @@ Children:
         Type: PropertyType
         DataType: NodeId
         Value: "/Types/VariableTypes/BaseVariableType/BaseDataVariableType/VariableToLog"
+    - Name: EventLogger
+      Type: NodePointer
+      DataType: NodeId
+      Children:
+      - Name: Kind
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/ObjectTypes/BaseObjectType/EventLogger"
+      - Name: ItemKind
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/VariableTypes/BaseVariableType/BaseDataVariableType/EventFieldToLog"
     - Name: Topic
       Type: BaseDataVariableType
       DataType: String
-      Value: "optix/iot/status"
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../../../Model/HMISettings/DeviceId"
+        Children:
+        - Name: Mode
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          Value: 2
     - Name: QoS
       Type: BaseDataVariableType
       DataType: QoSLevelEnum
@@ -101,7 +177,6 @@ Children:
     - Name: PFEnabled
       Type: PropertyType
       DataType: Boolean
-      Value: true
     - Name: PayloadUpdateTimestamp
       Type: BaseDataVariableType
       DataType: DateTime
@@ -132,166 +207,4 @@ Children:
       - Name: Kind
         Type: PropertyType
         DataType: NodeId
-        Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/OvenStatus/PowerConsumption"
-    - Name: PFHeader
-      Type: BaseDataVariableType
-      DataType: LocalizedText
-      Value: {"LocaleId":"en-US","Text":" {\"timestamp\": \"{0:o}\", [#PFRecord]}"}
-      Children:
-      - Name: StringFormatter1
-        Type: StringFormatter
-        Children:
-        - Name: Format
-          Type: BaseDataVariableType
-          DataType: LocalizedText
-          ReferenceType: HasParameter
-          Value: {"LocaleId":"en-US","Text":" {\"Timestamp\": \"{#timestamp:o}\", \"OvenId\": \"{#ovenId}\", \"OvenName\": \"{#ovenName}\", #PFRecord}"}
-        - Name: ns=5;SourceovenId
-          Type: BaseDataVariableType
-          DataType: BaseDataType
-          ReferenceType: HasSource
-          Children:
-          - Name: DynamicLink
-            Type: DynamicLink
-            DataType: NodePath
-            Value: "../../../../../../Model/Oven/OptixOven/OvenId"
-        - Name: ns=5;Sourcetimestamp
-          Type: BaseDataVariableType
-          DataType: BaseDataType
-          ReferenceType: HasSource
-          Children:
-          - Name: DynamicLink
-            Type: DynamicLink
-            DataType: NodePath
-            Value: "../../../../../../NetLogic/ClockLogic/UTCTime"
-        - Name: ns=5;SourceovenName
-          Type: BaseDataVariableType
-          DataType: BaseDataType
-          ReferenceType: HasSource
-          Children:
-          - Name: DynamicLink
-            Type: DynamicLink
-            DataType: NodePath
-            Value: "../../../../../../Model/Oven/OptixOven/OvenName"
-    - Name: PFRecord
-      Type: BaseDataVariableType
-      DataType: LocalizedText
-      Children:
-      - Name: StringFormatter1
-        Type: StringFormatter
-        Children:
-        - Name: Format
-          Type: BaseDataVariableType
-          DataType: LocalizedText
-          ReferenceType: HasParameter
-          Value: {"LocaleId":"en-US","Text":"\"{#name}\": \"{#value}\","}
-        - Name: ns=5;Sourcename
-          Type: BaseDataVariableType
-          DataType: BaseDataType
-          ReferenceType: HasSource
-          Children:
-          - Name: DynamicLink
-            Type: DynamicLink
-            DataType: NodePath
-            Value: "{Item}@BrowseName"
-        - Name: ns=5;Sourcevalue
-          Type: BaseDataVariableType
-          DataType: BaseDataType
-          ReferenceType: HasSource
-          Children:
-          - Name: DynamicLink
-            Type: DynamicLink
-            DataType: NodePath
-            Value: "{Item}@Value"
-    - Name: SamplingPeriod
-      Type: PropertyType
-      DataType: Duration
-      Value: "0:00:00:00.1000000"
-  - Name: MQTTSubscriber1
-    Type: MQTTSubscriber
-    Children:
-    - Name: Subscriptions
-      Type: BaseObjectType
-      Children:
-      - Name: PlainTextSubscription1
-        Type: SubscriptionPlainText
-        ReferenceType: HasOrderedComponent
-        Children:
-        - Name: Variable
-          Type: NodePointer
-          DataType: NodeId
-          Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/Subscriber/RecipesList"
-          Children:
-          - Name: Kind
-            Type: PropertyType
-            DataType: NodeId
-            Value: "/Types/VariableTypes/BaseVariableType/BaseDataVariableType"
-        - Name: Topic
-          Type: BaseDataVariableType
-          DataType: String
-          Value: "optix/iot/recipeslist"
-        - Name: QoS
-          Type: BaseDataVariableType
-          DataType: QoSLevelEnum
-      - Name: PlainTextSubscription2
-        Type: SubscriptionPlainText
-        ReferenceType: HasOrderedComponent
-        Children:
-        - Name: Variable
-          Type: NodePointer
-          DataType: NodeId
-          Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/Subscriber/AlarmsList"
-          Children:
-          - Name: Kind
-            Type: PropertyType
-            DataType: NodeId
-            Value: "/Types/VariableTypes/BaseVariableType/BaseDataVariableType"
-        - Name: Topic
-          Type: BaseDataVariableType
-          DataType: String
-          Value: "optix/iot/alarmslist"
-        - Name: QoS
-          Type: BaseDataVariableType
-          DataType: QoSLevelEnum
-      - Name: PlainTextSubscription3
-        Type: SubscriptionPlainText
-        ReferenceType: HasOrderedComponent
-        Children:
-        - Name: Variable
-          Type: NodePointer
-          DataType: NodeId
-          Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/Subscriber/IncomingMessage"
-          Children:
-          - Name: Kind
-            Type: PropertyType
-            DataType: NodeId
-            Value: "/Types/VariableTypes/BaseVariableType/BaseDataVariableType"
-        - Name: Topic
-          Type: BaseDataVariableType
-          DataType: String
-          Value: "optix/iot/chat"
-        - Name: QoS
-          Type: BaseDataVariableType
-          DataType: QoSLevelEnum
-      - Name: Messages
-        Type: SubscriptionPlainText
-        Children:
-        - Name: Variable
-          Type: NodePointer
-          DataType: NodeId
-          Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/Subscriber/IncomingMessage"
-          Children:
-          - Name: Kind
-            Type: PropertyType
-            DataType: NodeId
-            Value: "/Types/VariableTypes/BaseVariableType/BaseDataVariableType"
-        - Name: Topic
-          Type: BaseDataVariableType
-          DataType: String
-          Value: "optix/iot/ovenmessages"
-        - Name: QoS
-          Type: BaseDataVariableType
-          DataType: QoSLevelEnum
-    - Class: Reference
-      Target: ns=15;i=47
-      Direction: Forward
+        Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/Types/OvenType"

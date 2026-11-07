@@ -1,0 +1,233 @@
+Name: RecipeTarget
+Id: g=6b64af18e8be696a9ca4c863d959b7f3
+Type: FolderType
+Children:
+- Name: OvenRecipeTarget
+  Id: g=d7e04f0812d1bde045a4f03e2e5a4f01
+  Type: OvenRecipe
+  Children:
+  - Name: PreHeat
+    Id: g=093be7ec16d02022705ab546f4daa595
+    Type: OvenPhase
+    Children:
+    - Name: TemperatureSetpoint
+      Id: g=ecf2dc22613fa060d7b07eaff4454f2d
+      Type: BaseDataVariableType
+      DataType: Double
+      Value: 370.0
+      Children:
+      - Name: EngineeringUnits
+        Id: g=1b6d219bb6e4306638f818d27ea67772
+        Type: EUInformationType
+        DataType: EUInformation
+        Children:
+        - Name: UnitId
+          Id: g=0e40dc1fd1f140047d4e6ec50d2d8112
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 4408652
+        - Name: DisplayName
+          Id: g=4eaa2792a1558600965e5605b9c58355
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+        - Name: Description
+          Id: g=f31ece16744ac5a100b8c4663c71bfb2
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+      - Name: EURange
+        Id: g=7f8b97498907529f439d7a941da1f3aa
+        Type: RangeType
+        DataType: Range
+        Children:
+        - Name: Low
+          Id: g=900110edaf05dc01bfb48701f86b96ca
+          Type: BaseDataVariableType
+          DataType: Double
+        - Name: High
+          Id: g=2d2f3bd008970d667c88b6b507c02dc1
+          Type: BaseDataVariableType
+          DataType: Double
+          Value: 512.0
+    - Name: Duration
+      Id: g=ef0401c59572e49f31a549d116409c5d
+      Type: BaseDataVariableType
+      DataType: UInt32
+      Value: 90
+    - Name: FanInRamp
+      Id: g=d806c3c2e1ad6f3acad9755a79b5bbd6
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 15
+    - Name: FanOutRamp
+      Id: g=c1d2f8f9cbe82328a968ae83459c373e
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 15
+    - Name: Heating
+      Id: g=17157375870d854742b7818cffb6c0c6
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+  - Name: Bake
+    Id: g=372b030c24ce0c0ee9df3c265ef7988a
+    Type: OvenPhase
+    Children:
+    - Name: TemperatureSetpoint
+      Id: g=97c3868139dd1d735b9077b4086e5046
+      Type: BaseDataVariableType
+      DataType: Double
+      Value: 450.0
+      Children:
+      - Name: EngineeringUnits
+        Id: g=e1afd2ca3f9bd85e087c1299e8a025a4
+        Type: EUInformationType
+        DataType: EUInformation
+        Children:
+        - Name: UnitId
+          Id: g=8445856ea3c9c6f0f61700f39ff3981e
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 4408652
+        - Name: DisplayName
+          Id: g=5c43de079b1df78e181346a79d2199b0
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+        - Name: Description
+          Id: g=76969b672e88cf535332c6b63eae8469
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+      - Name: EURange
+        Id: g=78590b69d6867710e18ab841e2556d04
+        Type: RangeType
+        DataType: Range
+        Children:
+        - Name: Low
+          Id: g=859c71b26316c6baceed633f4e1bd09a
+          Type: BaseDataVariableType
+          DataType: Double
+        - Name: High
+          Id: g=e57c25a10c6c2ee960298de920f2f03f
+          Type: BaseDataVariableType
+          DataType: Double
+          Value: 512.0
+    - Name: Duration
+      Id: g=fed98b4d6aec761e741c7e95429bcd8d
+      Type: BaseDataVariableType
+      DataType: UInt32
+      Value: 60
+    - Name: FanInRamp
+      Id: g=ac3f2691c7e84c167bafc1b33fd4c106
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 15
+    - Name: FanOutRamp
+      Id: g=60077628d950ca3194414e18f11377cb
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 15
+    - Name: Heating
+      Id: g=4790b346514f2b1aea2951f921de2e84
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+  - Name: Cooldown
+    Id: g=6d738ddea84c11c4eaff48b4dfae6530
+    Type: OvenPhase
+    Children:
+    - Name: TemperatureSetpoint
+      Id: g=ccfacdd312b6f060e27c15fdb4a82e0e
+      Type: BaseDataVariableType
+      DataType: Double
+      Value: 45.0
+      Children:
+      - Name: EngineeringUnits
+        Id: g=a4ee5cb8605c0f2d55409d3a2023f893
+        Type: EUInformationType
+        DataType: EUInformation
+        Children:
+        - Name: UnitId
+          Id: g=f148d3c9b75ca5eeabb28e4e50ae6079
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 4408652
+        - Name: DisplayName
+          Id: g=c0a78d269a9e0ffdc7bd7cdd9548cd8c
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+        - Name: Description
+          Id: g=9ac6239011e76188f47c17870327ff4e
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+      - Name: EURange
+        Id: g=475e81fa860f772453c827bc31a71c4f
+        Type: RangeType
+        DataType: Range
+        Children:
+        - Name: Low
+          Id: g=285364a73c4177b94e3b3f02bee95a04
+          Type: BaseDataVariableType
+          DataType: Double
+        - Name: High
+          Id: g=8d544c50d09cafb03aacec92af257a6c
+          Type: BaseDataVariableType
+          DataType: Double
+          Value: 512.0
+    - Name: Duration
+      Id: g=af434a62cd14512bfe8b64406b1284de
+      Type: BaseDataVariableType
+      DataType: UInt32
+      Value: 180
+    - Name: FanInRamp
+      Id: g=59f550320cebbd163b94dea02c912694
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 50
+    - Name: FanOutRamp
+      Id: g=655376b80fca859cd08f5c263667ff6f
+      Type: BaseDataVariableType
+      DataType: Byte
+      Value: 50
+    - Name: Heating
+      Id: g=ef408c194b20cf0d62dac0e6eb366206
+      Type: BaseDataVariableType
+      DataType: Boolean
+  - Name: Name
+    Id: g=32c4e68d853f48973553925da1e4d63b
+    Type: BaseDataVariableType
+    DataType: String
+  - Name: Version
+    Id: g=18be4ee43af7b1635cdee06f5174fd45
+    Type: BaseDataVariableType
+    DataType: String
+  - Name: Status
+    Id: g=08f6ddcbe21e734669af0465cf8e284b
+    Type: BaseDataVariableType
+    DataType: Int32
+  - Name: Author
+    Id: g=5a6feb717c968e11e4150e5f9ad8b371
+    Type: BaseDataVariableType
+    DataType: String
+  - Name: Description
+    Id: g=de23618a744fb9f55f4b2e6e3496e0ed
+    Type: BaseDataVariableType
+    DataType: String
+  - Name: Used
+    Id: g=4cdbb548b6098c14b4b78301a466afa8
+    Type: BaseDataVariableType
+    DataType: Boolean
+  - Name: IsLoaded
+    Id: g=4173ceb365fde35b96a9da068b290647
+    Type: BaseDataVariableType
+    DataType: Boolean
+  - Name: IsEditable
+    Id: g=3cf4e9c39398bcc7cf65a8e7405f26e6
+    Type: BaseDataVariableType
+    DataType: Boolean
+  - Name: LockedBy
+    Id: g=f6c49a2131e91a8481caab6cf41289bb
+    Type: BaseDataVariableType
+    DataType: String
+  - Name: LastResult
+    Id: g=3bf684ed5b6145710589695f0f8c022e
+    Type: BaseDataVariableType
+    DataType: String

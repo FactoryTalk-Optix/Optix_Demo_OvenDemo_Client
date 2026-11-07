@@ -10,6 +10,9 @@ using FTOptix.Core;
 using FTOptix.HMIProject;
 using FTOptix.NetLogic;
 using UAManagedCore;
+using FTOptix.RecipeX;
+using FTOptix.Retentivity;
+using FTOptix.System;
 using OpcUa = UAManagedCore.OpcUa;
 
 #endregion

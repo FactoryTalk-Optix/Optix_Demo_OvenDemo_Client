@@ -3,57 +3,15 @@ Id: g=4350f144261af599bbdef4537ee3c7e8
 Type: ModelCategoryFolder
 Children:
 - File: Types/Types.yaml
-- File: Oven/Oven.yaml
-- File: OvenStatus/OvenStatus.yaml
-- File: Locations/Locations.yaml
-- Class: DataType
-  Name: Theme
-  Id: g=061292f8a8ef88d0e086c852c09f1e56
-  Supertype: Enumeration
-  EnumDefinition: 
-   {
-    "Name": "Theme",
-    "DataType": {
-     "IdType": 2,
-     "Id": "061292f8a8ef88d0e086c852c09f1e56",
-     "Namespace": 28
-    },
-    "Fields": [{
-      "Name": "Value0",
-      "Value": 0,
-      "DisplayName": {
-       "LocaleId": "en-US",
-       "Text": "Light"
-      }
-     },{
-      "Name": "Value1",
-      "Value": 1,
-      "DisplayName": {
-       "LocaleId": "en-US",
-       "Text": "Dark"
-      }
-     }]
-   }
-  Children:
-  - Name: ns=0;EnumValues
-    Id: g=69017a1b5124250bbdfe57b86032ff13
-    Type: BaseDataVariableType
-    DataType: EnumValueType
-    ModellingRule: None
-    ValueRank: OneDimension
-    ArrayDimensions: [0]
-    Value: [{"TypeId":{"Id":7594},"Body":{"Value":0,"DisplayName":{"NamespaceIndex":28,"TextId":"Light"},"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":7594},"Body":{"Value":1,"DisplayName":{"NamespaceIndex":28,"TextId":"Dark"},"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
-- Name: EngineeringUnitDictionary1
-  Id: g=7aecc1cf01dc3b0c47c062e4223b2d78
-  Type: EngineeringUnitDictionary
-  DataType: EngineeringUnitDictionaryItem
-  ValueRank: OneDimension
-  ArrayDimensions: [0]
-  Value: [{"TypeId":{"Id":239,"Namespace":1},"Body":{"UnitId":0,"DisplayName":{"LocaleId":"en-US","Text":"%"},"Description":{"NamespaceIndex":28,"TextId":"Percentage"},"PhysicalDimension":0,"Slope":0.0,"Intercept":0.0}},{"TypeId":{"Id":239,"Namespace":1},"Body":{"UnitId":1,"DisplayName":{"NamespaceIndex":-1,"LocaleId":"","Text":""},"Description":{"NamespaceIndex":28,"TextId":"text"},"PhysicalDimension":0,"Slope":0.0,"Intercept":0.0}}]
+- File: Enums/Enums.yaml
 - Name: IsDemo
   Id: g=947a6deab4588916fabe19f25b669966
   Type: BaseDataVariableType
   DataType: Boolean
   DisplayName: {"NamespaceIndex":28,"TextId":"Demo"}
   Value: true
-- File: Subscriber/Subscriber.yaml
+- File: RecipeTarget/RecipeTarget.yaml
+- File: Onboarding/Onboarding.yaml
+- File: OvenData/OvenData.yaml
+- File: HMISettings/HMISettings.yaml
+- File: Chat/Chat.yaml

@@ -1,0 +1,25 @@
+Name: Chat
+Id: g=215e9631604e4467a23b51529d1b293a
+Type: FolderType
+Children:
+- Name: Inbox
+  Id: g=1c5c93ac511b42e597fcdff287477197
+  Type: BaseDataVariableType
+  DataType: String
+- Name: Revision
+  Id: g=b2b62a49996a40a494faaceda0ed6802
+  Type: BaseDataVariableType
+  DataType: Int32
+- Name: UnreadCount
+  Id: g=b1d8a6bd0dfe4905a08b47b1b3e41fe0
+  Type: BaseDataVariableType
+  DataType: Int32
+- Name: RevisionChanged
+  Id: g=1a327dcc9bb23f47e0f5c824c5fbf066
+  Type: VariableChangedEventDispatcher
+  Children:
+  - Name: VariableNodePath
+    Id: g=0c4345704b7b460990c669ead9769902
+    Type: BaseVariableType
+    DataType: NodePath
+    Value: "../Revision"

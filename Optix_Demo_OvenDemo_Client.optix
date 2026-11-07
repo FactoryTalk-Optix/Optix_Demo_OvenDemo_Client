@@ -7,7 +7,7 @@ Project:
  Company: ''
  Copyright: ''
  FormatVersion: 1
- ProductVersion: 1.7
+ ProductVersion: 1.8
  CoreVersion: 5.0
  Dependencies:
   2:
@@ -17,11 +17,11 @@ Project:
   3:
    Uri: 'urn:FTOptix:OPCUAServer'
    Module: FTOptix.OPCUAServer
-   Version: 2.0
+   Version: 3.0
   4:
    Uri: 'urn:FTOptix:OPCUAServer:Net'
    Module: FTOptix.OPCUAServer.Net
-   Version: 2.0
+   Version: 3.0
   5:
    Uri: 'urn:FTOptix:CoreBase'
    Module: FTOptix.CoreBase
@@ -33,11 +33,11 @@ Project:
   7:
    Uri: 'urn:FTOptix:UI'
    Module: FTOptix.UI
-   Version: 21.2
+   Version: 22.0
   8:
    Uri: 'urn:FTOptix:UI:Net'
    Module: FTOptix.UI.Net
-   Version: 21.2
+   Version: 22.0
   9:
    Uri: 'urn:FTOptix:DataLogger'
    Module: FTOptix.DataLogger
@@ -49,7 +49,7 @@ Project:
   11:
    Uri: 'urn:FTOptix:EventLogger'
    Module: FTOptix.EventLogger
-   Version: 2.0
+   Version: 2.1
   12:
    Uri: 'urn:FTOptix:EventLogger:Net'
    Module: FTOptix.EventLogger.Net
@@ -65,27 +65,27 @@ Project:
   15:
    Uri: 'urn:FTOptix:MQTTClient'
    Module: FTOptix.MQTTClient
-   Version: 7.0
+   Version: 9.0
   16:
    Uri: 'urn:FTOptix:MQTTClient:Net'
    Module: FTOptix.MQTTClient.Net
-   Version: 6.0
+   Version: 8.0
   17:
    Uri: 'urn:FTOptix:HMIProject'
    Module: FTOptix.HMIProject
-   Version: 9.0
+   Version: 11.0
   18:
    Uri: 'urn:FTOptix:HMIProject:Net'
    Module: FTOptix.HMIProject.Net
-   Version: 5.0
+   Version: 6.0
   19:
    Uri: 'urn:FTOptix:WebUI'
    Module: FTOptix.WebUI
-   Version: 2.0
+   Version: 3.0
   20:
    Uri: 'urn:FTOptix:WebUI:Net'
    Module: FTOptix.WebUI.Net
-   Version: 2.0
+   Version: 3.0
   21:
    Uri: 'urn:FTOptix:Alarm'
    Module: FTOptix.Alarm
@@ -114,16 +114,32 @@ Project:
    Uri: 'urn:FTOptix:NetLogic'
    Module: FTOptix.NetLogic
    Version: 4.0
+  29:
+   Uri: 'urn:FTOptix:Retentivity'
+   Module: FTOptix.Retentivity
+   Version: 2.0
+  30:
+   Uri: 'urn:FTOptix:Retentivity:Net'
+   Module: FTOptix.Retentivity.Net
+   Version: 1.1
+  31:
+   Uri: 'urn:FTOptix:RecipeX'
+   Module: FTOptix.RecipeX
+   Version: 2.0
+  32:
+   Uri: 'urn:FTOptix:RecipeX:Net'
+   Module: FTOptix.RecipeX.Net
+   Version: 2.0
  Statistics:
-  TotalNodeCount: 4576
-  Objects: 966
-  ObjectTypes: 39
-  Variables: 3565
+  TotalNodeCount: 4594
+  Objects: 1143
+  ObjectTypes: 44
+  Variables: 3383
   VariableTypes: 0
-  DataTypes: 1
-  Methods: 5
-  References: 98
+  DataTypes: 2
+  Methods: 22
+  References: 138
   ReferenceTypes: 0
-  Files: 33
+  Files: 39
  Nodes:
  - File: Nodes/Optix_Demo_OvenDemo_Client.yaml

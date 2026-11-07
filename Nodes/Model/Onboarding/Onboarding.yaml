@@ -1,0 +1,270 @@
+Name: Onboarding
+Id: g=32dc05bc8bdc644e8e8c1561d30e23b6
+Type: FolderType
+Children:
+- Name: Onboarding
+  Id: g=e0d9d2fb646bb4512ff091218a3a97c5
+  Type: BaseObjectType
+  Children:
+  - Name: Config
+    Id: g=aa55b75a49fde78438ec150a9ef2f046
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "{\n  \"Topic\": \"OnboardingRequest\",\n  \"QoS\": 0,\n  \"Retain\": false\n}"
+    Children:
+    - Name: Topic
+      Id: g=3515b6d633ae710f529582f58da61249
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "OnboardingRequest"
+    - Name: QoS
+      Id: g=bdc8eee485b3659e7bee4b270bfb2fbe
+      Type: BaseDataVariableType
+      DataType: QoSLevelEnum
+    - Name: Retain
+      Id: g=7c63bbb7fe832e105498833c36fb78bd
+      Type: BaseDataVariableType
+      DataType: Boolean
+    - Name: StringFormatter1
+      Id: g=649c420f7188d793e4f6491524ac71a5
+      Type: StringFormatter
+      Children:
+      - Name: Format
+        Id: g=38e9cfc045b64834413fb9be7f488f8f
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        ReferenceType: HasParameter
+        Value: {"LocaleId":"en-US","Text":"{\n  \"Topic\": \"{#Topic}\",\n  \"QoS\": {#QoS},\n  \"Retain\": {#Retain}\n}"}
+      - Name: ns=5;SourceTopic
+        Id: g=5d582d3d217656c02f5f8382e8aec8b5
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Id: g=d0ae0ca126a70ade8e962bb80a6b3a90
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../Topic"
+      - Name: ns=5;SourceQoS
+        Id: g=a6a47f9cc6f7958b1a484dc8c3ec734f
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Id: g=b26279af4a42773355c7c21de9fa1d00
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../QoS"
+      - Name: ns=5;SourceRetain
+        Id: g=50f00690c35cb414ece2002c7efed086
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: StringFormatter1
+          Id: g=70510ec4969f9397e9c252c1e5fc835c
+          Type: StringFormatter
+          Children:
+          - Name: Format
+            Id: g=881240c1acd55114498ed4a2ac37adeb
+            Type: BaseDataVariableType
+            DataType: LocalizedText
+            ReferenceType: HasParameter
+            Value: {"LocaleId":"","Text":"{0:j}"}
+          - Name: ns=5;Source0
+            Id: g=a5df7b4bb350b861dd886c4e8569f319
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Id: g=7b7d7a17efb1c1595ad1e4dc96b69535
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../../../Retain"
+  - Name: Payload
+    Id: g=c4735844324ff2b4e38d8bedacd240a6
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "{\n  \"Sender\": \"clientId\",\n  \"Content\": \"message text\",\n  \"Timestamp\": \"yyyy/MM/dd HH:mm:ss\"\n}"
+    Children:
+    - Name: StringFormatter1
+      Id: g=e7f2bae1b5b996e1faf4dfea2bcd7169
+      Type: StringFormatter
+      Children:
+      - Name: Format
+        Id: g=a65b76d706b3b782dcd3ce752cc47774
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        ReferenceType: HasParameter
+        Value: {"LocaleId":"en-US","Text":"{\n  \"Sender\": \"{#MQTTClientId}\",\n  \"Content\": \"{#Content}\",\n  \"Timestamp\": \"{#Timestamp}\"\n}"}
+      - Name: ns=5;SourceMQTTClientId
+        Id: g=3cc87b0555aaecd3b3e982a2b9e6333c
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Id: g=6b24fc2cb442b480cd3b92e9df2c0c36
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../Sender"
+      - Name: ns=5;SourceContent
+        Id: g=bead18c346788eee875d35b7fddf776a
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Id: g=a0d09df223a689d6b8084fd3325a15d1
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../Content"
+      - Name: ns=5;SourceTimestamp
+        Id: g=ab62acaae97bf04041a4dcf798a86784
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Id: g=b24de91e7cd522203c92fe380ea237ab
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../Timestamp"
+    - Name: Sender
+      Id: g=abe7c398952ec306048a1d1252ff9d6d
+      Type: BaseDataVariableType
+      DataType: String
+      Children:
+      - Name: DynamicLink
+        Id: g=dfb83a3a511e162056f5a4b85c4ccc9e
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../../../../MQTT/MQTTEdgeDeviceClient/ClientId"
+        Children:
+        - Name: Mode
+          Id: g=726d3a490c71673121b35995b4232600
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          Value: 2
+    - Name: Content
+      Id: g=1376ccec522bcb27fee58a6be6dbcf7f
+      Type: BaseDataVariableType
+      DataType: String
+      Children:
+      - Name: DynamicLink
+        Id: g=24977cdc6dc966ab95cfea2191ef1e4f
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../../../HMISettings/OPCUAServer/EndpointURL"
+        Children:
+        - Name: Mode
+          Id: g=0f229866c8ef548c467c783d224a695e
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          Value: 2
+    - Name: Timestamp
+      Id: g=059725932851cdb0836387654ec1ff01
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Jan 1, 1601, 12:00:00 AM"
+      Children:
+      - Name: DynamicLink
+        Id: g=5859b98c5dbe94152842116185cc41b4
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../../../../NetLogic/ClockLogic/Time"
+        Children:
+        - Name: Mode
+          Id: g=31c880816964c7386e7211b502c2d863
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          Value: 2
+  - Name: Result
+    Id: g=5d5e6dfb90ec568b51752b0a11c18263
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "{\n  \"Topic\": \"OnboardingRequest\",\n  \"QoS\": 0,\n  \"Retain\": false\n}"
+    Children:
+    - Name: Topic
+      Id: g=cf0dbb1e5b37fa382c2b2adef1faa611
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "OnboardingResult"
+    - Name: QoS
+      Id: g=02d6b11c8b677fc64f0ce28e38c73021
+      Type: BaseDataVariableType
+      DataType: QoSLevelEnum
+    - Name: Retain
+      Id: g=73ee63f36840806f6cbf00cdb244729e
+      Type: BaseDataVariableType
+      DataType: Boolean
+    - Name: StringFormatter1
+      Id: g=00beb3ddf17f3d9687e6948718275b0f
+      Type: StringFormatter
+      Children:
+      - Name: Format
+        Id: g=8ec72d16939b7b48fac7b5d91a0ec9de
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        ReferenceType: HasParameter
+        Value: {"LocaleId":"en-US","Text":"{\n  \"Topic\": \"{#Topic}\",\n  \"QoS\": {#QoS},\n  \"Retain\": {#Retain}\n}"}
+      - Name: ns=5;SourceTopic
+        Id: g=1877f0df3259d04991cad8067fe25abd
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Id: g=680b4de3e611b495d37f08695cdb5f6e
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../Topic"
+      - Name: ns=5;SourceQoS
+        Id: g=eaad75c4ee383b3f982ae92acb0092d0
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Id: g=973ed93ec3b4615a4cdc2697dd71a608
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../QoS"
+      - Name: ns=5;SourceRetain
+        Id: g=55a4247daf905c7136eca96e0ab9cb65
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: StringFormatter1
+          Id: g=06377110a25d88eea25618392cc64b8f
+          Type: StringFormatter
+          Children:
+          - Name: Format
+            Id: g=4f6eaf31f4b437f1b15ca0ee9b622dc1
+            Type: BaseDataVariableType
+            DataType: LocalizedText
+            ReferenceType: HasParameter
+            Value: {"LocaleId":"","Text":"{0:j}"}
+          - Name: ns=5;Source0
+            Id: g=26f07c66648d4c425dfea4ed0313579e
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Id: g=f8350eede935b085e124d2df7f3588da
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../../../Retain"
+- File: Result/Result.yaml
+- Name: EdgeOnbordingLogic
+  Id: g=027650115afc477e554e173ac6c1c2f2
+  Type: NetLogic
+  Children:
+  - Class: Method
+    Name: SyncOvenDataWithRuntimeNodeId
+    Id: g=81745603e699206f8e753f71dfd37b5c

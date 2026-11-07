@@ -1,15 +1,6 @@
 Name: DesignTime
 Type: FolderType
 Children:
-- Name: ImportLocations
-  Type: NetLogic
-  Children:
-  - Name: BehaviourStartPriority
-    Type: BehaviourStartPriorityVariableType
-    DataType: Byte
-    Value: 180
-  - Class: Method
-    Name: ImportFromCsv
 - Name: ImportAndExportTranslations
   Type: NetLogic
   WriteMask: BrowseName|DataType|Description|DisplayName|MinimumSamplingInterval|UserAccessLevel
@@ -58,3 +49,26 @@ Children:
        "highestIgnoredVersion": 0
       }
      }
+- Name: DesignTimeNetLogic1
+  Type: NetLogic
+  Children:
+  - Name: BehaviourStartPriority
+    Type: BehaviourStartPriorityVariableType
+    DataType: Byte
+    Value: 180
+  - Class: Method
+    Name: ApplyAllFixes
+  - Class: Method
+    Name: FixGridHeaders
+  - Class: Method
+    Name: FixOnboardingDefaults
+  - Class: Method
+    Name: RestoreAlarmRowTemplates
+  - Class: Method
+    Name: AddAnalyticsFieldsToOvenType
+  - Class: Method
+    Name: BuildRecipesEmptyHint
+  - Class: Method
+    Name: PolishDashboard
+  - Class: Method
+    Name: StandardizeLabelFonts

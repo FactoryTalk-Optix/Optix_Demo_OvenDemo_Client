@@ -3,6 +3,9 @@ using FTOptix.NetLogic;
 using System;
 using UAManagedCore;
 using FTOptix.EventLogger;
+using FTOptix.RecipeX;
+using FTOptix.Retentivity;
+using FTOptix.System;
 #endregion
 
 public class alarmSimulationLogic : BaseNetLogic
@@ -33,6 +36,39 @@ public class alarmSimulationLogic : BaseNetLogic
             }
             simulatedAlarms = alarms;
         }
+    }
+
+    /// <summary>Sets one of the simulated alarm inputs (0-based index). The random simulation should be disabled (enableSimulation = false).</summary>
+    [ExportMethod]
+    public void SetAlarm(int index, bool active)
+    {
+        var alarms = simulatedAlarms;
+        if (index < 0 || index >= alarms.Length)
+        {
+            Log.Warning("alarmSimulationLogic", $"SetAlarm: index {index} out of range (0-{alarms.Length - 1})");
+            return;
+        }
+        alarms[index] = active;
+        simulatedAlarms = alarms;
+    }
+
+    [ExportMethod]
+    public void ToggleAlarm(int index)
+    {
+        var alarms = simulatedAlarms;
+        if (index < 0 || index >= alarms.Length)
+        {
+            Log.Warning("alarmSimulationLogic", $"ToggleAlarm: index {index} out of range (0-{alarms.Length - 1})");
+            return;
+        }
+        alarms[index] = !alarms[index];
+        simulatedAlarms = alarms;
+    }
+
+    [ExportMethod]
+    public void ClearAlarms()
+    {
+        simulatedAlarms = new bool[simulatedAlarms.Length];
     }
 
     PeriodicTask alarmSimulationTask;
