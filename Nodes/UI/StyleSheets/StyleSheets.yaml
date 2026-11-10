@@ -71,6 +71,19 @@ Children:
           Type: DynamicLink
           DataType: NodePath
           Value: "../../../Surface"
+      - Name: TextColor
+        Type: BaseDataVariableType
+        DataType: Color
+        Value: "#000000"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../../Text"
+          Children:
+          - Name: Mode
+            Type: BaseVariableType
+            DataType: DynamicLinkMode
   - Name: SwitchStyles
     Type: BaseObjectType
     Children:
@@ -86,6 +99,19 @@ Children:
     Children:
     - Name: Default
       Type: NavigationPanelStyle
+      Children:
+      - Name: BackgroundColor
+        Type: BaseDataVariableType
+        DataType: Color
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../../Surface"
+          Children:
+          - Name: Mode
+            Type: BaseVariableType
+            DataType: DynamicLinkMode
   - Name: ChartStyles
     Type: BaseObjectType
     Children:
@@ -180,6 +206,10 @@ Children:
           Type: DynamicLink
           DataType: NodePath
           Value: "../../../Text"
+          Children:
+          - Name: Mode
+            Type: BaseVariableType
+            DataType: DynamicLinkMode
       - Name: FontSize
         Type: BaseDataVariableType
         DataType: Size
@@ -441,6 +471,15 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#ffffff"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "../../../Surface"
+          Children:
+          - Name: Mode
+            Type: BaseVariableType
+            DataType: DynamicLinkMode
       - Name: BorderColor
         Type: BaseDataVariableType
         DataType: Color
@@ -491,7 +530,7 @@ Children:
       - Name: FillColor
         Type: BaseDataVariableType
         DataType: Color
-        Value: "#3b3b3b"
+        Value: "#ffffff00"
     - Name: NavBarAccent
       Type: RectangleStyle
     - Name: BackgroundErr
@@ -657,7 +696,7 @@ Children:
   - Name: Brand400
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#78acdf"
+    Value: "#3f86d6"
   - Name: Brand300
     Type: BaseDataVariableType
     DataType: Color
@@ -677,31 +716,31 @@ Children:
   - Name: Bg
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#0e1116"
+    Value: "#2b3646"
   - Name: Surface
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#161a21"
+    Value: "#354357"
   - Name: SurfaceSoft
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#2f3847"
+    Value: "#425269"
   - Name: Text
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#e6eef8"
+    Value: "#f1f5f9"
   - Name: TextSoft
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#9cb3cb"
+    Value: "#c0cddc"
   - Name: Line
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#21485f"
+    Value: "#5b6e86"
   - Name: Line2
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#262b34"
+    Value: "#4b5d73"
   - Name: Accent
     Type: BaseDataVariableType
     DataType: Color
@@ -723,15 +762,15 @@ Children:
   - Name: Ok
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#2a7c4f"
+    Value: "#3aa76d"
   - Name: Warn
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#fddc00"
+    Value: "#f0c040"
   - Name: Danger
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#b64141"
+    Value: "#e0605b"
   - Name: BorderColor
     Type: BaseDataVariableType
     DataType: Color
@@ -753,39 +792,39 @@ Children:
   - Name: HighText
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#c0392b"
+    Value: "#ffb3ad"
   - Name: HighColor
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#f5e7e6"
+    Value: "#5a2f33"
   - Name: MedText
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#cb8e09"
+    Value: "#ffd78a"
   - Name: MedColor
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#f4eddd"
+    Value: "#5a4a26"
   - Name: InfoText
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#8a909b"
+    Value: "#c5d0de"
   - Name: InfoColor
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#ffffff"
+    Value: "#3d4c61"
   - Name: AccentColor
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#235d9f"
+    Value: "#7fb6f5"
   - Name: GoodText
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#b7d8c6"
+    Value: "#a8e6c0"
   - Name: GoodColor
     Type: BaseDataVariableType
     DataType: Color
-    Value: "#e4efea"
+    Value: "#25503a"
 - Name: Light
   Id: g=c5632dffb32778787df3b571db061d5d
   Type: BaseStyleSheet

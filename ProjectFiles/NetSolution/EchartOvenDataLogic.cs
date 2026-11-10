@@ -33,10 +33,12 @@ public class EchartOvenDataLogic : BaseNetLogic
     private IUAObject oven;
     private string ovenId;
     private OvenTrace trace;
+    private WebBrowser browser;
+    private IUAVariable theme;
 
     public override void Start()
     {
-        var browser = LogicObject.Owner.Get<WebBrowser>(WebBrowserName);
+        browser = LogicObject.Owner.Get<WebBrowser>(WebBrowserName);
         if (browser == null)
         {
             Log.Error(LogCategory, $"WebBrowser '{WebBrowserName}' not found under '{LogicObject.Owner.BrowseName}'.");
@@ -58,7 +60,9 @@ public class EchartOvenDataLogic : BaseNetLogic
             return;
         }
 
-        browser.URL = $"http://127.0.0.1:{Port}/index.html?oven={Uri.EscapeDataString(ovenId)}";
+        theme = FindThemeVariable();
+        if (theme != null) theme.VariableChange += OnThemeChanged;
+        ApplyUrl();
         Sample();
         task = new PeriodicTask(Sample, SampleMs, LogicObject);
         task.Start();
@@ -66,10 +70,28 @@ public class EchartOvenDataLogic : BaseNetLogic
 
     public override void Stop()
     {
+        if (theme != null) theme.VariableChange -= OnThemeChanged;
+        theme = null;
         task?.Dispose();
         task = null;
         if (trace != null) EchartServer.Unregister(ovenId, trace);
         trace = null;
+    }
+
+    // The UI session object (owner chain of this row) holds the Light/Dark switch used by the style sheet.
+    private IUAVariable FindThemeVariable()
+    {
+        for (var node = LogicObject.Owner; node != null; node = node.Owner)
+            if (node.GetVariable("LightDarkTheme") is IUAVariable variable) return variable;
+        return null;
+    }
+
+    private void OnThemeChanged(object sender, VariableChangeEventArgs e) => ApplyUrl();
+
+    private void ApplyUrl()
+    {
+        var dark = theme?.Value.Value is bool value && value;
+        browser.URL = $"http://127.0.0.1:{Port}/index.html?oven={Uri.EscapeDataString(ovenId)}&theme={(dark ? "dark" : "light")}";
     }
 
     private IUAObject ResolveOven()

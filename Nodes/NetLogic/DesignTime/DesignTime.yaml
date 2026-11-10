@@ -72,3 +72,11 @@ Children:
     Name: PolishDashboard
   - Class: Method
     Name: StandardizeLabelFonts
+  - Class: Method
+    Name: ApplySoftDarkPalette
+  - Class: Method
+    Name: AssignWebSessionType
+  - Class: Method
+    Name: FixDarkTheme
+  - Class: Method
+    Name: FixDarkThemeOverrides

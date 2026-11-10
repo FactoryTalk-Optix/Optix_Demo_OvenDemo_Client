@@ -180,7 +180,7 @@ Children:
             DataType: Color
             ReferenceType: HasParameter
             ModellingRule: Optional
-            Value: "#3b3b3b"
+            Value: "#8693a5"
       - Name: Visible
         Type: BaseDataVariableType
         DataType: Boolean

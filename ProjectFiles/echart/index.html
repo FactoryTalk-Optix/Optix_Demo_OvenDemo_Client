@@ -16,10 +16,17 @@
 <script src="echarts.min.js"></script>
 <script>
 (function () {
-  const oven = new URLSearchParams(location.search).get('oven') || '';
+  const params = new URLSearchParams(location.search);
+  const oven = params.get('oven') || '';
+  const dark = params.get('theme') === 'dark';
+  const C = dark
+    ? { bg: '#354357', text: '#C0CDDC', grid: '#4B5D73', setpoint: '#9FB0C4', now: '#FFB86B', actual: '#7FB6F5', area: 'rgba(127,182,245,0.18)', bands: ['rgba(127,182,245,0.06)', 'rgba(127,182,245,0.14)'] }
+    : { bg: '#ffffff', text: '#5b6b73', grid: '#e4eaed', setpoint: '#7d8e97', now: '#d9480f', actual: '#1d75a7', area: 'rgba(29,117,167,0.12)', bands: ['rgba(29,117,167,0.07)', 'rgba(29,117,167,0.15)'] };
+  document.body.style.background = C.bg;
+  document.getElementById('status').style.color = C.text;
   const chart = echarts.init(document.getElementById('chart'), null, { renderer: 'canvas' });
   const status = document.getElementById('status');
-  const BAND = ['rgba(29,117,167,0.07)', 'rgba(29,117,167,0.15)'];
+  const BAND = C.bands;
   const fmt = s => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
 
   function render(d) {
@@ -33,22 +40,22 @@
       grid: { left: 52, right: 20, top: 34, bottom: 34 },
       tooltip: { trigger: 'axis', axisPointer: { type: 'line' }, valueFormatter: v => v == null ? '-' : v + ' °C',
         formatter: ps => fmt(ps[0].axisValue) + '<br>' + ps.map(p => p.marker + p.seriesName + ': ' + p.value[1] + ' °C').join('<br>') },
-      legend: { top: 4, left: 8, itemWidth: 18, itemHeight: 3, textStyle: { color: '#5b6b73' }, data: ['Recipe setpoint', 'Actual'] },
-      xAxis: { type: 'value', min: 0, max: Math.max(d.total, 1), axisLabel: { formatter: fmt, color: '#5b6b73' },
-        splitLine: { show: true, lineStyle: { color: '#e4eaed' } } },
-      yAxis: { type: 'value', min: 0, max: yMax, axisLabel: { formatter: '{value}°', color: '#5b6b73' },
-        splitLine: { lineStyle: { color: '#e4eaed' } } },
+      legend: { top: 4, left: 8, itemWidth: 18, itemHeight: 3, textStyle: { color: C.text }, data: ['Recipe setpoint', 'Actual'] },
+      xAxis: { type: 'value', min: 0, max: Math.max(d.total, 1), axisLabel: { formatter: fmt, color: C.text },
+        splitLine: { show: true, lineStyle: { color: C.grid } } },
+      yAxis: { type: 'value', min: 0, max: yMax, axisLabel: { formatter: '{value}°', color: C.text },
+        splitLine: { lineStyle: { color: C.grid } } },
       series: [
         { name: 'Recipe setpoint', type: 'line', data: pts, showSymbol: false, step: false,
-          lineStyle: { width: 2, type: 'dashed', color: '#7d8e97' }, itemStyle: { color: '#7d8e97' },
-          markArea: { silent: true, label: { color: '#5b6b73', fontSize: 11, position: 'insideTop' },
+          lineStyle: { width: 2, type: 'dashed', color: C.setpoint }, itemStyle: { color: C.setpoint },
+          markArea: { silent: true, label: { color: C.text, fontSize: 11, position: 'insideTop' },
             data: d.phases.map((p, i) => [{ name: p.name, xAxis: p.start, itemStyle: { color: BAND[i % 2] } }, { xAxis: p.end }]) },
           markLine: running ? { silent: true, symbol: 'none', animation: false,
-            lineStyle: { color: '#d9480f', width: 2 }, label: { formatter: 'now ' + fmt(d.cycleElapsed), color: '#d9480f' },
+            lineStyle: { color: C.now, width: 2 }, label: { formatter: 'now ' + fmt(d.cycleElapsed), color: C.now },
             data: [{ xAxis: d.cycleElapsed }] } : { data: [] } },
         { name: 'Actual', type: 'line', data: d.actual, showSymbol: false, smooth: false,
-          lineStyle: { width: 3, color: '#1d75a7' }, itemStyle: { color: '#1d75a7' },
-          areaStyle: { color: 'rgba(29,117,167,0.12)' } }
+          lineStyle: { width: 3, color: C.actual }, itemStyle: { color: C.actual },
+          areaStyle: { color: C.area } }
       ]
     }, { replaceMerge: ['series'] });
 

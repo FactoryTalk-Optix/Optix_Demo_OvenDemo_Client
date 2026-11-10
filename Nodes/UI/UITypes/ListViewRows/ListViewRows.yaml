@@ -32,6 +32,11 @@ Children:
           Type: BaseDataVariableType
           DataType: Color
           Value: "#c7d0d5"
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "{Session}/StyleSheet/Line2"
       - Name: BorderRight
         Type: Border
         Children:
@@ -39,6 +44,11 @@ Children:
           Type: BaseDataVariableType
           DataType: Color
           Value: "#c7d0d5"
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "{Session}/StyleSheet/Line2"
       - Name: BorderTop
         Type: Border
         Children:
@@ -46,6 +56,11 @@ Children:
           Type: BaseDataVariableType
           DataType: Color
           Value: "#c7d0d5"
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "{Session}/StyleSheet/Line2"
       - Name: BorderBottom
         Type: Border
         Children:
@@ -53,6 +68,11 @@ Children:
           Type: BaseDataVariableType
           DataType: Color
           Value: "#c7d0d5"
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "{Session}/StyleSheet/Line2"
       - Name: Style
         Type: BaseDataVariableType
         DataType: String
@@ -284,15 +304,44 @@ Children:
     Type: BaseVariableType
     DataType: Size
     ModellingRule: Optional
-    Value: 640.0
+    Value: 800.0
   - Name: Height
     Type: BaseVariableType
     DataType: Size
-    ModellingRule: Optional
     Value: 640.0
-  - Name: Cycle
-    Type: Panel
     Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "{Window}/WindowHeightLeft"
+  - Name: ScrollViewContent
+    Type: ScrollView
+    Children:
+    - Name: ContentWidth
+      Type: BaseDataVariableType
+      DataType: Size
+      AccessLevel: Read
+    - Name: ContentHeight
+      Type: BaseDataVariableType
+      DataType: Size
+      AccessLevel: Read
+    - Name: ViewWidth
+      Type: BaseDataVariableType
+      DataType: Size
+      AccessLevel: Read
+    - Name: ViewHeight
+      Type: BaseDataVariableType
+      DataType: Size
+      AccessLevel: Read
+    - Name: ContentX
+      Type: BaseDataVariableType
+      DataType: Size
+    - Name: ContentY
+      Type: BaseDataVariableType
+      DataType: Size
+    - Class: Reference
+      Target: ns=7;i=1394
+      Direction: Forward
     - Name: HorizontalAlignment
       Type: BaseVariableType
       DataType: HorizontalAlignment
@@ -303,861 +352,1181 @@ Children:
       DataType: VerticalAlignment
       ModellingRule: Optional
       Value: 3
-    - Name: Content
-      Type: ColumnLayout
+    - Name: Cycle
+      Type: Panel
       Children:
       - Name: HorizontalAlignment
         Type: BaseVariableType
         DataType: HorizontalAlignment
         ModellingRule: Optional
         Value: 3
-      - Name: VerticalAlignment
-        Type: BaseVariableType
-        DataType: VerticalAlignment
-        ModellingRule: Optional
-        Value: 3
-      - Name: Cards
-        Type: RowLayout
+      - Name: Content
+        Type: ColumnLayout
         Children:
         - Name: HorizontalAlignment
           Type: BaseVariableType
           DataType: HorizontalAlignment
           ModellingRule: Optional
           Value: 3
-        - Name: Card1
-          Type: Card
-          DisplayName: {"LocaleId":"en-US","Text":"Applied recipe"}
+        - Name: Cards
+          Type: GridLayout
           Children:
-          - Name: Background
-            Type: Background
-            Children:
-            - Name: BorderLeft
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderRight
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderTop
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderBottom
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-          - Name: Content
-            Type: ColumnLayout
-            Children:
-            - Name: CardDescriptionText
-              Type: Label
-              Children:
-              - Name: Text
-                Type: BaseDataVariableType
-                DataType: LocalizedText
-                Children:
-                - Name: StringFormatter1
-                  Type: StringFormatter
-                  Children:
-                  - Name: Source0
-                    Type: BaseDataVariableType
-                    DataType: BaseDataType
-                    ReferenceType: HasSource
-                    Children:
-                    - Name: DynamicLink
-                      Type: DynamicLink
-                      DataType: NodePath
-                      Value: "../../../../..@DisplayName"
-            - Name: ValueToDispay
-              Type: RowLayout
-              Children:
-              - Name: CurrentValue
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueToDisplay"
-              - Name: EngineeringUinitText
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueAddInfo"
-          - Name: DataPointer
-            Type: NodePointer
-            DataType: NodeId
-            Children:
-            - Name: Kind
-              Type: PropertyType
-              DataType: NodeId
-          - Name: ValueAddInfo
-            Type: BaseDataVariableType
-            DataType: String
-            Children:
-            - Name: DynamicLink
-              Type: DynamicLink
-              DataType: NodePath
-              Value: "{RowItem}/AppliedRecipe>Version"
-              Children:
-              - Name: Mode
-                Type: BaseVariableType
-                DataType: DynamicLinkMode
-                ModellingRule: Optional
-                Value: 2
-          - Name: ValueToDisplay
-            Type: BaseDataVariableType
-            DataType: String
-            Children:
-            - Name: DynamicLink
-              Type: DynamicLink
-              DataType: NodePath
-              Value: "{RowItem}/AppliedRecipe>Name"
-              Children:
-              - Name: Mode
-                Type: BaseVariableType
-                DataType: DynamicLinkMode
-                ModellingRule: Optional
-                Value: 2
-        - Name: HorizontalGap
-          Type: BaseDataVariableType
-          DataType: Size
-          ModellingRule: Optional
-          Value: 16.0
-        - Name: Card2
-          Type: Card
-          DisplayName: {"LocaleId":"en-US","Text":"Batch"}
-          Children:
-          - Name: Background
-            Type: Background
-            Children:
-            - Name: BorderLeft
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderRight
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderTop
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderBottom
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-          - Name: Content
-            Type: ColumnLayout
-            Children:
-            - Name: CardDescriptionText
-              Type: Label
-              Children:
-              - Name: Text
-                Type: BaseDataVariableType
-                DataType: LocalizedText
-                Children:
-                - Name: StringFormatter1
-                  Type: StringFormatter
-                  Children:
-                  - Name: Source0
-                    Type: BaseDataVariableType
-                    DataType: BaseDataType
-                    ReferenceType: HasSource
-                    Children:
-                    - Name: DynamicLink
-                      Type: DynamicLink
-                      DataType: NodePath
-                      Value: "../../../../..@DisplayName"
-            - Name: ValueToDispay
-              Type: RowLayout
-              Children:
-              - Name: CurrentValue
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueToDisplay"
-                - Name: Style
-                  Type: BaseDataVariableType
-                  DataType: String
-                  ModellingRule: Optional
-                  Value: "Default"
-              - Name: EngineeringUinitText
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueAddInfo"
-          - Name: DataPointer
-            Type: NodePointer
-            DataType: NodeId
-            Children:
-            - Name: Kind
-              Type: PropertyType
-              DataType: NodeId
-          - Name: ValueAddInfo
-            Type: BaseDataVariableType
-            DataType: String
-          - Name: ValueToDisplay
-            Type: BaseDataVariableType
-            DataType: String
-            Children:
-            - Name: DynamicLink
-              Type: DynamicLink
-              DataType: NodePath
-              Value: "{RowItem}/CurrentBatchId"
-              Children:
-              - Name: Mode
-                Type: BaseVariableType
-                DataType: DynamicLinkMode
-                ModellingRule: Optional
-                Value: 2
-        - Name: Card3
-          Type: Card
-          DisplayName: {"LocaleId":"en-US","Text":"Cycles today"}
-          Children:
-          - Name: Background
-            Type: Background
-            Children:
-            - Name: BorderLeft
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderRight
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderTop
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderBottom
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-          - Name: Content
-            Type: ColumnLayout
-            Children:
-            - Name: CardDescriptionText
-              Type: Label
-              Children:
-              - Name: Text
-                Type: BaseDataVariableType
-                DataType: LocalizedText
-                Children:
-                - Name: StringFormatter1
-                  Type: StringFormatter
-                  Children:
-                  - Name: Source0
-                    Type: BaseDataVariableType
-                    DataType: BaseDataType
-                    ReferenceType: HasSource
-                    Children:
-                    - Name: DynamicLink
-                      Type: DynamicLink
-                      DataType: NodePath
-                      Value: "../../../../..@DisplayName"
-            - Name: ValueToDispay
-              Type: RowLayout
-              Children:
-              - Name: CurrentValue
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueToDisplay"
-              - Name: EngineeringUinitText
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueAddInfo"
-          - Name: DataPointer
-            Type: NodePointer
-            DataType: NodeId
-            Children:
-            - Name: Kind
-              Type: PropertyType
-              DataType: NodeId
-          - Name: ValueAddInfo
-            Type: BaseDataVariableType
-            DataType: String
-          - Name: ValueToDisplay
-            Type: BaseDataVariableType
-            DataType: String
-            Children:
-            - Name: DynamicLink
-              Type: DynamicLink
-              DataType: NodePath
-              Value: "{RowItem}/CyclesCompletedToday"
-              Children:
-              - Name: Mode
-                Type: BaseVariableType
-                DataType: DynamicLinkMode
-                ModellingRule: Optional
-                Value: 2
-        - Name: Card4
-          Type: Card
-          DisplayName: {"LocaleId":"en-US","Text":"Power"}
-          Children:
-          - Name: Background
-            Type: Background
-            Children:
-            - Name: BorderLeft
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderRight
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderTop
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderBottom
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-          - Name: Content
-            Type: ColumnLayout
-            Children:
-            - Name: CardDescriptionText
-              Type: Label
-              Children:
-              - Name: Text
-                Type: BaseDataVariableType
-                DataType: LocalizedText
-                Children:
-                - Name: StringFormatter1
-                  Type: StringFormatter
-                  Children:
-                  - Name: Source0
-                    Type: BaseDataVariableType
-                    DataType: BaseDataType
-                    ReferenceType: HasSource
-                    Children:
-                    - Name: DynamicLink
-                      Type: DynamicLink
-                      DataType: NodePath
-                      Value: "../../../../..@DisplayName"
-            - Name: ValueToDispay
-              Type: RowLayout
-              Children:
-              - Name: CurrentValue
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueToDisplay"
-              - Name: EngineeringUinitText
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueAddInfo"
-          - Name: DataPointer
-            Type: NodePointer
-            DataType: NodeId
-            Children:
-            - Name: Kind
-              Type: PropertyType
-              DataType: NodeId
-          - Name: ValueAddInfo
-            Type: BaseDataVariableType
-            DataType: String
-            Children:
-            - Name: DynamicLink
-              Type: DynamicLink
-              DataType: NodePath
-              Value: "{RowItem}/PowerDraw/EngineeringUnits/DisplayName"
-              Children:
-              - Name: Mode
-                Type: BaseVariableType
-                DataType: DynamicLinkMode
-                ModellingRule: Optional
-                Value: 2
-              - Name: EUMode
-                Type: BaseVariableType
-                DataType: DynamicLinkEUMode
-          - Name: ValueToDisplay
-            Type: BaseDataVariableType
-            DataType: String
-            Children:
-            - Name: StringFormatter1
-              Type: StringFormatter
-              Children:
-              - Name: Format
-                Type: BaseDataVariableType
-                DataType: LocalizedText
-                ReferenceType: HasParameter
-                ModellingRule: Optional
-                Value: {"LocaleId":"","Text":"{0:n1}"}
-              - Name: ns=5;Source0
-                Type: BaseDataVariableType
-                DataType: BaseDataType
-                ReferenceType: HasSource
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "{RowItem}/PowerDraw"
-                  Children:
-                  - Name: Mode
-                    Type: BaseVariableType
-                    DataType: DynamicLinkMode
-                    ModellingRule: Optional
-                    Value: 2
-              - Name: Mode
-                Type: PropertyType
-                DataType: DynamicLinkMode
-                ReferenceType: HasComponent
-                ModellingRule: Optional
-                Value: 2
-        - Name: Card5
-          Type: Card
-          DisplayName: {"LocaleId":"en-US","Text":"Uptime"}
-          Children:
-          - Name: Background
-            Type: Background
-            Children:
-            - Name: BorderLeft
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderRight
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderTop
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-            - Name: BorderBottom
-              Type: Border
-              Children:
-              - Name: LineColor
-                Type: BaseDataVariableType
-                DataType: Color
-                Value: "#c7d0d5"
-          - Name: Content
-            Type: ColumnLayout
-            Children:
-            - Name: CardDescriptionText
-              Type: Label
-              Children:
-              - Name: Text
-                Type: BaseDataVariableType
-                DataType: LocalizedText
-                Children:
-                - Name: StringFormatter1
-                  Type: StringFormatter
-                  Children:
-                  - Name: Source0
-                    Type: BaseDataVariableType
-                    DataType: BaseDataType
-                    ReferenceType: HasSource
-                    Children:
-                    - Name: DynamicLink
-                      Type: DynamicLink
-                      DataType: NodePath
-                      Value: "../../../../..@DisplayName"
-            - Name: ValueToDispay
-              Type: RowLayout
-              Children:
-              - Name: CurrentValue
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueToDisplay"
-              - Name: EngineeringUinitText
-                Type: Label
-                Children:
-                - Name: Text
-                  Type: BaseDataVariableType
-                  DataType: LocalizedText
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../ValueAddInfo"
-          - Name: DataPointer
-            Type: NodePointer
-            DataType: NodeId
-            Children:
-            - Name: Kind
-              Type: PropertyType
-              DataType: NodeId
-          - Name: ValueAddInfo
-            Type: BaseDataVariableType
-            DataType: String
-            Value: "s"
-          - Name: ValueToDisplay
-            Type: BaseDataVariableType
-            DataType: String
-            Children:
-            - Name: DynamicLink
-              Type: DynamicLink
-              DataType: NodePath
-              Value: "{RowItem}/UptimeSeconds"
-              Children:
-              - Name: Mode
-                Type: BaseVariableType
-                DataType: DynamicLinkMode
-                ModellingRule: Optional
-                Value: 2
-      - Name: StartCycle
-        Type: BaseButton
-        DisplayName: {"LocaleId":"en-US","Text":"Start"}
-        Children:
-        - Name: Background
-          Type: Rectangle
-        - Name: ActionButton
-          Type: Button
-          Children:
-          - Name: MouseClickEventHandler1
-            Type: EventHandler
-            Children:
-            - Name: ListenEventType
-              Type: PropertyType
-              DataType: NodeId
-              Value: "/Types/EventTypes/BaseEventType/MouseEvent/MouseClickEvent"
-            - Name: MethodsToCall
-              Type: BaseObjectType
-              Children:
-              - Name: MethodContainer1
-                Type: BaseObjectType
-                Children:
-                - Name: ns=5;ObjectPointer
-                  Type: NodePointer
-                  DataType: NodeId
-                  Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/OvenSimulationLogic"
-                  Children:
-                  - Name: Kind
-                    Type: PropertyType
-                    DataType: NodeId
-                    Value: "/Types/ObjectTypes/BaseObjectType"
-                - Name: ns=5;Method
-                  Type: BaseDataVariableType
-                  DataType: String
-                  Value: "ToggleCycle"
-            - Name: EventArguments
-              Type: MouseClickEvent
-              Children:
-              - Name: EventId
-                Type: PropertyType
-                DataType: ByteString
-              - Name: EventType
-                Type: PropertyType
-                DataType: NodeId
-              - Name: SourceNode
-                Type: PropertyType
-                DataType: NodeId
-              - Name: SourceName
-                Type: PropertyType
-                DataType: String
-              - Name: Time
-                Type: PropertyType
-                DataType: UtcTime
-              - Name: ReceiveTime
-                Type: PropertyType
-                DataType: UtcTime
-              - Name: Message
-                Type: PropertyType
-                DataType: LocalizedText
-              - Name: Severity
-                Type: PropertyType
-                DataType: UInt16
-        - Name: Content
-          Type: RowLayout
-          Children:
-          - Name: ButtonText
-            Type: Label
-            Children:
-            - Name: Text
-              Type: BaseDataVariableType
-              DataType: LocalizedText
-              Children:
-              - Name: DynamicLink
-                Type: DynamicLink
-                DataType: NodePath
-                Value: "../../..@DisplayName"
-            - Name: Style
-              Type: BaseDataVariableType
-              DataType: String
-              Value: "Default"
-            - Name: Visible
-              Type: BaseDataVariableType
-              DataType: Boolean
-              Value: true
-              Children:
-              - Name: ExpressionEvaluator1
-                Type: ExpressionEvaluator
-                Children:
-                - Name: Expression
-                  Type: BaseDataVariableType
-                  DataType: String
-                  ReferenceType: HasParameter
-                  ModellingRule: Optional
-                  Value: "{0} == 0"
-                - Name: Source0
-                  Type: BaseDataVariableType
-                  DataType: BaseDataType
-                  ReferenceType: HasSource
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "{RowItem}/ExecutionState"
-          - Name: StopText
-            Type: Label
-            Children:
-            - Name: Text
-              Type: BaseDataVariableType
-              DataType: LocalizedText
-              ModellingRule: Optional
-              Value: {"LocaleId":"en-US","Text":"Stop"}
-            - Name: Style
-              Type: BaseDataVariableType
-              DataType: String
-              ModellingRule: Optional
-              Value: "Default"
-            - Name: Visible
-              Type: BaseDataVariableType
-              DataType: Boolean
-              Value: true
-              Children:
-              - Name: ExpressionEvaluator1
-                Type: ExpressionEvaluator
-                Children:
-                - Name: Expression
-                  Type: BaseDataVariableType
-                  DataType: String
-                  ReferenceType: HasParameter
-                  ModellingRule: Optional
-                  Value: "{0} != 0"
-                - Name: Source0
-                  Type: BaseDataVariableType
-                  DataType: BaseDataType
-                  ReferenceType: HasSource
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "{RowItem}/ExecutionState"
-        - Name: Visible
-          Type: BaseDataVariableType
-          DataType: Boolean
-          Value: true
-        - Name: HorizontalAlignment
-          Type: BaseVariableType
-          DataType: HorizontalAlignment
-          ModellingRule: Optional
-      - Name: EchartOvenData
-        Type: Panel
-        Children:
-        - Name: Background
-          Type: Background
-          Children:
-          - Name: BorderLeft
-            Type: Border
-            Children:
-            - Name: LineColor
-              Type: BaseDataVariableType
-              DataType: Color
-              Value: "#c7d0d5"
-          - Name: BorderRight
-            Type: Border
-            Children:
-            - Name: LineColor
-              Type: BaseDataVariableType
-              DataType: Color
-              Value: "#c7d0d5"
-          - Name: BorderTop
-            Type: Border
-            Children:
-            - Name: LineColor
-              Type: BaseDataVariableType
-              DataType: Color
-              Value: "#c7d0d5"
-          - Name: BorderBottom
-            Type: Border
-            Children:
-            - Name: LineColor
-              Type: BaseDataVariableType
-              DataType: Color
-              Value: "#c7d0d5"
-          - Name: BorderThickness
-            Type: BaseDataVariableType
-            DataType: Size
-            ModellingRule: Optional
-            Value: 1.0
-        - Name: EchartData
-          Type: WebBrowser
-          Children:
-          - Name: URL
-            Type: BaseDataVariableType
-            DataType: ResourceUri
-          - Class: Reference
-            Target: ns=7;i=354
-            Direction: Forward
-          - Class: Reference
-            Target: ns=7;i=356
-            Direction: Forward
-          - Class: Reference
-            Target: ns=7;i=358
-            Direction: Forward
           - Name: HorizontalAlignment
             Type: BaseVariableType
             DataType: HorizontalAlignment
             ModellingRule: Optional
             Value: 3
+          - Name: Columns
+            Type: BaseDataVariableType
+            DataType: String
+            ValueRank: OneDimension
+            ArrayDimensions: [0]
+            Value: ["1fr","1fr","1fr","1fr","1fr","1fr","1fr","1fr","1fr","1fr"]
+          - Name: Rows
+            Type: BaseDataVariableType
+            DataType: String
+            ValueRank: OneDimension
+            ArrayDimensions: [0]
+            Value: ["Auto"]
+          - Name: Card1
+            Type: Card
+            DisplayName: {"LocaleId":"en-US","Text":"Applied recipe"}
+            Children:
+            - Name: Background
+              Type: Background
+              Children:
+              - Name: BorderLeft
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderRight
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderTop
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderBottom
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+            - Name: Content
+              Type: ColumnLayout
+              Children:
+              - Name: CardDescriptionText
+                Type: Label
+                Children:
+                - Name: Text
+                  Type: BaseDataVariableType
+                  DataType: LocalizedText
+                  Children:
+                  - Name: StringFormatter1
+                    Type: StringFormatter
+                    Children:
+                    - Name: Source0
+                      Type: BaseDataVariableType
+                      DataType: BaseDataType
+                      ReferenceType: HasSource
+                      Children:
+                      - Name: DynamicLink
+                        Type: DynamicLink
+                        DataType: NodePath
+                        Value: "../../../../..@DisplayName"
+              - Name: ValueToDispay
+                Type: RowLayout
+                Children:
+                - Name: CurrentValue
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueToDisplay"
+                - Name: EngineeringUinitText
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueAddInfo"
+            - Name: DataPointer
+              Type: NodePointer
+              DataType: NodeId
+              Children:
+              - Name: Kind
+                Type: PropertyType
+                DataType: NodeId
+            - Name: ValueAddInfo
+              Type: BaseDataVariableType
+              DataType: String
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{RowItem}/AppliedRecipe>Version"
+                Children:
+                - Name: Mode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkMode
+                  ModellingRule: Optional
+                  Value: 2
+            - Name: ValueToDisplay
+              Type: BaseDataVariableType
+              DataType: String
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{RowItem}/AppliedRecipe>Name"
+                Children:
+                - Name: Mode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkMode
+                  ModellingRule: Optional
+                  Value: 2
+            - Name: ns=7;GridLayoutProperties
+              Type: GridLayoutProperties
+              DisplayName: {"NamespaceIndex":7,"TextId":"GridLayoutPropertiesDisplayName"}
+              Children:
+              - Name: ColumnSpan
+                Type: BaseDataVariableType
+                DataType: Int32
+                Value: 2
+                Children:
+                - Name: ExpressionEvaluator1
+                  Type: ExpressionEvaluator
+                  Children:
+                  - Name: Expression
+                    Type: BaseDataVariableType
+                    DataType: String
+                    ReferenceType: HasParameter
+                    ModellingRule: Optional
+                    Value: "if({#WindowWidth} >= 1100, 2, if({#WindowWidth} >= 700, 5, 10))"
+                  - Name: ns=5;SourceWindowWidth
+                    Type: BaseDataVariableType
+                    DataType: BaseDataType
+                    ReferenceType: HasSource
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "{Window}/Width"
+              - Name: RowStart
+                Type: BaseDataVariableType
+                DataType: Int32
+                ModellingRule: Optional
+                Value: -1
+          - Name: Card2
+            Type: Card
+            DisplayName: {"LocaleId":"en-US","Text":"Batch"}
+            Children:
+            - Name: Background
+              Type: Background
+              Children:
+              - Name: BorderLeft
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderRight
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderTop
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderBottom
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+            - Name: Content
+              Type: ColumnLayout
+              Children:
+              - Name: CardDescriptionText
+                Type: Label
+                Children:
+                - Name: Text
+                  Type: BaseDataVariableType
+                  DataType: LocalizedText
+                  Children:
+                  - Name: StringFormatter1
+                    Type: StringFormatter
+                    Children:
+                    - Name: Source0
+                      Type: BaseDataVariableType
+                      DataType: BaseDataType
+                      ReferenceType: HasSource
+                      Children:
+                      - Name: DynamicLink
+                        Type: DynamicLink
+                        DataType: NodePath
+                        Value: "../../../../..@DisplayName"
+              - Name: ValueToDispay
+                Type: RowLayout
+                Children:
+                - Name: CurrentValue
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueToDisplay"
+                  - Name: Style
+                    Type: BaseDataVariableType
+                    DataType: String
+                    ModellingRule: Optional
+                    Value: "Default"
+                - Name: EngineeringUinitText
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueAddInfo"
+            - Name: DataPointer
+              Type: NodePointer
+              DataType: NodeId
+              Children:
+              - Name: Kind
+                Type: PropertyType
+                DataType: NodeId
+            - Name: ValueAddInfo
+              Type: BaseDataVariableType
+              DataType: String
+            - Name: ValueToDisplay
+              Type: BaseDataVariableType
+              DataType: String
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{RowItem}/CurrentBatchId"
+                Children:
+                - Name: Mode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkMode
+                  ModellingRule: Optional
+                  Value: 2
+            - Name: ns=7;GridLayoutProperties
+              Type: GridLayoutProperties
+              DisplayName: {"NamespaceIndex":7,"TextId":"GridLayoutPropertiesDisplayName"}
+              Children:
+              - Name: ColumnSpan
+                Type: BaseDataVariableType
+                DataType: Int32
+                Value: 2
+                Children:
+                - Name: ExpressionEvaluator1
+                  Type: ExpressionEvaluator
+                  Children:
+                  - Name: Expression
+                    Type: BaseDataVariableType
+                    DataType: String
+                    ReferenceType: HasParameter
+                    ModellingRule: Optional
+                    Value: "if({#WindowWidth} >= 1100, 2, if({#WindowWidth} >= 700, 5, 10))"
+                  - Name: ns=5;SourceWindowWidth
+                    Type: BaseDataVariableType
+                    DataType: BaseDataType
+                    ReferenceType: HasSource
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "{Window}/Width"
+          - Name: Card3
+            Type: Card
+            DisplayName: {"LocaleId":"en-US","Text":"Cycles today"}
+            Children:
+            - Name: Background
+              Type: Background
+              Children:
+              - Name: BorderLeft
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderRight
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderTop
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderBottom
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+            - Name: Content
+              Type: ColumnLayout
+              Children:
+              - Name: CardDescriptionText
+                Type: Label
+                Children:
+                - Name: Text
+                  Type: BaseDataVariableType
+                  DataType: LocalizedText
+                  Children:
+                  - Name: StringFormatter1
+                    Type: StringFormatter
+                    Children:
+                    - Name: Source0
+                      Type: BaseDataVariableType
+                      DataType: BaseDataType
+                      ReferenceType: HasSource
+                      Children:
+                      - Name: DynamicLink
+                        Type: DynamicLink
+                        DataType: NodePath
+                        Value: "../../../../..@DisplayName"
+              - Name: ValueToDispay
+                Type: RowLayout
+                Children:
+                - Name: CurrentValue
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueToDisplay"
+                - Name: EngineeringUinitText
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueAddInfo"
+            - Name: DataPointer
+              Type: NodePointer
+              DataType: NodeId
+              Children:
+              - Name: Kind
+                Type: PropertyType
+                DataType: NodeId
+            - Name: ValueAddInfo
+              Type: BaseDataVariableType
+              DataType: String
+            - Name: ValueToDisplay
+              Type: BaseDataVariableType
+              DataType: String
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{RowItem}/CyclesCompletedToday"
+                Children:
+                - Name: Mode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkMode
+                  ModellingRule: Optional
+                  Value: 2
+            - Name: ns=7;GridLayoutProperties
+              Type: GridLayoutProperties
+              DisplayName: {"NamespaceIndex":7,"TextId":"GridLayoutPropertiesDisplayName"}
+              Children:
+              - Name: ColumnSpan
+                Type: BaseDataVariableType
+                DataType: Int32
+                Value: 2
+                Children:
+                - Name: ExpressionEvaluator1
+                  Type: ExpressionEvaluator
+                  Children:
+                  - Name: Expression
+                    Type: BaseDataVariableType
+                    DataType: String
+                    ReferenceType: HasParameter
+                    ModellingRule: Optional
+                    Value: "if({#WindowWidth} >= 1100, 2, if({#WindowWidth} >= 700, 5, 10))"
+                  - Name: ns=5;SourceWindowWidth
+                    Type: BaseDataVariableType
+                    DataType: BaseDataType
+                    ReferenceType: HasSource
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "{Window}/Width"
+          - Name: Card4
+            Type: Card
+            DisplayName: {"LocaleId":"en-US","Text":"Power"}
+            Children:
+            - Name: Background
+              Type: Background
+              Children:
+              - Name: BorderLeft
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderRight
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderTop
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderBottom
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+            - Name: Content
+              Type: ColumnLayout
+              Children:
+              - Name: CardDescriptionText
+                Type: Label
+                Children:
+                - Name: Text
+                  Type: BaseDataVariableType
+                  DataType: LocalizedText
+                  Children:
+                  - Name: StringFormatter1
+                    Type: StringFormatter
+                    Children:
+                    - Name: Source0
+                      Type: BaseDataVariableType
+                      DataType: BaseDataType
+                      ReferenceType: HasSource
+                      Children:
+                      - Name: DynamicLink
+                        Type: DynamicLink
+                        DataType: NodePath
+                        Value: "../../../../..@DisplayName"
+              - Name: ValueToDispay
+                Type: RowLayout
+                Children:
+                - Name: CurrentValue
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueToDisplay"
+                - Name: EngineeringUinitText
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueAddInfo"
+            - Name: DataPointer
+              Type: NodePointer
+              DataType: NodeId
+              Children:
+              - Name: Kind
+                Type: PropertyType
+                DataType: NodeId
+            - Name: ValueAddInfo
+              Type: BaseDataVariableType
+              DataType: String
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{RowItem}/PowerDraw/EngineeringUnits/DisplayName"
+                Children:
+                - Name: Mode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkMode
+                  ModellingRule: Optional
+                  Value: 2
+                - Name: EUMode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkEUMode
+            - Name: ValueToDisplay
+              Type: BaseDataVariableType
+              DataType: String
+              Children:
+              - Name: StringFormatter1
+                Type: StringFormatter
+                Children:
+                - Name: Format
+                  Type: BaseDataVariableType
+                  DataType: LocalizedText
+                  ReferenceType: HasParameter
+                  ModellingRule: Optional
+                  Value: {"LocaleId":"","Text":"{0:n1}"}
+                - Name: ns=5;Source0
+                  Type: BaseDataVariableType
+                  DataType: BaseDataType
+                  ReferenceType: HasSource
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{RowItem}/PowerDraw"
+                    Children:
+                    - Name: Mode
+                      Type: BaseVariableType
+                      DataType: DynamicLinkMode
+                      ModellingRule: Optional
+                      Value: 2
+                - Name: Mode
+                  Type: PropertyType
+                  DataType: DynamicLinkMode
+                  ReferenceType: HasComponent
+                  ModellingRule: Optional
+                  Value: 2
+            - Name: ns=7;GridLayoutProperties
+              Type: GridLayoutProperties
+              DisplayName: {"NamespaceIndex":7,"TextId":"GridLayoutPropertiesDisplayName"}
+              Children:
+              - Name: ColumnSpan
+                Type: BaseDataVariableType
+                DataType: Int32
+                Value: 2
+                Children:
+                - Name: ExpressionEvaluator1
+                  Type: ExpressionEvaluator
+                  Children:
+                  - Name: Expression
+                    Type: BaseDataVariableType
+                    DataType: String
+                    ReferenceType: HasParameter
+                    ModellingRule: Optional
+                    Value: "if({#WindowWidth} >= 1100, 2, if({#WindowWidth} >= 700, 5, 10))"
+                  - Name: ns=5;SourceWindowWidth
+                    Type: BaseDataVariableType
+                    DataType: BaseDataType
+                    ReferenceType: HasSource
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "{Window}/Width"
+          - Name: Card5
+            Type: Card
+            DisplayName: {"LocaleId":"en-US","Text":"Uptime"}
+            Children:
+            - Name: Background
+              Type: Background
+              Children:
+              - Name: BorderLeft
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderRight
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderTop
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+              - Name: BorderBottom
+                Type: Border
+                Children:
+                - Name: LineColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#c7d0d5"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Line2"
+            - Name: Content
+              Type: ColumnLayout
+              Children:
+              - Name: CardDescriptionText
+                Type: Label
+                Children:
+                - Name: Text
+                  Type: BaseDataVariableType
+                  DataType: LocalizedText
+                  Children:
+                  - Name: StringFormatter1
+                    Type: StringFormatter
+                    Children:
+                    - Name: Source0
+                      Type: BaseDataVariableType
+                      DataType: BaseDataType
+                      ReferenceType: HasSource
+                      Children:
+                      - Name: DynamicLink
+                        Type: DynamicLink
+                        DataType: NodePath
+                        Value: "../../../../..@DisplayName"
+              - Name: ValueToDispay
+                Type: RowLayout
+                Children:
+                - Name: CurrentValue
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueToDisplay"
+                - Name: EngineeringUinitText
+                  Type: Label
+                  Children:
+                  - Name: Text
+                    Type: BaseDataVariableType
+                    DataType: LocalizedText
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "../../../../ValueAddInfo"
+            - Name: DataPointer
+              Type: NodePointer
+              DataType: NodeId
+              Children:
+              - Name: Kind
+                Type: PropertyType
+                DataType: NodeId
+            - Name: ValueAddInfo
+              Type: BaseDataVariableType
+              DataType: String
+              Value: "s"
+            - Name: ValueToDisplay
+              Type: BaseDataVariableType
+              DataType: String
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{RowItem}/UptimeSeconds"
+                Children:
+                - Name: Mode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkMode
+                  ModellingRule: Optional
+                  Value: 2
+            - Name: ns=7;GridLayoutProperties
+              Type: GridLayoutProperties
+              DisplayName: {"NamespaceIndex":7,"TextId":"GridLayoutPropertiesDisplayName"}
+              Children:
+              - Name: ColumnSpan
+                Type: BaseDataVariableType
+                DataType: Int32
+                Value: 2
+                Children:
+                - Name: ExpressionEvaluator1
+                  Type: ExpressionEvaluator
+                  Children:
+                  - Name: Expression
+                    Type: BaseDataVariableType
+                    DataType: String
+                    ReferenceType: HasParameter
+                    ModellingRule: Optional
+                    Value: "if({#WindowWidth} >= 1100, 2, if({#WindowWidth} >= 700, 5, 10))"
+                  - Name: ns=5;SourceWindowWidth
+                    Type: BaseDataVariableType
+                    DataType: BaseDataType
+                    ReferenceType: HasSource
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "{Window}/Width"
+          - Name: HorizontalGap
+            Type: BaseDataVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 16.0
+          - Name: VerticalGap
+            Type: BaseDataVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 16.0
+        - Name: StartCycle
+          Type: BaseButton
+          DisplayName: {"LocaleId":"en-US","Text":"Start"}
+          Children:
+          - Name: Background
+            Type: Rectangle
+          - Name: ActionButton
+            Type: Button
+            Children:
+            - Name: MouseClickEventHandler1
+              Type: EventHandler
+              Children:
+              - Name: ListenEventType
+                Type: PropertyType
+                DataType: NodeId
+                Value: "/Types/EventTypes/BaseEventType/MouseEvent/MouseClickEvent"
+              - Name: MethodsToCall
+                Type: BaseObjectType
+                Children:
+                - Name: MethodContainer1
+                  Type: BaseObjectType
+                  Children:
+                  - Name: ns=5;ObjectPointer
+                    Type: NodePointer
+                    DataType: NodeId
+                    Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/OvenSimulationLogic"
+                    Children:
+                    - Name: Kind
+                      Type: PropertyType
+                      DataType: NodeId
+                      Value: "/Types/ObjectTypes/BaseObjectType"
+                  - Name: ns=5;Method
+                    Type: BaseDataVariableType
+                    DataType: String
+                    Value: "ToggleCycle"
+              - Name: EventArguments
+                Type: MouseClickEvent
+                Children:
+                - Name: EventId
+                  Type: PropertyType
+                  DataType: ByteString
+                - Name: EventType
+                  Type: PropertyType
+                  DataType: NodeId
+                - Name: SourceNode
+                  Type: PropertyType
+                  DataType: NodeId
+                - Name: SourceName
+                  Type: PropertyType
+                  DataType: String
+                - Name: Time
+                  Type: PropertyType
+                  DataType: UtcTime
+                - Name: ReceiveTime
+                  Type: PropertyType
+                  DataType: UtcTime
+                - Name: Message
+                  Type: PropertyType
+                  DataType: LocalizedText
+                - Name: Severity
+                  Type: PropertyType
+                  DataType: UInt16
+          - Name: Content
+            Type: RowLayout
+            Children:
+            - Name: ButtonText
+              Type: Label
+              Children:
+              - Name: Text
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+                Children:
+                - Name: DynamicLink
+                  Type: DynamicLink
+                  DataType: NodePath
+                  Value: "../../..@DisplayName"
+              - Name: Style
+                Type: BaseDataVariableType
+                DataType: String
+                Value: "Default"
+              - Name: Visible
+                Type: BaseDataVariableType
+                DataType: Boolean
+                Value: true
+                Children:
+                - Name: ExpressionEvaluator1
+                  Type: ExpressionEvaluator
+                  Children:
+                  - Name: Expression
+                    Type: BaseDataVariableType
+                    DataType: String
+                    ReferenceType: HasParameter
+                    ModellingRule: Optional
+                    Value: "{0} == 0"
+                  - Name: Source0
+                    Type: BaseDataVariableType
+                    DataType: BaseDataType
+                    ReferenceType: HasSource
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "{RowItem}/ExecutionState"
+            - Name: StopText
+              Type: Label
+              Children:
+              - Name: Text
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+                ModellingRule: Optional
+                Value: {"LocaleId":"en-US","Text":"Stop"}
+              - Name: Style
+                Type: BaseDataVariableType
+                DataType: String
+                ModellingRule: Optional
+                Value: "Default"
+              - Name: Visible
+                Type: BaseDataVariableType
+                DataType: Boolean
+                Value: true
+                Children:
+                - Name: ExpressionEvaluator1
+                  Type: ExpressionEvaluator
+                  Children:
+                  - Name: Expression
+                    Type: BaseDataVariableType
+                    DataType: String
+                    ReferenceType: HasParameter
+                    ModellingRule: Optional
+                    Value: "{0} != 0"
+                  - Name: Source0
+                    Type: BaseDataVariableType
+                    DataType: BaseDataType
+                    ReferenceType: HasSource
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+                      Value: "{RowItem}/ExecutionState"
+          - Name: Visible
+            Type: BaseDataVariableType
+            DataType: Boolean
+            Value: true
+          - Name: HorizontalAlignment
+            Type: BaseVariableType
+            DataType: HorizontalAlignment
+            ModellingRule: Optional
+        - Name: EchartOvenData
+          Type: Panel
+          Children:
+          - Name: Background
+            Type: Background
+            Children:
+            - Name: BorderLeft
+              Type: Border
+              Children:
+              - Name: LineColor
+                Type: BaseDataVariableType
+                DataType: Color
+                Value: "#c7d0d5"
+                Children:
+                - Name: DynamicLink
+                  Type: DynamicLink
+                  DataType: NodePath
+                  Value: "{Session}/StyleSheet/Line2"
+            - Name: BorderRight
+              Type: Border
+              Children:
+              - Name: LineColor
+                Type: BaseDataVariableType
+                DataType: Color
+                Value: "#c7d0d5"
+                Children:
+                - Name: DynamicLink
+                  Type: DynamicLink
+                  DataType: NodePath
+                  Value: "{Session}/StyleSheet/Line2"
+            - Name: BorderTop
+              Type: Border
+              Children:
+              - Name: LineColor
+                Type: BaseDataVariableType
+                DataType: Color
+                Value: "#c7d0d5"
+                Children:
+                - Name: DynamicLink
+                  Type: DynamicLink
+                  DataType: NodePath
+                  Value: "{Session}/StyleSheet/Line2"
+            - Name: BorderBottom
+              Type: Border
+              Children:
+              - Name: LineColor
+                Type: BaseDataVariableType
+                DataType: Color
+                Value: "#c7d0d5"
+                Children:
+                - Name: DynamicLink
+                  Type: DynamicLink
+                  DataType: NodePath
+                  Value: "{Session}/StyleSheet/Line2"
+            - Name: BorderThickness
+              Type: BaseDataVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 1.0
+          - Name: EchartData
+            Type: WebBrowser
+            Children:
+            - Name: URL
+              Type: BaseDataVariableType
+              DataType: ResourceUri
+            - Class: Reference
+              Target: ns=7;i=354
+              Direction: Forward
+            - Class: Reference
+              Target: ns=7;i=356
+              Direction: Forward
+            - Class: Reference
+              Target: ns=7;i=358
+              Direction: Forward
+            - Name: HorizontalAlignment
+              Type: BaseVariableType
+              DataType: HorizontalAlignment
+              ModellingRule: Optional
+              Value: 3
+            - Name: VerticalAlignment
+              Type: BaseVariableType
+              DataType: VerticalAlignment
+              ModellingRule: Optional
+              Value: 3
+            - Name: LeftMargin
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 1.0
+            - Name: TopMargin
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 1.0
+            - Name: RightMargin
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 1.0
+            - Name: BottomMargin
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 1.0
+          - Name: HorizontalAlignment
+            Type: BaseVariableType
+            DataType: HorizontalAlignment
+            ModellingRule: Optional
+            Value: 3
+          - Name: EchartOvenDataLogic
+            Type: NetLogic
+          - Name: Height
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 496.0
           - Name: VerticalAlignment
             Type: BaseVariableType
             DataType: VerticalAlignment
-            ModellingRule: Optional
-            Value: 3
-          - Name: LeftMargin
-            Type: BaseVariableType
-            DataType: Size
-            ModellingRule: Optional
-            Value: 1.0
-          - Name: TopMargin
-            Type: BaseVariableType
-            DataType: Size
-            ModellingRule: Optional
-            Value: 1.0
-          - Name: RightMargin
-            Type: BaseVariableType
-            DataType: Size
-            ModellingRule: Optional
-            Value: 1.0
-          - Name: BottomMargin
-            Type: BaseVariableType
-            DataType: Size
-            ModellingRule: Optional
-            Value: 1.0
-        - Name: HorizontalAlignment
-          Type: BaseVariableType
-          DataType: HorizontalAlignment
+            Children:
+            - Name: ConditionalConverter1
+              Type: ConditionalConverter
+              Children:
+              - Name: Condition
+                Type: BaseDataVariableType
+                DataType: Boolean
+                ReferenceType: HasSource
+                Children:
+                - Name: ExpressionEvaluator1
+                  Type: ExpressionEvaluator
+                  Children:
+                  - Name: Expression
+                    Type: BaseDataVariableType
+                    DataType: String
+                    ReferenceType: HasParameter
+                    ModellingRule: Optional
+                    Value: "{#WindowWidth}>=1280"
+                  - Name: ns=5;SourceWindowWidth
+                    Type: BaseDataVariableType
+                    DataType: BaseDataType
+                    ReferenceType: HasSource
+                    Children:
+                    - Name: DynamicLink
+                      Type: DynamicLink
+                      DataType: NodePath
+              - Name: TrueValue
+                Type: BaseDataVariableType
+                DataType: VerticalAlignment
+                ReferenceType: HasParameter
+                ModellingRule: Optional
+                Value: 3
+              - Name: FalseValue
+                Type: BaseDataVariableType
+                DataType: VerticalAlignment
+                ReferenceType: HasParameter
+                ModellingRule: Optional
+        - Name: VerticalGap
+          Type: BaseDataVariableType
+          DataType: Size
           ModellingRule: Optional
-          Value: 3
-        - Name: VerticalAlignment
-          Type: BaseVariableType
-          DataType: VerticalAlignment
-          ModellingRule: Optional
-          Value: 3
-        - Name: EchartOvenDataLogic
-          Type: NetLogic
-      - Name: VerticalGap
-        Type: BaseDataVariableType
-        DataType: Size
-        ModellingRule: Optional
-        Value: 16.0
+          Value: 16.0
   - Name: HorizontalAlignment
     Type: BaseVariableType
     DataType: HorizontalAlignment
@@ -1196,6 +1565,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderRight
       Type: Border
       Children:
@@ -1203,6 +1577,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderTop
       Type: Border
       Children:
@@ -1210,6 +1589,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderBottom
       Type: Border
       Children:
@@ -1217,6 +1601,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
   - Name: SelectedRecipeID
     Type: BaseDataVariableType
     DataType: RecipeId
@@ -1669,6 +2058,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderRight
       Type: Border
       Children:
@@ -1676,6 +2070,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderTop
       Type: Border
       Children:
@@ -1683,6 +2082,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderBottom
       Type: Border
       Children:
@@ -1690,6 +2094,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
   - Name: HorizontalAlignment
     Type: BaseVariableType
     DataType: HorizontalAlignment
@@ -2074,6 +2483,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderRight
       Type: Border
       Children:
@@ -2081,6 +2495,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderTop
       Type: Border
       Children:
@@ -2088,6 +2507,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderBottom
       Type: Border
       Children:
@@ -2095,6 +2519,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderThickness
       Type: BaseDataVariableType
       DataType: Size
@@ -2331,6 +2760,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderRight
       Type: Border
       Children:
@@ -2338,6 +2772,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderTop
       Type: Border
       Children:
@@ -2345,6 +2784,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderBottom
       Type: Border
       Children:
@@ -2352,6 +2796,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderThickness
       Type: BaseDataVariableType
       DataType: Size

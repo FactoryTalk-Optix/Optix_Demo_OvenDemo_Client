@@ -32,6 +32,11 @@ Children:
       Type: BaseDataVariableType
       DataType: Color
       Value: "#c7d0d5"
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "{Session}/StyleSheet/Line2"
   - Name: BorderRight
     Type: Border
     Children:
@@ -48,6 +53,11 @@ Children:
       Type: BaseDataVariableType
       DataType: Color
       Value: "#c7d0d5"
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "{Session}/StyleSheet/Line2"
   - Name: Width
     Type: BaseVariableType
     DataType: Size
@@ -83,6 +93,11 @@ Children:
       Type: BaseDataVariableType
       DataType: Color
       Value: "#c7d0d5"
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "{Session}/StyleSheet/Line2"
   - Name: BorderBottom
     Type: Border
     Children:
@@ -109,6 +124,11 @@ Children:
       Type: BaseDataVariableType
       DataType: Color
       Value: "#c7d0d5"
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "{Session}/StyleSheet/Line2"
     - Name: BottomMargin
       Type: BaseVariableType
       DataType: Size
@@ -142,6 +162,11 @@ Children:
     Type: BaseDataVariableType
     DataType: Color
     Value: "#c7d0d5"
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "{Session}/StyleSheet/Line2"
 - Name: BaseButton
   Id: g=803bfe4bdc8df9fe2c2f134818b1b775
   Supertype: Panel
@@ -350,6 +375,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
       - Name: Visible
         Type: BaseDataVariableType
         DataType: Boolean
@@ -365,6 +395,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderTop
       Type: Border
       Children:
@@ -376,6 +411,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderBottom
       Type: Border
       Children:
@@ -387,6 +427,11 @@ Children:
         Type: BaseDataVariableType
         DataType: Color
         Value: "#c7d0d5"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Session}/StyleSheet/Line2"
     - Name: BorderThickness
       Type: BaseDataVariableType
       DataType: Size
@@ -484,6 +529,11 @@ Children:
             Type: DynamicLink
             DataType: NodePath
             Value: "../../../../ValueToDisplay"
+        - Name: WordWrap
+          Type: BaseDataVariableType
+          DataType: Boolean
+          ModellingRule: Optional
+          Value: true
       - Name: EngineeringUinitText
         Type: Label
         Children:
@@ -515,6 +565,11 @@ Children:
         DataType: HorizontalAlignment
         ModellingRule: Optional
         Value: 3
+      - Name: Wrap
+        Type: BaseDataVariableType
+        DataType: Boolean
+        ModellingRule: Optional
+        Value: true
     - Name: VerticalGap
       Type: BaseDataVariableType
       DataType: Size
@@ -801,6 +856,11 @@ Children:
       DataType: Color
       ModellingRule: Optional
       Value: "#3b3b3b"
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "{Session}/StyleSheet/Text"
     - Name: LeftMargin
       Type: BaseVariableType
       DataType: Size

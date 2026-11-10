@@ -38,6 +38,149 @@ public class DesignTimeNetLogic1 : BaseNetLogic
         BuildRecipesEmptyHint();
     }
 
+    // Re-runnable: everything needed for a working Dark theme, same palette as the supervisor.
+    [ExportMethod]
+    public void FixDarkTheme()
+    {
+        AssignWebSessionType();
+        ApplySoftDarkPalette();
+        StandardizeLabelFonts();
+        FixDarkThemeOverrides();
+    }
+
+    // Re-runnable: styles that lacked a Dark value and fixed colors that ignored the theme (Light values stay the same).
+    [ExportMethod]
+    public void FixDarkThemeOverrides()
+    {
+        var surface = Project.Current.GetVariable("UI/StyleSheets/Dark/Surface");
+        var text = Project.Current.GetVariable("UI/StyleSheets/Dark/Text");
+        var changed = 0;
+
+        var background = Project.Current.GetVariable("UI/StyleSheets/Dark/RectangleStyles/Background/FillColor");
+        if (background != null && surface != null) { background.SetDynamicLink(surface); changed++; }
+
+        var navItem = Project.Current.GetVariable("UI/StyleSheets/Dark/RectangleStyles/NavBarDefault/FillColor");
+        if (navItem != null) { navItem.Value = 0x00FFFFFFu; changed++; }
+
+        var navigation = Project.Current.Get("UI/StyleSheets/Dark/NavigationPanelStyles/Default");
+        if (navigation != null && surface != null)
+        {
+            var fill = navigation.GetVariable("BackgroundColor");
+            if (fill == null)
+            {
+                fill = InformationModel.MakeVariable("BackgroundColor", FTOptix.Core.DataTypes.Color);
+                navigation.Add(fill);
+            }
+            fill.SetDynamicLink(surface);
+            changed++;
+        }
+
+        if (Project.Current.Get("UI/StyleSheets/Dark/InputBoxStyles/InputBoxStyle1") is InputBoxStyle input && text != null)
+        {
+            input.TextColorVariable.SetDynamicLink(text);
+            changed++;
+        }
+
+        changed += FollowThemeInIconConverters();
+
+        // Fixed colors copied from the Light theme: inactive nav icons and the borders of every card and row.
+        var links = new System.Collections.Generic.Dictionary<uint, string>
+        {
+            [0xFF3B3B3B] = "{Session}/StyleSheet/Text",
+            [0xFFC7D0D5] = "{Session}/StyleSheet/Line2",
+        };
+        foreach (var variable in Descendants(Project.Current.Get("UI")).OfType<IUAVariable>().ToList())
+        {
+            if (variable.DataType != FTOptix.Core.DataTypes.Color) continue;
+            if (variable.Children.Any(child => child is DynamicLink || child is IUAObject)) continue;
+            if (IsStyleSheetNode(variable)) continue;
+            var argb = ArgbOf(variable);
+            if (!argb.HasValue || !links.TryGetValue(argb.Value, out var path)) continue;
+            AddSourceLink(variable, path);
+            changed++;
+        }
+        Log.Info(Category, $"Dark theme overrides fixed: {changed} nodes changed.");
+    }
+
+    // Inactive icon color "dark grey" is unreadable on Dark; converter parameters cannot be linked, so use a mid grey readable on both themes.
+    private static int FollowThemeInIconConverters()
+    {
+        var count = 0;
+        foreach (var converter in Descendants(Project.Current.Get("UI")).OfType<ConditionalConverter>().ToList())
+        {
+            if (IsStyleSheetNode(converter) || converter.Owner is not IUAVariable { BrowseName: "DynamicColor" }) continue;
+            var offValue = converter.GetVariable("FalseValue");
+            if (offValue == null || ArgbOf(offValue) != 0xFF3B3B3B) continue;
+            offValue.Value = 0xFF8693A5u;
+            count++;
+        }
+        return count;
+    }
+
+    private static bool IsStyleSheetNode(IUANode node)
+    {
+        for (var current = node; current != null; current = current.Owner)
+            if (current.BrowseName == "StyleSheets" || current.BrowseName == "BaseStyleSheet" || current.BrowseName == "UISessionObject")
+                return true;
+        return false;
+    }
+
+    private static uint? ArgbOf(IUAVariable variable)
+    {
+        var value = variable.Value.Value;
+        if (value is uint argb) return argb;
+        if (value is Color color) return color.ARGB;
+        return null;
+    }
+
+    // Re-runnable: only the native engine had UISessionObject (LightDarkTheme and its transitions), so the theme button did nothing in the WebUI.
+    [ExportMethod]
+    public void AssignWebSessionType()
+    {
+        var session = Project.Current.Get("UI/UISessionObject");
+        var engine = Project.Current.Get("UI/WebPresentationEngine");
+        if (session == null || engine == null)
+        {
+            Log.Error(Category, "UI/UISessionObject or UI/WebPresentationEngine not found.");
+            return;
+        }
+        var pointer = engine.GetVariable("Session");
+        if (pointer == null)
+        {
+            pointer = InformationModel.MakeVariable<NodePointer>("Session", OpcUa.DataTypes.NodeId);
+            ((NodePointer)pointer).Kind = FTOptix.UI.ObjectTypes.UISession;
+            engine.Add(pointer);
+        }
+        pointer.Value = session.NodeId;
+        Log.Info(Category, "Web sessions now use UISessionObject.");
+    }
+
+    // Re-runnable: rewrites the base colors of the Dark stylesheet (tokens linked to them, e.g. Accent -> Brand400, follow).
+    [ExportMethod]
+    public void ApplySoftDarkPalette()
+    {
+        var palette = new System.Collections.Generic.Dictionary<string, uint>
+        {
+            ["Bg"] = 0xFF2B3646, ["Surface"] = 0xFF354357, ["SurfaceSoft"] = 0xFF425269,
+            ["Text"] = 0xFFF1F5F9, ["TextSoft"] = 0xFFC0CDDC,
+            ["Line"] = 0xFF5B6E86, ["Line2"] = 0xFF4B5D73,
+            ["Brand400"] = 0xFF3F86D6, ["AccentColor"] = 0xFF7FB6F5,
+            ["Ok"] = 0xFF3AA76D, ["Warn"] = 0xFFF0C040, ["Danger"] = 0xFFE0605B,
+            ["HighColor"] = 0xFF5A2F33, ["HighText"] = 0xFFFFB3AD,
+            ["MedColor"] = 0xFF5A4A26, ["MedText"] = 0xFFFFD78A,
+            ["InfoColor"] = 0xFF3D4C61, ["InfoText"] = 0xFFC5D0DE,
+            ["GoodColor"] = 0xFF25503A, ["GoodText"] = 0xFFA8E6C0,
+        };
+        var missing = new System.Collections.Generic.List<string>();
+        foreach (var token in palette)
+        {
+            var variable = Project.Current.GetVariable("UI/StyleSheets/Dark/" + token.Key);
+            if (variable == null) missing.Add(token.Key);
+            else variable.Value = token.Value;
+        }
+        Log.Info(Category, $"Dark palette applied ({palette.Count - missing.Count} colors){(missing.Count > 0 ? ", missing: " + string.Join(", ", missing) : string.Empty)}.");
+    }
+
     // Re-runnable: keeps OvenType identical to the supervisor's, which receives these fields from the oven (OvenSimulationLogic used to add them only at runtime).
     [ExportMethod]
     public void AddAnalyticsFieldsToOvenType()

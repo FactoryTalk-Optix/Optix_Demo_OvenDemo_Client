@@ -200,6 +200,15 @@ Children:
     ValueRank: OneDimension
     ArrayDimensions: [0]
     Value: ["127.0.0.1:8765"]
+  - Name: Session
+    Type: NodePointer
+    DataType: NodeId
+    Value: "/Objects/Optix_Demo_OvenDemo_Client/UI/UISessionObject"
+    Children:
+    - Name: Kind
+      Type: PropertyType
+      DataType: NodeId
+      Value: "/Types/ObjectTypes/BaseObjectType/SessionType/UISession"
 - Name: UISessionObject
   Id: g=cd24c0b9c32e00343aafa88334e107cf
   Supertype: UISession
@@ -292,71 +301,41 @@ Children:
     DataType: String
     ReferenceType: HasProperty
     AccessLevel: Read
-  - Name: Theme
+  - Class: Reference
+    Target: ns=7;i=1464
+    Direction: Forward
+  - Class: Reference
+    Target: ns=7;i=1472
+    Direction: Forward
+  - Class: Reference
+    Type: GeneratesEvent
+    Target: ns=7;i=1459
+  - Class: Reference
+    Type: GeneratesEvent
+    Target: ns=7;i=1468
+  - Name: LightDarkTheme
     Type: BaseDataVariableType
-    DataType: Theme
-  - Name: IconsColorization
-    Type: BaseDataVariableType
-    DataType: Color
-    Value: "#000000"
+    DataType: Boolean
+  - Name: LightDarkThemeTransitioned
+    Type: VariableTransitionEventDispatcher
     Children:
-    - Name: KeyValueConverter1
-      Type: ValueMapConverter
-      Children:
-      - Name: Source
-        Type: BaseDataVariableType
-        DataType: BaseDataType
-        ReferenceType: HasSource
-        Children:
-        - Name: DynamicLink
-          Type: DynamicLink
-          DataType: NodePath
-          Value: "../../../Theme"
-      - Name: ns=5;Pairs
-        Type: BaseObjectType
-        ModellingRule: None
-        Children:
-        - Name: Pair
-          Type: ValueMapPair
-          ModellingRule: None
-          Children:
-          - Name: Key
-            Type: BaseDataVariableType
-            DataType: UInt32
-            ModellingRule: None
-          - Name: Value
-            Type: BaseDataVariableType
-            DataType: Color
-            ModellingRule: None
-            Value: "#000000"
-        - Name: Pair1
-          Type: ValueMapPair
-          ModellingRule: None
-          Children:
-          - Name: Key
-            Type: BaseDataVariableType
-            DataType: UInt32
-            ModellingRule: None
-            Value: 1
-          - Name: Value
-            Type: BaseDataVariableType
-            DataType: Color
-            ModellingRule: None
-            Value: "#ffffff"
-  - Name: ThemeChanged
-    Type: VariableChangedEventDispatcher
-    Children:
+    - Name: Value
+      Type: BaseVariableType
+      DataType: Double
+    - Name: Transition
+      Type: BaseVariableType
+      DataType: VariableTransition
     - Name: VariableNodePath
       Type: BaseVariableType
       DataType: NodePath
-      Value: "../Theme"
-    - Name: VariableValueChangedEventHandler1
+      Value: "../LightDarkTheme"
+    - Name: VariableTransitionEventHandler1
       Type: EventHandler
       Children:
       - Name: ListenEventType
         Type: PropertyType
         DataType: NodeId
-        Value: "/Types/EventTypes/BaseEventType/VariableConditionEvent/VariableValueChangedEvent"
+        Value: "/Types/EventTypes/BaseEventType/VariableConditionEvent/VariableTransitionEvent"
       - Name: MethodsToCall
         Type: BaseObjectType
         Children:
@@ -387,62 +366,23 @@ Children:
               - Name: DynamicLink
                 Type: DynamicLink
                 DataType: NodePath
-                Value: "../../../../../../StyleSheet@Pointer@NodeId"
+                Value: "{Session}/StyleSheet@Pointer@NodeId"
             - Name: Value
               Type: BaseDataVariableType
-              DataType: NodeId
+              DataType: BaseDataType
               Description: {"NamespaceIndex":5,"TextId":"SetValueDescription"}
               Children:
-              - Name: KeyValueConverter1
-                Type: ValueMapConverter
-                Children:
-                - Name: Source
-                  Type: BaseDataVariableType
-                  DataType: BaseDataType
-                  ReferenceType: HasSource
-                  Children:
-                  - Name: DynamicLink
-                    Type: DynamicLink
-                    DataType: NodePath
-                    Value: "../../../../../../../../Theme"
-                - Name: ns=5;Pairs
-                  Type: BaseObjectType
-                  ModellingRule: None
-                  Children:
-                  - Name: Pair
-                    Type: ValueMapPair
-                    ModellingRule: None
-                    Children:
-                    - Name: Key
-                      Type: BaseDataVariableType
-                      DataType: Theme
-                      ModellingRule: None
-                    - Name: Value
-                      Type: BaseDataVariableType
-                      DataType: NodeId
-                      ModellingRule: None
-                      Value: {"IdType":2,"Id":"fee29353b7d1c38313297e993b5ada9d","Namespace":28}
-                  - Name: Pair1
-                    Type: ValueMapPair
-                    ModellingRule: None
-                    Children:
-                    - Name: Key
-                      Type: BaseDataVariableType
-                      DataType: Theme
-                      ModellingRule: None
-                      Value: 1
-                    - Name: Value
-                      Type: BaseDataVariableType
-                      DataType: NodeId
-                      ModellingRule: None
-                      Value: {"IdType":2,"Id":"8ec90ac22b2417b17eb0b10eb54bd8e9","Namespace":28}
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "/Objects/Optix_Demo_OvenDemo_Client/UI/StyleSheets/Light"
             - Name: ArrayIndex
               Type: BaseDataVariableType
               DataType: UInt32
               Description: {"NamespaceIndex":5,"TextId":"SetArrayIndexDescription"}
               ValueRank: ScalarOrOneDimension
       - Name: EventArguments
-        Type: VariableValueChangedEvent
+        Type: VariableTransitionEvent
         Children:
         - Name: VariableNodeId
           Type: BaseVariableType
@@ -477,18 +417,108 @@ Children:
         - Name: Severity
           Type: PropertyType
           DataType: UInt16
-  - Class: Reference
-    Target: ns=7;i=1464
-    Direction: Forward
-  - Class: Reference
-    Target: ns=7;i=1472
-    Direction: Forward
-  - Class: Reference
-    Type: GeneratesEvent
-    Target: ns=7;i=1459
-  - Class: Reference
-    Type: GeneratesEvent
-    Target: ns=7;i=1468
+  - Name: LightDarkThemeTransitioned1
+    Type: VariableTransitionEventDispatcher
+    Children:
+    - Name: Value
+      Type: BaseVariableType
+      DataType: Double
+      Value: 1.0
+    - Name: Transition
+      Type: BaseVariableType
+      DataType: VariableTransition
+    - Name: VariableNodePath
+      Type: BaseVariableType
+      DataType: NodePath
+      Value: "../LightDarkTheme"
+    - Name: VariableTransitionEventHandler1
+      Type: EventHandler
+      Children:
+      - Name: ListenEventType
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/EventTypes/BaseEventType/VariableConditionEvent/VariableTransitionEvent"
+      - Name: MethodsToCall
+        Type: BaseObjectType
+        Children:
+        - Name: MethodContainer1
+          Type: BaseObjectType
+          Children:
+          - Name: ns=5;ObjectPointer
+            Type: NodePointer
+            DataType: NodeId
+            Value: "/Objects/Commands/VariableCommands"
+            Children:
+            - Name: Kind
+              Type: PropertyType
+              DataType: NodeId
+              Value: "/Types/ObjectTypes/BaseObjectType"
+          - Name: ns=5;Method
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "Set"
+          - Name: InputArguments
+            Type: BaseObjectType
+            Children:
+            - Name: VariableToModify
+              Type: BaseDataVariableType
+              DataType: VariablePointer
+              Description: {"NamespaceIndex":5,"TextId":"SetVariableToModifyDescription"}
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{Session}/StyleSheet@Pointer@NodeId"
+            - Name: Value
+              Type: BaseDataVariableType
+              DataType: BaseDataType
+              Description: {"NamespaceIndex":5,"TextId":"SetValueDescription"}
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "/Objects/Optix_Demo_OvenDemo_Client/UI/StyleSheets/Dark"
+            - Name: ArrayIndex
+              Type: BaseDataVariableType
+              DataType: UInt32
+              Description: {"NamespaceIndex":5,"TextId":"SetArrayIndexDescription"}
+              ValueRank: ScalarOrOneDimension
+      - Name: EventArguments
+        Type: VariableTransitionEvent
+        Children:
+        - Name: VariableNodeId
+          Type: BaseVariableType
+          DataType: NodeId
+        - Name: NewValue
+          Type: BaseVariableType
+          DataType: BaseDataType
+        - Name: OldValue
+          Type: BaseVariableType
+          DataType: BaseDataType
+        - Name: EventId
+          Type: PropertyType
+          DataType: ByteString
+        - Name: EventType
+          Type: PropertyType
+          DataType: NodeId
+        - Name: SourceNode
+          Type: PropertyType
+          DataType: NodeId
+        - Name: SourceName
+          Type: PropertyType
+          DataType: String
+        - Name: Time
+          Type: PropertyType
+          DataType: UtcTime
+        - Name: ReceiveTime
+          Type: PropertyType
+          DataType: UtcTime
+        - Name: Message
+          Type: PropertyType
+          DataType: LocalizedText
+        - Name: Severity
+          Type: PropertyType
+          DataType: UInt16
 - Name: BaseStyleSheet
   Id: g=7dff6fe9f4830149eb7a8574bd08c0e4
   Supertype: StyleSheet
@@ -1665,6 +1695,11 @@ Children:
             Type: BaseDataVariableType
             DataType: Color
             Value: "#c7d0d5"
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Session}/StyleSheet/Line2"
         - Name: BorderRight
           Type: Border
           Children:
@@ -1672,6 +1707,11 @@ Children:
             Type: BaseDataVariableType
             DataType: Color
             Value: "#c7d0d5"
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Session}/StyleSheet/Line2"
           - Name: Visible
             Type: BaseDataVariableType
             DataType: Boolean
@@ -1684,6 +1724,11 @@ Children:
             Type: BaseDataVariableType
             DataType: Color
             Value: "#c7d0d5"
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Session}/StyleSheet/Line2"
         - Name: BorderBottom
           Type: Border
           Children:
@@ -1691,6 +1736,11 @@ Children:
             Type: BaseDataVariableType
             DataType: Color
             Value: "#c7d0d5"
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Session}/StyleSheet/Line2"
         - Name: BorderThickness
           Type: BaseDataVariableType
           DataType: Size
@@ -1831,6 +1881,11 @@ Children:
             Type: BaseDataVariableType
             DataType: Color
             Value: "#c7d0d5"
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Session}/StyleSheet/Line2"
         - Name: VerticalGap
           Type: BaseDataVariableType
           DataType: Size
@@ -3597,6 +3652,11 @@ Children:
               Type: BaseDataVariableType
               DataType: Color
               Value: "#c7d0d5"
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{Session}/StyleSheet/Line2"
           - Name: BorderRight
             Type: Border
             Children:
@@ -3608,6 +3668,11 @@ Children:
               Type: BaseDataVariableType
               DataType: Color
               Value: "#c7d0d5"
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{Session}/StyleSheet/Line2"
           - Name: BorderTop
             Type: Border
             Children:
@@ -3619,6 +3684,11 @@ Children:
               Type: BaseDataVariableType
               DataType: Color
               Value: "#c7d0d5"
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{Session}/StyleSheet/Line2"
           - Name: BorderBottom
             Type: Border
             Children:
@@ -3626,6 +3696,11 @@ Children:
               Type: BaseDataVariableType
               DataType: Color
               Value: "#c7d0d5"
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{Session}/StyleSheet/Line2"
             - Name: Visible
               Type: BaseDataVariableType
               DataType: Boolean
@@ -3730,6 +3805,28 @@ Children:
             DataType: VerticalAlignment
             ModellingRule: Optional
             Value: 2
+          - Name: Label1
+            Type: Label
+            Children:
+            - Name: Text
+              Type: BaseDataVariableType
+              DataType: LocalizedText
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{Window}/Height"
+          - Name: Label2
+            Type: Label
+            Children:
+            - Name: Text
+              Type: BaseDataVariableType
+              DataType: LocalizedText
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{Window}/WindowHeightLeft"
           - Name: EmptyPanel
             Type: Panel
             Children:
@@ -3753,6 +3850,157 @@ Children:
             DataType: Size
             ModellingRule: Optional
             Value: 16.0
+          - Name: Theme
+            Type: BaseButtonImage
+            Children:
+            - Name: Background
+              Type: Rectangle
+            - Name: ActionButton
+              Type: Button
+              Children:
+              - Name: MouseClickEventHandler1
+                Type: EventHandler
+                Children:
+                - Name: ListenEventType
+                  Type: PropertyType
+                  DataType: NodeId
+                  Value: "/Types/EventTypes/BaseEventType/MouseEvent/MouseClickEvent"
+                - Name: MethodsToCall
+                  Type: BaseObjectType
+                  Children:
+                  - Name: MethodContainer1
+                    Type: BaseObjectType
+                    Children:
+                    - Name: ns=5;ObjectPointer
+                      Type: NodePointer
+                      DataType: NodeId
+                      Value: "/Objects/Commands/VariableCommands"
+                      Children:
+                      - Name: Kind
+                        Type: PropertyType
+                        DataType: NodeId
+                        Value: "/Types/ObjectTypes/BaseObjectType"
+                    - Name: ns=5;Method
+                      Type: BaseDataVariableType
+                      DataType: String
+                      Value: "Toggle"
+                    - Name: InputArguments
+                      Type: BaseObjectType
+                      Children:
+                      - Name: VariableToModify
+                        Type: BaseDataVariableType
+                        DataType: VariablePointer
+                        Description: {"NamespaceIndex":5,"TextId":"ToggleVariableToModifyDescription"}
+                        Children:
+                        - Name: DynamicLink
+                          Type: DynamicLink
+                          DataType: NodePath
+                          Value: "{Session}/LightDarkTheme@NodeId"
+                      - Name: ArrayIndex
+                        Type: BaseDataVariableType
+                        DataType: UInt32
+                        Description: {"NamespaceIndex":5,"TextId":"ToggleArrayIndexDescription"}
+                        ValueRank: ScalarOrOneDimension
+                - Name: EventArguments
+                  Type: MouseClickEvent
+                  Children:
+                  - Name: EventId
+                    Type: PropertyType
+                    DataType: ByteString
+                  - Name: EventType
+                    Type: PropertyType
+                    DataType: NodeId
+                  - Name: SourceNode
+                    Type: PropertyType
+                    DataType: NodeId
+                  - Name: SourceName
+                    Type: PropertyType
+                    DataType: String
+                  - Name: Time
+                    Type: PropertyType
+                    DataType: UtcTime
+                  - Name: ReceiveTime
+                    Type: PropertyType
+                    DataType: UtcTime
+                  - Name: Message
+                    Type: PropertyType
+                    DataType: LocalizedText
+                  - Name: Severity
+                    Type: PropertyType
+                    DataType: UInt16
+            - Name: Content
+              Type: RowLayout
+              Children:
+              - Name: Icon
+                Type: Image
+                Children:
+                - Name: Path
+                  Type: BaseDataVariableType
+                  DataType: ResourceUri
+                  Value: "ns=28;%PROJECTDIR%/res/dark_mode.svg"
+                  Children:
+                  - Name: ConditionalConverter1
+                    Type: ConditionalConverter
+                    Children:
+                    - Name: Condition
+                      Type: BaseDataVariableType
+                      DataType: Boolean
+                      ReferenceType: HasSource
+                      Children:
+                      - Name: DynamicLink
+                        Type: DynamicLink
+                        DataType: NodePath
+                        Value: "{Session}/LightDarkTheme"
+                    - Name: TrueValue
+                      Type: BaseDataVariableType
+                      DataType: ResourceUri
+                      ReferenceType: HasParameter
+                      ModellingRule: Optional
+                      Value: "ns=28;%PROJECTDIR%/res/dark_mode.svg"
+                    - Name: FalseValue
+                      Type: BaseDataVariableType
+                      DataType: ResourceUri
+                      ReferenceType: HasParameter
+                      ModellingRule: Optional
+                      Value: "ns=28;%PROJECTDIR%/res/light_mode.svg"
+                - Name: FillMode
+                  Type: BaseDataVariableType
+                  DataType: ImageFillModeEnum
+                - Name: ColorizationMode
+                  Type: BaseDataVariableType
+                  DataType: ColorizationModeEnum
+                - Name: DynamicColor
+                  Type: BaseDataVariableType
+                  DataType: Color
+                  Value: "#000000"
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Session}/StyleSheet/Text"
+              - Name: ButtonText
+                Type: Label
+                Children:
+                - Name: Text
+                  Type: BaseDataVariableType
+                  DataType: LocalizedText
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "../../..@DisplayName"
+                - Name: Style
+                  Type: BaseDataVariableType
+                  DataType: String
+                  Value: "Default"
+                - Name: Visible
+                  Type: BaseDataVariableType
+                  DataType: Boolean
+                  ModellingRule: Optional
+            - Name: Visible
+              Type: BaseDataVariableType
+              DataType: Boolean
+              Value: true
           - Name: DateTime
             Type: Panel
             Children:
@@ -3843,6 +4091,11 @@ Children:
               DataType: VerticalAlignment
               ModellingRule: Optional
               Value: 2
+          - Name: HorizontalGap
+            Type: BaseDataVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 16.0
       - Name: BodyLoader
         Type: PanelLoader
         Children:
@@ -3887,12 +4140,12 @@ Children:
           DataType: Size
           ModellingRule: Optional
           Value: 16.0
-        - Name: RightMargin
+        - Name: BottomMargin
           Type: BaseVariableType
           DataType: Size
           ModellingRule: Optional
           Value: 16.0
-        - Name: BottomMargin
+        - Name: RightMargin
           Type: BaseVariableType
           DataType: Size
           ModellingRule: Optional
@@ -3907,6 +4160,28 @@ Children:
       DataType: VerticalAlignment
       ModellingRule: Optional
       Value: 3
+  - Name: WindowHeightLeft
+    Type: BaseDataVariableType
+    DataType: Size
+    Children:
+    - Name: ExpressionEvaluator1
+      Type: ExpressionEvaluator
+      Children:
+      - Name: Expression
+        Type: BaseDataVariableType
+        DataType: String
+        ReferenceType: HasParameter
+        ModellingRule: Optional
+        Value: "{#ActualWindowHeight} - 96"
+      - Name: ns=5;SourceActualWindowHeight
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "{Window}/Height"
 - File: Screens/Screens.yaml
 - File: Keyboards/Keyboards.yaml
 - File: UITypes/UITypes.yaml
