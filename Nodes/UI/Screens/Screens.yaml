@@ -83,25 +83,43 @@ Children:
         DataType: HorizontalAlignment
         ModellingRule: Optional
         Value: 3
-      - Name: Height
-        Type: BaseVariableType
-        DataType: Size
-        ModellingRule: Optional
-        Value: 384.0
-      - Name: VerticalAlignment
-        Type: BaseVariableType
-        DataType: VerticalAlignment
-        ModellingRule: Optional
-        Value: 3
       - Name: RowHeight
         Type: BaseDataVariableType
         DataType: Size
         Value: 640.0
         Children:
-        - Name: DynamicLink
-          Type: DynamicLink
-          DataType: NodePath
-          Value: "{Window}/WindowHeightLeft"
+        - Name: ExpressionEvaluator1
+          Type: ExpressionEvaluator
+          Children:
+          - Name: Expression
+            Type: BaseDataVariableType
+            DataType: String
+            ReferenceType: HasParameter
+            ModellingRule: Optional
+            Value: "if({#WindowWidth} >= 1100, 2, if({#WindowWidth} >= 700, 5, {#WindowHeightLeft} - 720 -96))"
+          - Name: ns=5;SourceWindowWidth
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Window}/Width"
+          - Name: ns=5;SourceWindowHeightLeft
+            Type: BaseDataVariableType
+            DataType: BaseDataType
+            ReferenceType: HasSource
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Window}/WindowHeightLeft"
+      - Name: VerticalAlignment
+        Type: BaseVariableType
+        DataType: VerticalAlignment
+        ModellingRule: Optional
+        Value: 3
 - Name: Alarms
   Id: g=2426e3f1265fecbd5c471726f1b350bf
   Supertype: Screen
@@ -1475,6 +1493,43 @@ Children:
                         Type: DynamicLink
                         DataType: NodePath
                         Value: "../../../../../../../MessageTextBox/Content/TextBox1/Text"
+                - Name: MethodContainer2
+                  Type: BaseObjectType
+                  Children:
+                  - Name: ns=5;ObjectPointer
+                    Type: NodePointer
+                    DataType: NodeId
+                    Value: "/Objects/Commands/VariableCommands"
+                    Children:
+                    - Name: Kind
+                      Type: PropertyType
+                      DataType: NodeId
+                      Value: "/Types/ObjectTypes/BaseObjectType"
+                  - Name: ns=5;Method
+                    Type: BaseDataVariableType
+                    DataType: String
+                    Value: "Set"
+                  - Name: InputArguments
+                    Type: BaseObjectType
+                    Children:
+                    - Name: VariableToModify
+                      Type: BaseDataVariableType
+                      DataType: VariablePointer
+                      Description: {"NamespaceIndex":5,"TextId":"SetVariableToModifyDescription"}
+                      Children:
+                      - Name: DynamicLink
+                        Type: DynamicLink
+                        DataType: NodePath
+                        Value: "../../../../../../../MessageTextBox/Content/TextBox1/Text"
+                    - Name: Value
+                      Type: BaseDataVariableType
+                      DataType: LocalizedText
+                      Description: {"NamespaceIndex":5,"TextId":"SetValueDescription"}
+                    - Name: ArrayIndex
+                      Type: BaseDataVariableType
+                      DataType: UInt32
+                      Description: {"NamespaceIndex":5,"TextId":"SetArrayIndexDescription"}
+                      ValueRank: ScalarOrOneDimension
               - Name: EventArguments
                 Type: MouseClickEvent
                 Children:

@@ -305,15 +305,11 @@ Children:
     DataType: Size
     ModellingRule: Optional
     Value: 800.0
-  - Name: Height
+  - Name: HorizontalAlignment
     Type: BaseVariableType
-    DataType: Size
-    Value: 640.0
-    Children:
-    - Name: DynamicLink
-      Type: DynamicLink
-      DataType: NodePath
-      Value: "{Window}/WindowHeightLeft"
+    DataType: HorizontalAlignment
+    ModellingRule: Optional
+    Value: 3
   - Name: ScrollViewContent
     Type: ScrollView
     Children:
@@ -342,16 +338,16 @@ Children:
     - Class: Reference
       Target: ns=7;i=1394
       Direction: Forward
-    - Name: HorizontalAlignment
+    - Name: Width
       Type: BaseVariableType
-      DataType: HorizontalAlignment
+      DataType: Size
       ModellingRule: Optional
-      Value: 3
-    - Name: VerticalAlignment
+      Value: 300.0
+    - Name: Height
       Type: BaseVariableType
-      DataType: VerticalAlignment
+      DataType: Size
       ModellingRule: Optional
-      Value: 3
+      Value: 300.0
     - Name: Cycle
       Type: Panel
       Children:
@@ -1481,7 +1477,7 @@ Children:
             Type: BaseVariableType
             DataType: Size
             ModellingRule: Optional
-            Value: 496.0
+            Value: 432.0
           - Name: VerticalAlignment
             Type: BaseVariableType
             DataType: VerticalAlignment
@@ -1527,11 +1523,39 @@ Children:
           DataType: Size
           ModellingRule: Optional
           Value: 16.0
-  - Name: HorizontalAlignment
+    - Name: HorizontalAlignment
+      Type: BaseVariableType
+      DataType: HorizontalAlignment
+      ModellingRule: Optional
+      Value: 3
+    - Name: VerticalAlignment
+      Type: BaseVariableType
+      DataType: VerticalAlignment
+      ModellingRule: Optional
+      Value: 3
+  - Name: Height
     Type: BaseVariableType
-    DataType: HorizontalAlignment
-    ModellingRule: Optional
-    Value: 3
+    DataType: Size
+    Value: 640.0
+    Children:
+    - Name: StringFormatter1
+      Type: StringFormatter
+      Children:
+      - Name: Format
+        Type: BaseDataVariableType
+        DataType: LocalizedText
+        ReferenceType: HasParameter
+        ModellingRule: Optional
+        Value: {"LocaleId":"","Text":"{0:t}"}
+      - Name: ns=5;Source0
+        Type: BaseDataVariableType
+        DataType: BaseDataType
+        ReferenceType: HasSource
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/ClockLogic/Time"
 - Name: RecipeListTemplate
   Id: g=a92171a8cd129535f8e855295cc2a512
   Supertype: ListViewRow

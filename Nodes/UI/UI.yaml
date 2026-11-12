@@ -3805,28 +3805,6 @@ Children:
             DataType: VerticalAlignment
             ModellingRule: Optional
             Value: 2
-          - Name: Label1
-            Type: Label
-            Children:
-            - Name: Text
-              Type: BaseDataVariableType
-              DataType: LocalizedText
-              Children:
-              - Name: DynamicLink
-                Type: DynamicLink
-                DataType: NodePath
-                Value: "{Window}/Height"
-          - Name: Label2
-            Type: Label
-            Children:
-            - Name: Text
-              Type: BaseDataVariableType
-              DataType: LocalizedText
-              Children:
-              - Name: DynamicLink
-                Type: DynamicLink
-                DataType: NodePath
-                Value: "{Window}/WindowHeightLeft"
           - Name: EmptyPanel
             Type: Panel
             Children:
@@ -4031,7 +4009,7 @@ Children:
                       - Name: DynamicLink
                         Type: DynamicLink
                         DataType: NodePath
-                        Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/RunTime/ClockLogic/Time"
+                        Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/ClockLogic/Time"
                 - Name: TextHorizontalAlignment
                   Type: BaseVariableType
                   DataType: TextHorizontalAlignment
@@ -4066,7 +4044,7 @@ Children:
                       - Name: DynamicLink
                         Type: DynamicLink
                         DataType: NodePath
-                        Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/RunTime/ClockLogic/Time"
+                        Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/ClockLogic/Time"
                 - Name: TextHorizontalAlignment
                   Type: BaseVariableType
                   DataType: TextHorizontalAlignment
