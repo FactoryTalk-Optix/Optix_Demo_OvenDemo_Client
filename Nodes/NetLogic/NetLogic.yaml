@@ -149,6 +149,9 @@ Children:
   Id: g=1719fc7bcbc26177a662b33cf7357854
   Type: NetLogic
   Children:
+  - Name: UptimeText
+    Type: BaseDataVariableType
+    DataType: String
   - Class: Method
     Name: StartCycle
   - Class: Method

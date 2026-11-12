@@ -1163,7 +1163,7 @@ Children:
             - Name: ValueAddInfo
               Type: BaseDataVariableType
               DataType: String
-              Value: "s"
+              Value: ""
             - Name: ValueToDisplay
               Type: BaseDataVariableType
               DataType: String
@@ -1171,7 +1171,7 @@ Children:
               - Name: DynamicLink
                 Type: DynamicLink
                 DataType: NodePath
-                Value: "{RowItem}/UptimeSeconds"
+                Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/OvenSimulationLogic/UptimeText"
                 Children:
                 - Name: Mode
                   Type: BaseVariableType
@@ -2270,7 +2270,7 @@ Children:
         - Name: DynamicLink
           Type: DynamicLink
           DataType: NodePath
-          Value: "{RowItem}/TemperatureSetpoint"
+          Value: "{RowItem}/Duration"
       - Name: TextVerticalAlignment
         Type: BaseVariableType
         DataType: TextVerticalAlignment
@@ -2314,7 +2314,7 @@ Children:
         - Name: DynamicLink
           Type: DynamicLink
           DataType: NodePath
-          Value: "{RowItem}/TemperatureSetpoint"
+          Value: "{RowItem}/FanInRamp"
       - Name: TextVerticalAlignment
         Type: BaseVariableType
         DataType: TextVerticalAlignment
@@ -2358,7 +2358,7 @@ Children:
         - Name: DynamicLink
           Type: DynamicLink
           DataType: NodePath
-          Value: "{RowItem}/TemperatureSetpoint"
+          Value: "{RowItem}/FanOutRamp"
       - Name: TextVerticalAlignment
         Type: BaseVariableType
         DataType: TextVerticalAlignment

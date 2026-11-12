@@ -28,6 +28,7 @@ public class OvenSimulationLogic : BaseNetLogic
     private const double Deadband = 2.0;
     private const double FastCoolPerTick = 2.0;
     private const string AlarmsPath = "Alarms";
+    private const string AlarmInputsPath = "NetLogic/alarmSimulationLogic/alarmSimulationArray";
     private const double HeaterKw = 12.0;
     private const double FanKwPerPercent = 0.02;
 
@@ -58,6 +59,8 @@ public class OvenSimulationLogic : BaseNetLogic
     private uint dailyCycles;
     private double dailyEnergyKwh;
     private IUAVariable rejectNextCycle;
+    private IUAVariable pineapples;
+    private IUAVariable uptimeText;
 
     public override void Start()
     {
@@ -75,6 +78,12 @@ public class OvenSimulationLogic : BaseNetLogic
         EnsureAnalyticsFields(Project.Current.Get("Model/Types/OvenType"));
         var settings = Project.Current.Get("Model/HMISettings");
         rejectNextCycle = EnsureVariable(settings, "RejectNextCycle", OpcUa.DataTypes.Boolean);
+        pineapples = EnsureVariable(LogicObject, "PineapplesOnPizza", OpcUa.DataTypes.Boolean);
+        uptimeText = EnsureVariable(LogicObject, "UptimeText", OpcUa.DataTypes.String);
+        pineapples.Value = false;
+        uptimeText.Value = "0.00:00:00";
+        pineapples.VariableChange += OnPineapplesChanged;
+        SetPineappleAlarm(false);
         ConfigureQualityControl();
         temperature = Ambient;
         idle = true;
@@ -118,6 +127,19 @@ public class OvenSimulationLogic : BaseNetLogic
         CycleRunning = false;
         task?.Dispose();
         task = null;
+        if (pineapples != null) pineapples.VariableChange -= OnPineapplesChanged;
+    }
+
+    private void OnPineapplesChanged(object sender, VariableChangeEventArgs e) => SetPineappleAlarm(e.NewValue.Value is bool on && on);
+
+    // Drives the first alarm input (PineapplesOnPizza) of alarmSimulationLogic, which stays in manual mode.
+    private static void SetPineappleAlarm(bool active)
+    {
+        var array = Project.Current.GetVariable(AlarmInputsPath);
+        if (array == null || !(array.Value.Value is bool[] inputs) || inputs.Length == 0) return;
+        var copy = (bool[])inputs.Clone();
+        copy[0] = active;
+        array.Value = new UAValue(copy);
     }
 
     private void Tick()
@@ -254,7 +276,9 @@ public class OvenSimulationLogic : BaseNetLogic
         Set(data, "RunningSecondsTotal", runningSeconds);
         Set(data, "IdealProductionSecondsTotal", idealSeconds);
         Set(data, "CounterEpoch", counterEpoch);
-        Set(data, "UptimeSeconds", (int)(now - startedUtc).TotalSeconds);
+        var uptime = (int)(now - startedUtc).TotalSeconds;
+        Set(data, "UptimeSeconds", uptime);
+        uptimeText.Value = TimeSpan.FromSeconds(uptime).ToString(@"d\.hh\:mm\:ss");
         Set(data, "Timestamp", now);
     }
 
@@ -287,18 +311,31 @@ public class OvenSimulationLogic : BaseNetLogic
     private void ConfigureQualityControl()
     {
         var content = Project.Current.Get("UI/UITypes/ListViewRows/OvenDataRow/Cycle/Content");
-        if (content == null || content.Get("RejectNextCycleLabel") != null) return;
+        if (content == null || content.Get("QualityControls") != null) return;
 
-        var label = InformationModel.MakeObject<Label>("RejectNextCycleLabel");
-        label.Text = "Reject next cycle";
-        label.Height = 24;
-        label.HorizontalAlignment = HorizontalAlignment.Stretch;
-        content.Add(label);
-        var control = InformationModel.MakeObject<Switch>("RejectNextCycleSwitch");
+        content.Get("RejectNextCycleLabel")?.Delete();
+        content.Get("RejectNextCycleSwitch")?.Delete();
+
+        var row = InformationModel.MakeObject<RowLayout>("QualityControls");
+        row.HorizontalAlignment = HorizontalAlignment.Stretch;
+        row.HorizontalGap = 8;
+        content.Add(row);
+        AddSwitch(row, "RejectNextCycle", "Reject next cycle", rejectNextCycle, 0);
+        AddSwitch(row, "PineapplesOnPizza", "Put pineapples on pizza", pineapples, 32);
+    }
+
+    private static void AddSwitch(IUANode row, string name, string text, IUAVariable target, float leftMargin)
+    {
+        var label = InformationModel.MakeObject<Label>(name + "Label");
+        label.Text = text;
+        label.Height = 28;
+        label.LeftMargin = leftMargin;
+        row.Add(label);
+        var control = InformationModel.MakeObject<Switch>(name + "Switch");
         control.Width = 52;
         control.Height = 28;
-        content.Add(control);
-        control.CheckedVariable.SetDynamicLink(rejectNextCycle, DynamicLinkMode.ReadWrite);
+        row.Add(control);
+        control.CheckedVariable.SetDynamicLink(target, DynamicLinkMode.ReadWrite);
     }
 
     // An off-normal controller is active when its input differs from the normal state.
