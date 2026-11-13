@@ -5,7 +5,7 @@ Children:
 - File: MenuObjects/MenuObjects.yaml
 - File: Views/Views.yaml
 - File: ListViewRows/ListViewRows.yaml
-- File: DialogBoxes/DialogBoxes.yaml
+- File: Dialogs/Dialogs.yaml
 - Name: RecipeGroup
   Id: g=4d561f17a7a8aa5934a83fee01143ebe
   Supertype: Panel

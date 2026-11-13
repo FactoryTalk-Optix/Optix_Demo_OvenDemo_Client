@@ -182,3 +182,7 @@ Children:
         Id: g=55718cf9eb6717be5010f5437a17cf84
         Type: PropertyType
         DataType: UInt16
+- Name: RejectNextCycle
+  Id: g=7ebcf20dc826447f88792a37b912d897
+  Type: BaseDataVariableType
+  DataType: Boolean

@@ -65,14 +65,6 @@ Children:
     Type: BaseDataVariableType
     DataType: LocalizedText
     Value: {"NamespaceIndex":28,"TextId":"PineapplesOnPizza"}
-  - Name: AutoAcknowledge
-    Type: BaseDataVariableType
-    DataType: Boolean
-    Value: true
-  - Name: AutoConfirm
-    Type: BaseDataVariableType
-    DataType: Boolean
-    Value: true
 - Name: DigitalAlarm2
   Type: OffNormalAlarmController
   Children:

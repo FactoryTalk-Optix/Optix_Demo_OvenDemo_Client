@@ -29,6 +29,7 @@ public class OvenSimulationLogic : BaseNetLogic
     private const double FastCoolPerTick = 2.0;
     private const string AlarmsPath = "Alarms";
     private const string AlarmInputsPath = "NetLogic/alarmSimulationLogic/alarmSimulationArray";
+    private const string AlarmStatusPath = "Model/AlarmStatus";
     private const double HeaterKw = 12.0;
     private const double FanKwPerPercent = 0.02;
 
@@ -61,6 +62,8 @@ public class OvenSimulationLogic : BaseNetLogic
     private IUAVariable rejectNextCycle;
     private IUAVariable pineapples;
     private IUAVariable uptimeText;
+    private IUAVariable activeAlarmCount;
+    private IUAVariable hasActiveAlarms;
 
     public override void Start()
     {
@@ -80,11 +83,14 @@ public class OvenSimulationLogic : BaseNetLogic
         rejectNextCycle = EnsureVariable(settings, "RejectNextCycle", OpcUa.DataTypes.Boolean);
         pineapples = EnsureVariable(LogicObject, "PineapplesOnPizza", OpcUa.DataTypes.Boolean);
         uptimeText = EnsureVariable(LogicObject, "UptimeText", OpcUa.DataTypes.String);
+        activeAlarmCount = Project.Current.GetVariable(AlarmStatusPath + "/ActiveAlarmCount");
+        hasActiveAlarms = Project.Current.GetVariable(AlarmStatusPath + "/HasActiveAlarms");
+        if (activeAlarmCount == null || hasActiveAlarms == null)
+            Log.Warning("OvenSimulationLogic", $"'{AlarmStatusPath}' not found: run DesignTimeNetLogic1.BuildAlarmStatus.");
         pineapples.Value = false;
         uptimeText.Value = "0.00:00:00";
         pineapples.VariableChange += OnPineapplesChanged;
         SetPineappleAlarm(false);
-        ConfigureQualityControl();
         temperature = Ambient;
         idle = true;
         startRequested = false;
@@ -211,7 +217,11 @@ public class OvenSimulationLogic : BaseNetLogic
         }
 
         tickCounter++;
-        if (tickCounter % TicksPerSecond == 0) Publish(idle ? null : phases[Math.Min(phaseIndex, phases.Length - 1)]);
+        if (tickCounter % TicksPerSecond == 0)
+        {
+            UpdateAlarmStatus();
+            Publish(idle ? null : phases[Math.Min(phaseIndex, phases.Length - 1)]);
+        }
     }
 
     private static bool HasRunnableRecipe(OvenPhase[] phases)
@@ -308,34 +318,13 @@ public class OvenSimulationLogic : BaseNetLogic
         return variable;
     }
 
-    private void ConfigureQualityControl()
+    private void UpdateAlarmStatus()
     {
-        var content = Project.Current.Get("UI/UITypes/ListViewRows/OvenDataRow/Cycle/Content");
-        if (content == null || content.Get("QualityControls") != null) return;
-
-        content.Get("RejectNextCycleLabel")?.Delete();
-        content.Get("RejectNextCycleSwitch")?.Delete();
-
-        var row = InformationModel.MakeObject<RowLayout>("QualityControls");
-        row.HorizontalAlignment = HorizontalAlignment.Stretch;
-        row.HorizontalGap = 8;
-        content.Add(row);
-        AddSwitch(row, "RejectNextCycle", "Reject next cycle", rejectNextCycle, 0);
-        AddSwitch(row, "PineapplesOnPizza", "Put pineapples on pizza", pineapples, 32);
-    }
-
-    private static void AddSwitch(IUANode row, string name, string text, IUAVariable target, float leftMargin)
-    {
-        var label = InformationModel.MakeObject<Label>(name + "Label");
-        label.Text = text;
-        label.Height = 28;
-        label.LeftMargin = leftMargin;
-        row.Add(label);
-        var control = InformationModel.MakeObject<Switch>(name + "Switch");
-        control.Width = 52;
-        control.Height = 28;
-        row.Add(control);
-        control.CheckedVariable.SetDynamicLink(target, DynamicLinkMode.ReadWrite);
+        if (activeAlarmCount == null || hasActiveAlarms == null) return;
+        var count = CountActiveAlarms();
+        if (Convert.ToUInt32(activeAlarmCount.Value.Value) != count) activeAlarmCount.Value = count;
+        var any = count > 0;
+        if (!(hasActiveAlarms.Value.Value is bool current) || current != any) hasActiveAlarms.Value = any;
     }
 
     // An off-normal controller is active when its input differs from the normal state.

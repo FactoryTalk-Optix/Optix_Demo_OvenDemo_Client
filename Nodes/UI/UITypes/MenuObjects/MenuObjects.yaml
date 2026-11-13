@@ -173,14 +173,22 @@ Children:
             Type: BaseDataVariableType
             DataType: Color
             ReferenceType: HasParameter
-            ModellingRule: Optional
             Value: "#ffffff"
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Session}/StyleSheet/Brand50"
           - Name: FalseValue
             Type: BaseDataVariableType
             DataType: Color
             ReferenceType: HasParameter
-            ModellingRule: Optional
-            Value: "#8693a5"
+            Value: "#3b3b3b"
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Session}/StyleSheet/Text"
       - Name: Visible
         Type: BaseDataVariableType
         DataType: Boolean

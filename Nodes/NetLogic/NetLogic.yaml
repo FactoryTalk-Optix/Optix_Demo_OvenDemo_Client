@@ -158,6 +158,9 @@ Children:
     Name: StopCycle
   - Class: Method
     Name: ToggleCycle
+  - Name: PineapplesOnPizza
+    Type: BaseDataVariableType
+    DataType: Boolean
 - Name: EdgeRecipesLogic
   Id: g=95ff9f60bd00b31973f03c2934ff1eac
   Type: NetLogic

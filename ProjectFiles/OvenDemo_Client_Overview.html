@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oven Demo - Oven Edge</title>
+<script src="overview-theme.js"></script>
+<link rel="stylesheet" href="overview.css">
+</head>
+<body>
+<main>
+<h1 id="oven-demo-oven-edge-client">Oven Demo - Oven Edge (Client)</h1>
+<p><strong>FactoryTalk Optix 1.8 | MQTT | RecipeX | SQLite | ECharts | OPC UA | 6 languages | Light/Dark theme</strong></p>
+<p>A simulated pizza oven with its own operator HMI. It runs a realistic bake cycle (PreHeat, Bake, Cooldown), shows temperature,
+energy and alarms, keeps a local recipe book and can join a plant-wide supervisor with a single button: it publishes its
+telemetry, receives approved recipes, and chats with the head office.</p>
+<p>It is the &quot;machine&quot; half of the OvenDemo NextGen pair. The &quot;head office&quot; half is the
+<strong>Optix_Demo_OvenDemo_Server</strong> project (see its <code>OvenDemo_Server_Overview.md</code>).</p>
+<p>An oven works <strong>on its own</strong> as well: the simulation, the recipes, the alarms and the dashboard do not depend on the supervisor.</p>
+<hr />
+<h2 id="what-the-demo-wants-to-show">1. What the demo wants to show</h2>
+<table>
+<thead>
+<tr>
+<th>Message</th>
+<th>How the demo proves it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The same Optix technology runs on the machine and in the cloud/office.</td>
+<td>Edge HMI and supervisor are two Optix projects talking over open protocols.</td>
+</tr>
+<tr>
+<td>A machine can be plugged into a fleet by an operator, not by an engineer.</td>
+<td>Enter the supervisor address, press <strong>Request onboarding</strong>, wait for the acceptance.</td>
+</tr>
+<tr>
+<td>The machine stays in charge.</td>
+<td>Recipes arrive read-only from the supervisor; the operator on the oven decides when to apply them.</td>
+</tr>
+<tr>
+<td>A rich, modern HMI without extra tooling.</td>
+<td>Responsive dashboard, live cycle chart, light/dark theme, 6 languages.</td>
+</tr>
+<tr>
+<td>Data model once, reused everywhere.</td>
+<td>The same <code>OvenType</code> is published over MQTT and offered over OPC UA.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="demo-walkthrough-about-3-5-minutes">2. Demo walkthrough (about 3-5 minutes)</h2>
+<ol>
+<li><strong>Dashboard</strong> - the oven card shows state, current phase, temperature and setpoint, applied recipe, batch, uptime, cycles
+today and power. A live chart traces the actual temperature of the running cycle against the setpoint.</li>
+<li><strong>Recipes</strong> - open the library. Approved recipes can be applied; applying while a cycle is running takes effect at the end
+of the cycle.</li>
+<li><strong>Start / Stop</strong> - one button starts an idle oven and stops a running one. Watch the heater cycle on and off around the
+setpoint, then the oven cool down.</li>
+<li><strong>Make something go wrong</strong> - flip <strong>Reject next cycle</strong> (the finished batch counts as rejected and lowers the quality
+figure the supervisor computes) or <strong>Put pineapples on pizza</strong> (raises an alarm).</li>
+<li><strong>Alarms</strong> - active list and history, with priority filter.</li>
+<li><strong>Settings</strong> - the oven has an id like <code>OVEN-1A2B3</code>, generated at first start. Set the supervisor address and press
+<strong>Request onboarding</strong>. The status goes Pending -&gt; Onboarded once the supervisor accepts.</li>
+<li><strong>Chat</strong> - answer the supervisor's message; delivery status updates on both screens.</li>
+<li><strong>Offboarding</strong> - <strong>Force offboarding</strong> resets the onboarding status on the oven side (useful when the oven was removed on the
+supervisor); the oven keeps working stand-alone.</li>
+</ol>
+<hr />
+<h2 id="features">3. Features</h2>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dashboard</strong></td>
+<td>Responsive live view of the oven, KPI values, cycle chart (ECharts), Start / Stop button, quality-control switches.</td>
+</tr>
+<tr>
+<td><strong>Alarms</strong></td>
+<td>Active alarm list and alarm history with priority filter (All / High / Medium / Info).</td>
+</tr>
+<tr>
+<td><strong>Logs</strong></td>
+<td>Events viewer on the local event logger database.</td>
+</tr>
+<tr>
+<td><strong>Recipes</strong></td>
+<td>Recipe book (RecipeX): name, version, status (Draft, Approved, Deprecated), phase values. Read-only for the operator; apply an Approved recipe.</td>
+</tr>
+<tr>
+<td><strong>Chat</strong></td>
+<td>Instant messaging with the supervisor, persistent history, delivery status, unread counter.</td>
+</tr>
+<tr>
+<td><strong>Settings</strong></td>
+<td>Language, light/dark theme, oven identity, supervisor link (MQTT broker address, OPC UA endpoint, available networks), onboarding status.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="functions-in-detail">Functions in detail</h3>
+<ul>
+<li><strong>Process simulation</strong> - three phases per recipe, each with temperature setpoint, duration, fan-in / fan-out ramps and a heating
+flag. The heater switches on and off around the setpoint with a dead band; the oven cools towards ambient when not heating.
+Simulated power is a 12 kW heater plus fans. The cycle ends automatically after the last phase.</li>
+<li><strong>Recipe-driven behavior</strong> - the phases are read from the recipe target every tick, so applying a recipe changes the oven from
+the next tick on. Recipes are transferred with RecipeX (<code>TransferFromStoreToTarget</code>).</li>
+<li><strong>Production counters</strong> - cycles, good / rejected cycles, energy, running time and ideal production time, with a counter epoch
+so the supervisor can tell a restart from a counter reset. They feed the supervisor's OEE page.</li>
+<li><strong>Alarms</strong> - four simulated process alarms (&quot;Pineapples on pizza&quot;, &quot;Mozzarella being finished&quot;, &quot;Pizza is being overcooked&quot;,
+&quot;Pizza is ready&quot;) with auto-acknowledge. The pineapple alarm is driven by a dashboard switch, the others by the alarm
+simulation logic. The active alarm count is part of the telemetry.</li>
+<li><strong>Onboarding</strong> - on the first start the oven generates its own id (<code>OVEN-</code> + 5 hex digits, kept in retentive storage). The
+onboarding request carries the id and the OPC UA endpoint of the oven; the supervisor answers with a status: none, pending,
+onboarded, declined or timeout.</li>
+<li><strong>Telemetry</strong> - once onboarded, the oven publishes its <code>OvenType</code> snapshot periodically on the MQTT topic named after its id.</li>
+<li><strong>Recipes from the supervisor</strong> - approved recipes arrive on <code>recipes/&lt;id&gt;/to-edge</code>, are validated (only <em>Approved</em> or
+<em>Deprecated</em> are accepted), stored read-only, acknowledged, and announced in a catalog message whenever the oven reconnects so
+that missing recipes are sent again. The oven reports back which recipe it applied.</li>
+<li><strong>Chat</strong> - messages to the supervisor are queued while offline and sent on reconnect; delivery is confirmed by the supervisor's
+acknowledgement; duplicates are ignored; history is capped per conversation.</li>
+<li><strong>Localization and themes</strong> - English, Spanish, Italian, French, German and Chinese; Light and Dark.</li>
+</ul>
+<hr />
+<h2 id="how-it-works">4. How it works</h2>
+<pre><code class="language-text">+--------------------------------- OvenDemo Client ---------------------------------+
+|                                                                                   |
+|  HMI (WebUI http :8080 + Native)   Simulation (250 ms tick)   RecipeX + SQLite     |
+|  Dashboard | Alarms | Logs |       PreHeat -&gt; Bake -&gt; Cooldown  recipes, chat,      |
+|  Recipes | Chat | Settings         heater, fans, counters       event log          |
+|                                                                                   |
+|  OvenType (Model/OvenData/&lt;id&gt;) --- MQTT publisher --------------+                |
+|  OPC UA server :59101 (publishes Model) -------------------------+---+            |
++-------------------------------------------------------------------|---|-----------+
+                                                                    |   |
+                                         MQTT broker :8883          |   |  OPC UA
+                                       (on the supervisor)          v   v
+                                                         OvenDemo Supervisor
+</code></pre>
+<h3 id="mqtt-topics-used-by-the-oven">MQTT topics used by the oven</h3>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Direction</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OnboardingRequest</code></td>
+<td>oven -&gt; supervisor</td>
+<td><code>{Sender, Content (OPC UA endpoint), Timestamp}</code></td>
+</tr>
+<tr>
+<td><code>OnboardingResult</code></td>
+<td>supervisor -&gt; oven</td>
+<td>Onboarding status (0 none, 1 pending, 2 onboarded, 3 declined, 4 timeout)</td>
+</tr>
+<tr>
+<td><code>&lt;DeviceId&gt;</code></td>
+<td>oven -&gt; supervisor</td>
+<td>Telemetry (Optix Default JSON of <code>OvenType</code>)</td>
+</tr>
+<tr>
+<td><code>chat/&lt;DeviceId&gt;/to-edge</code>, <code>chat/&lt;DeviceId&gt;/to-supervisor</code></td>
+<td>both</td>
+<td>Chat message / acknowledgement (QoS 1)</td>
+</tr>
+<tr>
+<td><code>recipes/&lt;DeviceId&gt;/to-edge</code>, <code>recipes/&lt;DeviceId&gt;/to-supervisor</code></td>
+<td>both</td>
+<td>Recipe delivery, catalog (hello), apply result</td>
+</tr>
+</tbody>
+</table>
+<p>The MQTT client id of the oven is its <code>DeviceId</code>.</p>
+<h3 id="technology">Technology</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform</td>
+<td>FactoryTalk Optix Studio 1.8.0.555, .NET NetLogic (C#)</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>WebUI + Native engines, responsive dashboard, StyleSheets Light/Dark, 6 languages</td>
+</tr>
+<tr>
+<td>Messaging</td>
+<td><code>MQTTClient</code> with publisher (telemetry) and subscribers (onboarding, chat, recipes created at runtime)</td>
+</tr>
+<tr>
+<td>Recipes</td>
+<td><code>RecipeX</code> with <code>OvenRecipe</code> target type (PreHeat / Bake / Cooldown)</td>
+</tr>
+<tr>
+<td>Persistence</td>
+<td><code>SQLiteStore</code> (recipes, chat history, event logger), retentive oven id and settings</td>
+</tr>
+<tr>
+<td>Alarms</td>
+<td><code>Alarm</code> module (<code>OffNormalAlarmController</code>) and <code>EventLogger</code></td>
+</tr>
+<tr>
+<td>Charts</td>
+<td>Apache ECharts in a <code>WebBrowser</code> widget, served by a small loopback listener inside the runtime</td>
+</tr>
+<tr>
+<td>Interop</td>
+<td><code>OPCUAServer</code> publishing the oven model</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-to-look-in-the-code">Where to look in the code</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ProjectFiles/NetSolution/OvenSimulationLogic.cs</code></td>
+<td>Thermal / cycle simulation, counters, telemetry publication</td>
+</tr>
+<tr>
+<td><code>EdgeOnbordingLogic.cs</code></td>
+<td>Oven id generation, <code>OvenData</code> instance management</td>
+</tr>
+<tr>
+<td><code>EdgeRecipesLogic.cs</code>, <code>RecipesLogic.cs</code>, <code>RecipeListLogic.cs</code></td>
+<td>Recipe reception, validation, apply and recipe book</td>
+</tr>
+<tr>
+<td><code>EdgeChatLogic.cs</code></td>
+<td>Chat history, queue, acknowledgements</td>
+</tr>
+<tr>
+<td><code>alarmSimulationLogic.cs</code></td>
+<td>Simulated process alarms</td>
+</tr>
+<tr>
+<td><code>EchartOvenDataLogic.cs</code>, <code>OvenCycleTrace.cs</code></td>
+<td>Live temperature chart</td>
+</tr>
+<tr>
+<td><code>DesignTimeNetLogic1.cs</code></td>
+<td>Design-time builders and fixes, run from Studio (not part of the runtime)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="run-it">5. Run it</h2>
+<p><strong>Prerequisites:</strong> FactoryTalk Optix Studio 1.8.0.555 or later.</p>
+<ol>
+<li>Open <code>Optix_Demo_OvenDemo_Client.optix</code> in Studio and start it (Emulator). The WebUI is on <code>http://&lt;ip&gt;:8080</code>.</li>
+<li>Apply an Approved recipe in <strong>Recipes</strong> and press <strong>Start</strong> on the <strong>Dashboard</strong>.</li>
+<li>To join a fleet: open <strong>Settings</strong>, set the supervisor's IP address, press <strong>Request onboarding</strong> and accept the request on the
+<strong>Optix_Demo_OvenDemo_Server</strong> (<strong>Device registry</strong>).</li>
+</ol>
+<p>Running several clients on the same PC requires changing their ports (WebUI 8080, OPC UA 59101); on separate devices no change
+is needed. Each oven needs its own id, generated automatically at first start.</p>
+<hr />
+<h2 id="good-to-know">6. Good to know</h2>
+<ul>
+<li>Recipes are created and approved on the supervisor. The oven only receives, stores and applies them. A recipe that is not
+Approved cannot be applied.</li>
+<li>The demo link to the supervisor is anonymous and not encrypted (trade-show LAN). Production use needs TLS and authentication.</li>
+<li>Translations cover the main labels in six languages; some texts of this project are still English only, the supervisor project
+is the fully localized one.</li>
+</ul>
+
+</main>
+</body>
+</html>

@@ -300,11 +300,6 @@ Children:
       Type: PropertyType
       DataType: NodeId
       Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/Types/OvenType"
-  - Name: Width
-    Type: BaseVariableType
-    DataType: Size
-    ModellingRule: Optional
-    Value: 800.0
   - Name: HorizontalAlignment
     Type: BaseVariableType
     DataType: HorizontalAlignment
@@ -348,6 +343,16 @@ Children:
       DataType: Size
       ModellingRule: Optional
       Value: 300.0
+    - Name: HorizontalAlignment
+      Type: BaseVariableType
+      DataType: HorizontalAlignment
+      ModellingRule: Optional
+      Value: 3
+    - Name: VerticalAlignment
+      Type: BaseVariableType
+      DataType: VerticalAlignment
+      ModellingRule: Optional
+      Value: 3
     - Name: Cycle
       Type: Panel
       Children:
@@ -1163,7 +1168,6 @@ Children:
             - Name: ValueAddInfo
               Type: BaseDataVariableType
               DataType: String
-              Value: ""
             - Name: ValueToDisplay
               Type: BaseDataVariableType
               DataType: String
@@ -1523,39 +1527,110 @@ Children:
           DataType: Size
           ModellingRule: Optional
           Value: 16.0
-    - Name: HorizontalAlignment
-      Type: BaseVariableType
-      DataType: HorizontalAlignment
-      ModellingRule: Optional
-      Value: 3
-    - Name: VerticalAlignment
-      Type: BaseVariableType
-      DataType: VerticalAlignment
-      ModellingRule: Optional
-      Value: 3
+        - Name: QualityControls
+          Type: RowLayout
+          Children:
+          - Name: HorizontalAlignment
+            Type: BaseVariableType
+            DataType: HorizontalAlignment
+            ModellingRule: Optional
+            Value: 3
+          - Name: HorizontalGap
+            Type: BaseDataVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 16.0
+          - Name: RejectNextCycleLabel
+            Type: Label
+            Children:
+            - Name: Text
+              Type: BaseDataVariableType
+              DataType: LocalizedText
+              ModellingRule: Optional
+              Value: {"LocaleId":"en-US","Text":"Reject next cycle"}
+            - Name: LeftMargin
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+            - Name: VerticalAlignment
+              Type: BaseVariableType
+              DataType: VerticalAlignment
+              ModellingRule: Optional
+              Value: 2
+          - Name: RejectNextCycleSwitch
+            Type: Switch
+            Children:
+            - Name: Checked
+              Type: BaseDataVariableType
+              DataType: Boolean
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "/Objects/Optix_Demo_OvenDemo_Client/Model/HMISettings/RejectNextCycle"
+                Children:
+                - Name: Mode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkMode
+                  Value: 2
+            - Name: Height
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 32.0
+            - Name: Width
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 64.0
+          - Name: PineapplesOnPizzaLabel
+            Type: Label
+            Children:
+            - Name: Text
+              Type: BaseDataVariableType
+              DataType: LocalizedText
+              ModellingRule: Optional
+              Value: {"LocaleId":"en-US","Text":"Put pineapples on pizza"}
+            - Name: VerticalAlignment
+              Type: BaseVariableType
+              DataType: VerticalAlignment
+              ModellingRule: Optional
+              Value: 2
+          - Name: PineapplesOnPizzaSwitch
+            Type: Switch
+            Children:
+            - Name: Checked
+              Type: BaseDataVariableType
+              DataType: Boolean
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/OvenSimulationLogic/PineapplesOnPizza"
+                Children:
+                - Name: Mode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkMode
+                  Value: 2
+            - Name: Height
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 32.0
+            - Name: Width
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 64.0
   - Name: Height
     Type: BaseVariableType
     DataType: Size
-    Value: 640.0
-    Children:
-    - Name: StringFormatter1
-      Type: StringFormatter
-      Children:
-      - Name: Format
-        Type: BaseDataVariableType
-        DataType: LocalizedText
-        ReferenceType: HasParameter
-        ModellingRule: Optional
-        Value: {"LocaleId":"","Text":"{0:t}"}
-      - Name: ns=5;Source0
-        Type: BaseDataVariableType
-        DataType: BaseDataType
-        ReferenceType: HasSource
-        Children:
-        - Name: DynamicLink
-          Type: DynamicLink
-          DataType: NodePath
-          Value: "/Objects/Optix_Demo_OvenDemo_Client/NetLogic/ClockLogic/Time"
+    Value: 700.0
+  - Name: Width
+    Type: BaseVariableType
+    DataType: Size
+    ModellingRule: Optional
+    Value: 800.0
 - Name: RecipeListTemplate
   Id: g=a92171a8cd129535f8e855295cc2a512
   Supertype: ListViewRow
@@ -1967,7 +2042,7 @@ Children:
               - Name: Value
                 Type: BaseDataVariableType
                 DataType: Color
-                Value: "#b3b3b3"
+                Value: "#235d9f"
             - Name: Pair2
               Type: ValueMapPair
               Children:
@@ -1978,7 +2053,7 @@ Children:
               - Name: Value
                 Type: BaseDataVariableType
                 DataType: Color
-                Value: "#b3b3b3"
+                Value: "#3aa76d"
             - Name: Pair3
               Type: ValueMapPair
               Children:

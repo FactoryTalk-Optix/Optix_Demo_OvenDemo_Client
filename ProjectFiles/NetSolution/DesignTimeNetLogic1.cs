@@ -35,6 +35,8 @@ public class DesignTimeNetLogic1 : BaseNetLogic
         FixGridHeaders();
         RestoreAlarmRowTemplates();
         PolishDashboard();
+        BuildQualityControls();
+        BuildAlarmStatus();
         BuildRecipesEmptyHint();
     }
 
@@ -256,7 +258,7 @@ public class DesignTimeNetLogic1 : BaseNetLogic
         variable.Value = new UAValue(value);
     }
 
-    // Re-runnable: shorter batch text, unit on the uptime and one Start/Stop button that follows the oven state.
+    // Re-runnable: shorter batch text, uptime without unit (UptimeText is already formatted d.hh:mm:ss) and one Start/Stop button that follows the oven state.
     [ExportMethod]
     public void PolishDashboard()
     {
@@ -267,7 +269,7 @@ public class DesignTimeNetLogic1 : BaseNetLogic
 
         var uptimeUnit = Project.Current.GetVariable(row + "Cards/Card5/ValueAddInfo");
         if (uptimeUnit != null)
-            uptimeUnit.Value = "s";
+            uptimeUnit.Value = "";
 
         var button = Project.Current.Get(row + "StartCycle");
         var method = Descendants(button).OfType<IUAVariable>().FirstOrDefault(v => v.BrowseName == "Method");
@@ -289,6 +291,80 @@ public class DesignTimeNetLogic1 : BaseNetLogic
         }
         BindExpression(stop.VisibleVariable, "{0} != 0", "{RowItem}/ExecutionState");
         Log.Info(Category, "Dashboard polished.");
+    }
+
+    // Re-runnable: "Reject next cycle" and "Put pineapples on pizza" switches under the Start button of the dashboard row.
+    // The second one drives the first input (PineapplesOnPizza) of alarmSimulationLogic through OvenSimulationLogic.
+    [ExportMethod]
+    public void BuildQualityControls()
+    {
+        var content = Project.Current.Get("UI/UITypes/ListViewRows/OvenDataRow/Cycle/Content");
+        var settings = Project.Current.Get("Model/HMISettings");
+        var logic = Project.Current.Get("NetLogic/OvenSimulationLogic");
+        if (content == null || settings == null || logic == null)
+        {
+            Log.Error(Category, "OvenDataRow/Cycle/Content, Model/HMISettings or NetLogic/OvenSimulationLogic not found.");
+            return;
+        }
+
+        var reject = EnsureVariable(settings, "RejectNextCycle", OpcUa.DataTypes.Boolean);
+        var pineapples = EnsureVariable(logic, "PineapplesOnPizza", OpcUa.DataTypes.Boolean);
+        EnsureVariable(logic, "UptimeText", OpcUa.DataTypes.String);
+        if (content.Get("QualityControls") != null)
+            return;
+
+        var row = InformationModel.MakeObject<RowLayout>("QualityControls");
+        row.HorizontalAlignment = HorizontalAlignment.Stretch;
+        row.HorizontalGap = 8;
+        content.Add(row);
+        AddSwitch(row, "RejectNextCycle", "Reject next cycle", reject, 0);
+        AddSwitch(row, "PineapplesOnPizza", "Put pineapples on pizza", pineapples, 32);
+        Log.Info(Category, "Quality controls created.");
+    }
+
+    // Re-runnable: Model/AlarmStatus holds the number of active alarms and whether there is at least one (written by OvenSimulationLogic), to bind notifications to.
+    [ExportMethod]
+    public void BuildAlarmStatus()
+    {
+        var model = Project.Current.Get("Model");
+        if (model == null)
+        {
+            Log.Error(Category, "Model not found.");
+            return;
+        }
+        var status = model.Get("AlarmStatus");
+        if (status == null)
+        {
+            status = InformationModel.MakeObject<Folder>("AlarmStatus");
+            model.Add(status);
+        }
+        EnsureVariable(status, "ActiveAlarmCount", OpcUa.DataTypes.UInt32);
+        EnsureVariable(status, "HasActiveAlarms", OpcUa.DataTypes.Boolean);
+        Log.Info(Category, "Model/AlarmStatus ready.");
+    }
+
+    private static IUAVariable EnsureVariable(IUANode parent, string name, NodeId dataType)
+    {
+        var variable = parent.GetVariable(name);
+        if (variable != null)
+            return variable;
+        variable = InformationModel.MakeVariable(name, dataType);
+        parent.Add(variable);
+        return variable;
+    }
+
+    private static void AddSwitch(IUANode row, string name, string text, IUAVariable target, float leftMargin)
+    {
+        var label = InformationModel.MakeObject<Label>(name + "Label");
+        label.Text = text;
+        label.Height = 28;
+        label.LeftMargin = leftMargin;
+        row.Add(label);
+        var control = InformationModel.MakeObject<Switch>(name + "Switch");
+        control.Width = 52;
+        control.Height = 28;
+        row.Add(control);
+        control.CheckedVariable.SetDynamicLink(target, DynamicLinkMode.ReadWrite);
     }
 
     // Re-runnable: RecipeListLogic shows this hint and hides the empty detail panel while the oven has no recipe.

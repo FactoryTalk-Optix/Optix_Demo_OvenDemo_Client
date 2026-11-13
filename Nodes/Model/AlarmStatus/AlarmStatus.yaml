@@ -1,0 +1,12 @@
+Name: AlarmStatus
+Id: g=cd4371ba78964d34a3e1ba9f3a4042aa
+Type: FolderType
+Children:
+- Name: ActiveAlarmCount
+  Id: g=67a78da9a4a44c1baf1091c859ae2a8f
+  Type: BaseDataVariableType
+  DataType: UInt32
+- Name: HasActiveAlarms
+  Id: g=1b050b30836b4780952a7b385e6249af
+  Type: BaseDataVariableType
+  DataType: Boolean

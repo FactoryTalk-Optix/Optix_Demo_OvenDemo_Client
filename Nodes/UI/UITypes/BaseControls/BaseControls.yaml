@@ -854,13 +854,7 @@ Children:
     - Name: DynamicColor
       Type: BaseDataVariableType
       DataType: Color
-      ModellingRule: Optional
       Value: "#3b3b3b"
-      Children:
-      - Name: DynamicLink
-        Type: DynamicLink
-        DataType: NodePath
-        Value: "{Session}/StyleSheet/Text"
     - Name: LeftMargin
       Type: BaseVariableType
       DataType: Size

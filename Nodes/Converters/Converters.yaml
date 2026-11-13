@@ -496,7 +496,7 @@ Children:
       - Name: Value
         Type: BaseDataVariableType
         DataType: Color
-        Value: "#b3b3b3"
+        Value: "#235d9f"
     - Name: Pair2
       Type: ValueMapPair
       Children:
@@ -507,7 +507,7 @@ Children:
       - Name: Value
         Type: BaseDataVariableType
         DataType: Color
-        Value: "#b3b3b3"
+        Value: "#3aa76d"
     - Name: Pair3
       Type: ValueMapPair
       Children:

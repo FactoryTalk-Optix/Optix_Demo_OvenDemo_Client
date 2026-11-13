@@ -80,3 +80,7 @@ Children:
     Name: FixDarkTheme
   - Class: Method
     Name: FixDarkThemeOverrides
+  - Class: Method
+    Name: BuildQualityControls
+  - Class: Method
+    Name: BuildAlarmStatus
