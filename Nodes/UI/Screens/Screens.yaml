@@ -1520,7 +1520,7 @@ Children:
                       - Name: DynamicLink
                         Type: DynamicLink
                         DataType: NodePath
-                        Value: "../../../../../../../MessageTextBox/Content/TextBox1/Text"
+                        Value: "../../../../../../../MessageTextBox/Content/TextBox1/Text@NodeId"
                     - Name: Value
                       Type: BaseDataVariableType
                       DataType: LocalizedText
