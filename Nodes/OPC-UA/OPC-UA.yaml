@@ -39,6 +39,18 @@ Children:
             Type: PropertyType
             DataType: NodePointerNodeClass
             Value: 2
+        - Name: Node2
+          Type: NodePointer
+          DataType: NodeId
+          Value: "/Objects/Optix_Demo_OvenDemo_Client/Alarms"
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+          - Name: NodeClass
+            Type: PropertyType
+            DataType: NodePointerNodeClass
+            Value: 2
       - Name: Users
         Type: BaseObjectType
         Children:

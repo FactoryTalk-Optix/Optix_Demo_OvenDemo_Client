@@ -1,26 +1,33 @@
 Name: Alarms
+Id: g=86a16140d5c1d9f2159108618fce2eba
 Type: AlarmsCategoryFolder
 Children:
 - Name: DigitalAlarm1
+  Id: g=72a982892cf050998217c50de67788df
   Type: OffNormalAlarmController
   Children:
   - Name: NormalStateValue
+    Id: g=efa3b13cd9204ba87957786ccc7566f4
     Type: BaseDataVariableType
     DataType: Double
   - Name: InputValue
+    Id: g=d86dec83ac9b104c4b22620401d288d6
     Type: BaseDataVariableType
     DataType: Double
     Children:
     - Name: DynamicLink
+      Id: g=455bf75b178b79e288cee0484b18e1cd
       Type: DynamicLink
       DataType: NodePath
       Value: "../../../NetLogic/alarmSimulationLogic/alarmSimulationArray[0]"
       Children:
       - Name: Mode
+        Id: g=a1a2f4ca5d66d151eb8ee669f89554d1
         Type: BaseVariableType
         DataType: DynamicLinkMode
         Value: 2
   - Name: LastEvent
+    Id: g=3adf6990691f9507411ad2d33432c203
     Type: BaseDataVariableType
     DataType: BaseDataType
     ValueRank: OneDimension
@@ -59,32 +66,40 @@ Children:
     Target: ns=21;i=154
     Direction: Forward
   - Name: Severity
+    Id: g=e9702794447a5f5af5faf3dea96dad19
     Type: BaseDataVariableType
     DataType: UInt16
   - Name: Message
+    Id: g=28b1c17535612ea3bb9edd11def7d16d
     Type: BaseDataVariableType
     DataType: LocalizedText
     Value: {"NamespaceIndex":28,"TextId":"PineapplesOnPizza"}
 - Name: DigitalAlarm2
+  Id: g=b0105614ec3c25c746b73b024753ab03
   Type: OffNormalAlarmController
   Children:
   - Name: NormalStateValue
+    Id: g=46491248f24c825cdc34c22f4a1b1001
     Type: BaseDataVariableType
     DataType: Double
   - Name: InputValue
+    Id: g=4fc7c5f842d6946cd2e56bf8c0bc0f5c
     Type: BaseDataVariableType
     DataType: Double
     Children:
     - Name: DynamicLink
+      Id: g=1e39e0252e94c0e9f6254d46069ff846
       Type: DynamicLink
       DataType: NodePath
       Value: "../../../NetLogic/alarmSimulationLogic/alarmSimulationArray[1]"
       Children:
       - Name: Mode
+        Id: g=42bb6a3cb6b70572360b6cf7e805b77b
         Type: BaseVariableType
         DataType: DynamicLinkMode
         Value: 2
   - Name: LastEvent
+    Id: g=4d6dafef9c51278daa59c097ae053fb9
     Type: BaseDataVariableType
     DataType: BaseDataType
     ValueRank: OneDimension
@@ -123,41 +138,51 @@ Children:
     Target: ns=21;i=154
     Direction: Forward
   - Name: Severity
+    Id: g=65e6fa26b5e3a8b9a13b7618c1cd4da8
     Type: BaseDataVariableType
     DataType: UInt16
     Value: 1
   - Name: Message
+    Id: g=8f8f08faad86486cedd0e6c9c6cd5545
     Type: BaseDataVariableType
     DataType: LocalizedText
     Value: {"NamespaceIndex":28,"TextId":"MozzarellaBeingFinished"}
   - Name: AutoAcknowledge
+    Id: g=4177cfb983358426f95a4ac80a6c9a72
     Type: BaseDataVariableType
     DataType: Boolean
     Value: true
   - Name: AutoConfirm
+    Id: g=3a61c01873cc1e174388045ca874c6ff
     Type: BaseDataVariableType
     DataType: Boolean
     Value: true
 - Name: DigitalAlarm3
+  Id: g=1ae322cd5f2b7efac9b503290c764484
   Type: OffNormalAlarmController
   Children:
   - Name: NormalStateValue
+    Id: g=b2c1d0264b3de3b8853c5dd0e721a030
     Type: BaseDataVariableType
     DataType: Double
   - Name: InputValue
+    Id: g=b94ad05c276ab6f0f349c722a30a2f0a
     Type: BaseDataVariableType
     DataType: Double
     Children:
     - Name: DynamicLink
+      Id: g=01d5613c341340309feed529e5c5bbc7
       Type: DynamicLink
       DataType: NodePath
       Value: "../../../NetLogic/alarmSimulationLogic/alarmSimulationArray[2]"
       Children:
       - Name: Mode
+        Id: g=a2c36cced9eba99c712229befb2f3dce
         Type: BaseVariableType
         DataType: DynamicLinkMode
         Value: 2
   - Name: LastEvent
+    Id: g=c021060480e4d753b07c814e445e9da8
     Type: BaseDataVariableType
     DataType: BaseDataType
     ValueRank: OneDimension
@@ -196,41 +221,51 @@ Children:
     Target: ns=21;i=154
     Direction: Forward
   - Name: Severity
+    Id: g=ef962a1a615abfb8a31b5ef2ae567dd0
     Type: BaseDataVariableType
     DataType: UInt16
     Value: 2
   - Name: Message
+    Id: g=d21f947a4e5147fe8e2ceae047c0b644
     Type: BaseDataVariableType
     DataType: LocalizedText
     Value: {"NamespaceIndex":28,"TextId":"PizzaIsBeingOvercooked"}
   - Name: AutoAcknowledge
+    Id: g=4de72112bf6889f7b340371ba08d930f
     Type: BaseDataVariableType
     DataType: Boolean
     Value: true
   - Name: AutoConfirm
+    Id: g=72df44e297745d5a012e4b888ad3407e
     Type: BaseDataVariableType
     DataType: Boolean
     Value: true
 - Name: DigitalAlarm4
+  Id: g=fc0a7962139ab6ac18794f81d6215dfa
   Type: OffNormalAlarmController
   Children:
   - Name: NormalStateValue
+    Id: g=abdcf09b8dfaa764dac8257cb67ba2f9
     Type: BaseDataVariableType
     DataType: Double
   - Name: InputValue
+    Id: g=183fd7e8cfaa5834994813e681793259
     Type: BaseDataVariableType
     DataType: Double
     Children:
     - Name: DynamicLink
+      Id: g=160f110daa2971bf888477d024fb1b5b
       Type: DynamicLink
       DataType: NodePath
       Value: "../../../NetLogic/alarmSimulationLogic/alarmSimulationArray[3]"
       Children:
       - Name: Mode
+        Id: g=f2d3cff901e055909c260409ae9a2ae2
         Type: BaseVariableType
         DataType: DynamicLinkMode
         Value: 2
   - Name: LastEvent
+    Id: g=ffac321bb9d9b5eef988ad20d06713cc
     Type: BaseDataVariableType
     DataType: BaseDataType
     ValueRank: OneDimension
@@ -269,18 +304,22 @@ Children:
     Target: ns=21;i=154
     Direction: Forward
   - Name: Severity
+    Id: g=be4577e8a572e1e2bfeff1e8d1718e8d
     Type: BaseDataVariableType
     DataType: UInt16
     Value: 3
   - Name: Message
+    Id: g=9ab20b8dd031f2bf6f574f083082058a
     Type: BaseDataVariableType
     DataType: LocalizedText
     Value: {"NamespaceIndex":28,"TextId":"PizzaIsReady"}
   - Name: AutoAcknowledge
+    Id: g=195ddf6cc63a3b1cc7124db30dbb40da
     Type: BaseDataVariableType
     DataType: Boolean
     Value: true
   - Name: AutoConfirm
+    Id: g=ad0a6d2eec82904940d5dac86d802311
     Type: BaseDataVariableType
     DataType: Boolean
     Value: true
