@@ -91,6 +91,13 @@ public class EdgeOnbordingLogic : BaseNetLogic
         }
 
         var ovenInstance = ovenDataFolder.Get(runtimeNodeId);
+        if (ovenInstance != null && ovenInstance.Children.GroupBy(child => child.BrowseName).Any(group => group.Count() > 1))
+        {
+            // A retentive instance from an older build has duplicated fields: the supervisor rejects every payload.
+            Log.Warning("EdgeOnbordingLogic", $"SyncOvenDataWithRuntimeNodeId: instance '{runtimeNodeId}' has duplicated variables, recreating it");
+            ovenInstance.Delete();
+            ovenInstance = null;
+        }
         if (ovenInstance == null)
         {
             var ovenType = Project.Current.Get("Model/Types/OvenType");
